@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
+.container {
+    background-color: #863b87;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-template-areas: 
+    ". . . . . . ."
+    ". . . . . slogan slogan"
+    ". logopic logo logo . . ."
+    " . . . . . login ."
+    " . . . . signup . ."
+    ;
+}
+
+.logotype {
+    grid-area: logo;
+    background-color: #4c175a;
+    color: white;
+    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-family: 'Montserrat';
+    padding:30px 0 0 0;
+    font-weight: 600;
+    font-size: 100px;
+}
+.logopic {
+    grid-area: logopic;
+    background-color: aquamarine;
+    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+}
+.slogan {
+    grid-area: slogan;
+    background-color: #4c175a;
+    color: white;
+    padding: 30px;
+    font-family: 'Roboto';
+    font-size: 40px;
+    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.loginflow {
+    grid-area: login;
+    background-color: #9a52a3;
+    color: white;
+    font-family: 'Roboto';
+    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.signupflow {
+    grid-area: signup;
+    background-color:#9a52a3;
+    color: white;
+    font-family: 'Roboto';
+    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+}

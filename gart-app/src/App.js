@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import './App.css';
-
 import {
   BrowserRouter as Router,
   Route,
@@ -19,7 +17,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-       {/*All our Routes goes here!*/}
        <Route exact path="/" component={Welcome} />
       </Router>
     );
