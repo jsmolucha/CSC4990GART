@@ -14,17 +14,16 @@ mongoose.connect("mongodb+srv://Admin1:CSC4990-01@gart-app.7bjx7.mongodb.net/gar
 
 app.post('/newUser', async (req, res) => {
     const data = req.body;
-    const hasedPass = ""
+    let hashedPass = ""
     console.log(data);
     if(req.body.password != null){
-        hasedPass = await bcrypt.hash(req.body.pass, 10);
+        hashedPass = await bcrypt.hash(req.body.password, 10);
     }
     const user = new userAcc ({userID: Date.now(), username: req.body.username, password: hashedPass});
-    //const user = new userAcc ({userID: Date.now(), username: "JD", password: "Testing"});
 
     try {
         await user.save();
-        console.log(`User saved as ${user}`);
+        res.send("User added");
     } catch(err){
         console.log(err);
     }
