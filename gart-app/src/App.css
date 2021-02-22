@@ -1,0 +1,31 @@
+.container {
+  background-color: #863b87;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-areas: 
+  'logo title title'
+  'sugcontent content content'
+  ;
+  grid-template-columns: 0.2fr 1fr 1fr ;
+  grid-template-rows: 0.2fr 1fr;
+  grid-gap: 2px;
+}
+
+.logospace {
+  grid-area: logo;
+}
+
+.title {
+  grid-area: title;
+
+}
+
+.content_container {
+  grid-area: content;
+
+}
+
+.suggested_content {
+  grid-area: sugcontent;
+}
