@@ -2,21 +2,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 
 .container {
-    background-color: #863b87;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e,#863b87, #ecf2f4);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
     height: 100vh;
     width: 100vw;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr;
     display: grid;
     grid-template-areas: 
-    ". . . . . . ."
+    "nav nav nav nav nav nav nav"
     ". . . . . slogan slogan"
     ". logopic logo logo . . ."
     " . . . . . login ."
     " . . . . signup . ."
+    ". . . . . . ."
     ;
 }
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.navigation {
+    grid-area: nav;
+}
 .logotype {
     grid-area: logo;
     background-color: #4c175a;
@@ -24,7 +41,7 @@
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
     text-align: center;
     font-family: 'Montserrat';
-    padding:30px 0 0 0;
+    padding:12px 0 0 0;
     font-weight: 600;
     font-size: 100px;
 }
@@ -37,7 +54,7 @@
     grid-area: slogan;
     background-color: #4c175a;
     color: white;
-    padding: 30px;
+    padding: 15px 0 0 10px ;
     font-family: 'Roboto';
     font-size: 40px;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
