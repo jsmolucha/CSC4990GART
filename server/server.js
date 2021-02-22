@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const user = require("/models/users");
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://Admin1:CSC4990-01@gart-app.7bjx7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://Admin1:CSC4990-01@gart-app.7bjx7.mongodb.net/gart-app", {
     useNewUrlParser: true,
 });
 
