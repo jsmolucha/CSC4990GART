@@ -16,10 +16,10 @@ app.post('/newUser', async (req, res) => {
     const data = req.body;
     let hashedPass = ""
     console.log(data);
-    if(req.body.password != null){
+    if(req.body.psw != null){
         hashedPass = await bcrypt.hash(req.body.password, 10);
     }
-    const user = new userAcc ({userID: Date.now(), username: req.body.username, password: hashedPass});
+    const user = new userAcc ({userID: Date.now(), username: req.body.uname, password: hashedPass});
 
     try {
         await user.save();
