@@ -1,20 +1,29 @@
 const express = require('express');
 const app = express();
 const port = 5000;
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const user = require("/models/users");
+const userAcc = require("./models/users");
+const bcrypt = require("bcrypt");
 app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect("mongodb+srv://Admin1:CSC4990-01@gart-app.7bjx7.mongodb.net/gart-app", {
+mongoose.connect("mongodb+srv://Admin1:CSC4990-01@gart-app.7bjx7.mongodb.net/gart-app?retryWrites=true&w=majority", {
     useNewUrlParser: true,
 });
 
 app.post('/newUser', async (req, res) => {
     const data = req.body;
-    const user = new user({userID: Date.now(), username: req.body.username, password: req.body.password});
+    let hashedPass = ""
+    console.log(data);
+    if(req.body.password != null){
+        hashedPass = await bcrypt.hash(req.body.password, 10);
+    }
+    const user = new userAcc ({userID: Date.now(), username: req.body.username, password: hashedPass});
 
     try {
         await user.save();
+        res.send("User added");
     } catch(err){
         console.log(err);
     }
