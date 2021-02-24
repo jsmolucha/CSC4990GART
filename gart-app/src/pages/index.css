@@ -43,18 +43,20 @@
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
-.loginflow {
+.loginflow, .signupflow {
     grid-area: login;
     background-color: #9a52a3;
     color: white;
+    text-align: center;
     font-family: 'Roboto';
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
 .signupflow {
     grid-area: signup;
-    background-color:#9a52a3;
-    color: white;
-    font-family: 'Roboto';
-    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+  
+}
+
+.primertext_su {
+    padding-top: 15px;
 }
