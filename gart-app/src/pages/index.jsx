@@ -14,7 +14,6 @@ const Welcome = () => {
           <Link to="/login" className="headertext_li">Login</Link>
         </div>
         <div className="signupflow">
-          <h3 className="primertext_su"></h3>
           <Link to="/login" className="headertext_su">Signup</Link>
         </div>
     </div>
