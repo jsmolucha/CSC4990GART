@@ -17,21 +17,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-       <Route exact path="/" component={Welcome} />
-      </Router>
-    );
-  }
-  render() {
-    return (
-      <Router>
-       <Route exact path="/" component={Welcome} />
-       <Route exact path="/main" component={mainpage} />
-      </Router>
-    );
-  }
-  render() {
-    return (
-      <Router>
         <Switch>
         <Route exact path="/" component={Welcome} />
         <Route exact path="/main" component={mainpage} />
