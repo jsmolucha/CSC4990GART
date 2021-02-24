@@ -7,17 +7,19 @@ const loginpage  = () => {
   return (
     <div>
       <h1>this is the login page</h1>
-      <div className="loginContainer">
+      <form method="post">
+        <div className="loginContainer">
 
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required />
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required />
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required />
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required />
 
-        <button type="submit">Login</button>
+          <button type="submit">Login</button>
 
-      </div>
+        </div>
+      </form>
       <Link to="/">back to home</Link>
     </div>
   );
