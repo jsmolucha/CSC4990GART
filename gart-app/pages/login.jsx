@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./login.css"
+import "../public/css/login.css"
 
 /* We simply can use an array and loop and print each user */
 const loginpage  = () => {
