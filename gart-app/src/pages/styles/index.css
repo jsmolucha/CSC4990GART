@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 
 .container {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e,#863b87, #ecf2f4);
+    background: linear-gradient(-45deg, #fce38a, #eaffd0,#95e1d3);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     height: 100vh;
@@ -12,8 +12,8 @@
     display: grid;
     grid-template-areas: 
     "nav nav nav nav nav nav nav"
-    ". . . . . slogan slogan"
-    ". logopic logo logo . . ."
+    "logopic logo logo logo . slogan slogan"
+    "logopic logo logo logo . . ."
     " . . . . . login ."
     " . . . . signup . ."
     ". . . . . . ."
@@ -36,34 +36,35 @@
 }
 .logotype {
     grid-area: logo;
-    background-color: #4c175a;
-    color: white;
+    background-color: #222831;
+    color: #f9f7f7;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
     text-align: center;
     font-family: 'Montserrat';
     padding:20px 0 0 0;
     font-weight: 600;
-    font-size: 100px;
+    font-size: 250px;
 }
 .logopic {
     grid-area: logopic;
-    background-color: aquamarine;
+    background-color: #f38181;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
 }
 .slogan {
     grid-area: slogan;
-    background-color: #4c175a;
-    color: white;
-    padding: 15px 0 0 10px ;
+    text-align: center;
+    background-color: #393e46;
+    color: #f9f7f7;
+    padding: 30px 0 0 10px ;
     font-family: 'Roboto';
-    font-size: 40px;
+    font-size: 45px;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
 .loginflow, .signupflow {
     grid-area: login;
-    background-color: #9a52a3;
-    color: white;
+    background-color: #f38181;
+    color: #f9f7f7;
     text-align: center;
     font-family: 'Roboto';
     font-weight: 600;
@@ -85,7 +86,7 @@
 
 .headertext_su, .headertext_li  {
     text-decoration: none;
-    color: white;
+    color: #f9f7f7;
 
 }
 
