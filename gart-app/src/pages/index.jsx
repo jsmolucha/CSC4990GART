@@ -11,14 +11,12 @@ const Welcome = () => {
         <div className="logopic">logo here</div>
         <div className="slogan">A creative forum for gaming art </div>
         <div className="loginflow">
-          <h3 className="primertext_li">Already with us?</h3>
-          <h1 className="headertext_li">Log in!</h1>
+          <Link to="/login" className="headertext_li">Login</Link>
         </div>
         <div className="signupflow">
-          <h3 className="primertext_su">New here?</h3>
-          <h1 className="headertext_su">Sign up!</h1>
+          <h3 className="primertext_su"></h3>
+          <Link to="/login" className="headertext_su">Signup</Link>
         </div>
-        <Link className="backmain" to="/main"></Link>
     </div>
   );
 };
