@@ -7,7 +7,7 @@ const loginpage  = () => {
   return (
     <div>
       <h1>this is the login page</h1>
-      <form method="post">
+      <form method="post" action="newUser">
         <div className="loginContainer">
 
           <label for="uname"><b>Username</b></label>
