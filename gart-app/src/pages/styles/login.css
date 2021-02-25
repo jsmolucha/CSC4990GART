@@ -1,0 +1,63 @@
+/* colors: 222831(black), 393e46(charcoal), f38181(red), fce38a(yellow), f9f7f7(white) */
+
+.loginCont {
+    background: linear-gradient(-45deg, #fce38a, #eaffd0,#95e1d3);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-template-areas:
+    ". . . . ."
+    ". form greet greet ."
+    ". form greet greet ."
+    ". . . . ."
+    ;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.loginGreeting {
+    grid-area: greet;
+    background-color: #393e46;
+    box-shadow:  0 1rem 1rem rgba(0, 0, 0, 0.25);
+    
+}
+
+#welcomeHeader {
+    color: #FFFF;
+    text-align: left;
+    font-size: 100px;
+    padding: 0 0 0 20px;
+}
+
+.logincontainer {
+    grid-area: form;
+    box-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.25);
+
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.loginBack {
+    text-decoration: none;
+    color: #f38181 ;
+}

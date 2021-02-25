@@ -9,7 +9,8 @@ import {
 //Pages
 import Welcome from "./pages"; 
 import mainpage from "./pages/mainpage";
-import loginpage from "./pages/login"
+import registerpage from "./pages/register"
+import login from "./pages/login";
 import error from "./pages/404";
 
 
@@ -19,9 +20,10 @@ class App extends Component {
       <Router>
         <Switch>
         <Route exact path="/" component={Welcome} />
+        <Route exact path="/login" component={login} />
         <Route exact path="/main" component={mainpage} />
         <Route exact path="/404" component={error} />
-        <Route exact path="/login" component={loginpage} />
+        <Route exact path="/register" component={registerpage} />
         <Redirect to="/404" /> 
         </Switch>
       </Router>

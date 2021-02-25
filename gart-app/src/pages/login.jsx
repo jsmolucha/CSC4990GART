@@ -1,28 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./login.css"
+//import { Link } from "react-router-dom";
+import "./styles/login.css"
 
-/* We simply can use an array and loop and print each user */
-const loginpage  = () => {
-  return (
-    <div>
-      <h1>this is the login page</h1>
-      <form method="post" action="newUser">
-        <div className="loginContainer">
 
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required />
-
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required />
-
-          <button type="submit">Login</button>
+const login = () => {
+    return (
+        <div className="loginCont">
+            <div className="logincontainer">
+                <form className="loginForm" method="post">
+                    <h1 id="loginHeader"> LOGIN</h1>
+                    <p id="uNameText">Username</p>
+                    <input id="uNameField" type="text" placeholder="Enter Username" name="uname" required />
+                    <p id="pWordText">Username</p>
+                    <input id="pWordField" type="password" placeholder="Enter Password" name="psw" required/>
+                    <button id="submitLogin" type="submit">Login</button>
+                </form>
+            </div>
+            <div className="loginGreeting">
+                <h1 id="welcomeHeader">Welcome back, creative!</h1>
+            </div>
 
         </div>
-      </form>
-      <Link to="/">back to home</Link>
-    </div>
-  );
+    );
 };
 
-export default loginpage;
+export default login;
