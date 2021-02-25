@@ -8,7 +8,6 @@ import logo from './images/placeholder.svg'
 const Welcome = () => {
   return (
     <div className="container">
-      <div className="navigation">navbar here</div>
       <div className="logotype">GART </div>
       <div className="logopic">
         <img className="logoImg" src={logo} alt=""/>
@@ -22,6 +21,7 @@ const Welcome = () => {
       </div>
       <div className="statementMain"> Join the hundreds of people sharing their passion for creating fan art!</div>
     </div>
+    
   );
 };
 

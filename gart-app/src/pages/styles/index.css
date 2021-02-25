@@ -51,6 +51,8 @@
 .logopic {
     grid-area: logopic;
     background-color: #222831;
+    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+
 }
 
 .logoImg {
@@ -67,6 +69,8 @@
     color: #f9f7f7;
     text-align: center;
     padding: 25px 0 0 0 ;
+    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+
 
 }
 
@@ -113,4 +117,6 @@
     font-family: 'Roboto';
 
 }
+
+
 
