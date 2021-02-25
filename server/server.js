@@ -30,6 +30,23 @@ app.post('/newUser', async (req, res) => {
 
 });
 
+app.post('/login', async (req, res) => {
+    let users = mongoose.gart-app.find({})
+    for(u in users){
+        try {
+            if (await bcrypt.compare(req.body.psw, users[i].password)){
+                console.log(`password found`);
+            } else {
+                console.log('could not find password');
+            }
+        } catch(e){
+            return done(e);
+        }
+        
+    }
+
+});
+
 
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
