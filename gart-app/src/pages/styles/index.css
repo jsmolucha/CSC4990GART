@@ -15,7 +15,7 @@
     "logopic logo logo logo . slogan slogan"
     "logopic logo logo logo . . ."
     " . . . . . login ."
-    " . . . . signup . ."
+    " . text text . signup . ."
     ". . . . . . ."
     ;
 }
@@ -31,9 +31,11 @@
         background-position: 0% 50%;
     }
 }
+
 .navigation {
     grid-area: nav;
 }
+
 .logotype {
     grid-area: logo;
     background-color: #222831;
@@ -45,11 +47,29 @@
     font-weight: 600;
     font-size: 250px;
 }
+
 .logopic {
     grid-area: logopic;
-    background-color: #f38181;
-    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+    background-color: #222831;
 }
+
+.logoImg {
+    height: auto;
+    width: auto;
+    padding: 30px 0 0 0 ;
+}
+
+.statementMain {
+    grid-area: text;
+    font-family: 'Roboto';
+    font-size: 35px;
+    background-color: #393e46;
+    color: #f9f7f7;
+    text-align: center;
+    padding: 25px 0 0 0 ;
+
+}
+
 .slogan {
     grid-area: slogan;
     text-align: center;
@@ -75,18 +95,22 @@
     outline: none;
 
 }
+
 .loginflow:hover, .signupflow:hover {
     transform: scale(1.25); 
 
 }
+
 .signupflow {
     grid-area: signup;
+    font-family: 'Roboto';
   
 }
 
 .headertext_su, .headertext_li  {
     text-decoration: none;
     color: #f9f7f7;
+    font-family: 'Roboto';
 
 }
 

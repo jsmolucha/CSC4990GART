@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/index.css"
-//Functional Component 
+import logo from './images/placeholder.svg'
+
 //colors: 222831(black), 393e46(charcoal), f38181(red), fce38a(yellow), f9f7f7(white)
 
 const Welcome = () => {
@@ -9,7 +10,9 @@ const Welcome = () => {
     <div className="container">
       <div className="navigation">navbar here</div>
       <div className="logotype">GART </div>
-      <div className="logopic">logo here</div>
+      <div className="logopic">
+        <img className="logoImg" src={logo} alt=""/>
+      </div>
       <div className="slogan">A creative forum for gaming art </div>
       <div className="loginflow">
         <Link to="/login" className="headertext_li">LOGIN</Link>
@@ -17,8 +20,10 @@ const Welcome = () => {
       <div className="signupflow">
         <Link to="/register" className="headertext_su">SIGNUP</Link>
       </div>
+      <div className="statementMain"> Join the hundreds of people sharing their passion for creating fan art!</div>
     </div>
   );
 };
+
 
 export default Welcome;
