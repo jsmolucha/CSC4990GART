@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./index.css"
+import "../../public/css/styles/index.css"
 //Functional Component 
   
 const Welcome = () => {
@@ -11,10 +11,10 @@ const Welcome = () => {
         <div className="logopic">logo here</div>
         <div className="slogan">A creative forum for gaming art </div>
         <div className="loginflow">
-          <Link to="/login" className="headertext_li">Login</Link>
+          <Link to="/login" className="headertext_li">LOGIN</Link>
         </div>
         <div className="signupflow">
-          <Link to="/login" className="headertext_su">Signup</Link>
+          <Link to="/login" className="headertext_su">SIGN UP</Link>
         </div>
     </div>
   );
