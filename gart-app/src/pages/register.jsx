@@ -6,7 +6,7 @@ const registerpage  = () => {
   return (
     <div>
       <h1>this is the register page</h1>
-      <form method="post">
+      <form method="post" action="newUser">
         <div className="loginContainer">
 
           <label for="uname"><b>Username</b></label>
