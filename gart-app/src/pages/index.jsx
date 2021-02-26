@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import "../../public/css/styles/index.css"
+=======
+import "./index.css"
+>>>>>>> parent of d6b0e51 (changed folder structure)
 =======
 import "./index.css"
 >>>>>>> parent of d6b0e51 (changed folder structure)

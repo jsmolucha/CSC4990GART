@@ -2,9 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // import "../public/css/login.css"
 import "../../public/css/styles/login.css"
 
+=======
+import "./login.css"
+>>>>>>> parent of d6b0e51 (changed folder structure)
 =======
 import "./login.css"
 >>>>>>> parent of d6b0e51 (changed folder structure)
