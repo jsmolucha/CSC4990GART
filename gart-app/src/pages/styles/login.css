@@ -1,7 +1,7 @@
 /* colors: 222831(black), 393e46(charcoal), f38181(red), fce38a(yellow), f9f7f7(white) */
 
 .loginCont {
-    background: linear-gradient(-45deg, #fce38a, #eaffd0,#95e1d3);
+    background: linear-gradient(-45deg, #fce38a, #eaffd0,#95e1d3); 
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     height: 100vh;
@@ -27,6 +27,11 @@
     100% {
         background-position: 0% 50%;
     }
+}
+
+#loginHeader {
+    font-size: 45px;
+    color: #f38181;
 }
 
 .loginGreeting {
@@ -61,3 +66,17 @@
     text-decoration: none;
     color: #f38181 ;
 }
+
+#uNameField, #pWordField {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+    margin: 40px;
+    padding-bottom: 10px;
+}
+
+#uNameField::placeholder, #pWordField::placeholder {
+    font-size: 20px;
+}
+
