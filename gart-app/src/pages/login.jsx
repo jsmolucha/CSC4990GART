@@ -7,7 +7,7 @@ const login = () => {
     return (
         <div className="loginCont">
             <div className="logincontainer">
-                <form className="loginForm" method="post">
+                <form className="loginForm" method="post" action = "login">
                     <h1 id="loginHeader"> LOGIN</h1>
                     <p id="uNameText">Username</p>
                     <input id="uNameField" type="text" placeholder="Enter Username" name="uname" required />
