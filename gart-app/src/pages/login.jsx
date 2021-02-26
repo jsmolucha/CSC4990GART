@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 // import "../public/css/login.css"
 import "../../public/css/styles/login.css"
 
+=======
+import "./login.css"
+>>>>>>> parent of d6b0e51 (changed folder structure)
 
 /* We simply can use an array and loop and print each user */
 const loginpage  = () => {
@@ -18,7 +22,7 @@ const loginpage  = () => {
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required />
 
-          <button OnClick="modal"type="submit">Login</button>
+          <button type="submit">Login</button>
 
         </div>
       </form>
