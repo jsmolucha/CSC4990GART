@@ -9,10 +9,8 @@ const login = () => {
             <div className="logincontainer">
                 <form className="loginForm" method="post" action = "login">
                     <h1 id="loginHeader"> LOGIN</h1>
-                    <p id="uNameText">Username</p>
-                    <input id="uNameField" type="text" placeholder="Enter Username" name="uname" required />
-                    <p id="pWordText">Username</p>
-                    <input id="pWordField" type="password" placeholder="Enter Password" name="psw" required/>
+                    <input id="uNameField" type="text" placeholder="username" name="uname" required />
+                    <input id="pWordField" type="password" placeholder="password" name="psw" required/>
                     <button id="submitLogin" type="submit">Login</button>
                 </form>
             </div>
