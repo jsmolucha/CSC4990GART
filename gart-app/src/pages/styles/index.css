@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 
 .container {
-    background: linear-gradient(-45deg, #fce38a, #eaffd0,#95e1d3);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background-size: 100% 100%;
+    background-image: url(./image.jpg), linear-gradient(rgba(240, 119, 119, 0.5),rgba(240, 119, 119, 0.5));
+    background-blend-mode: overlay;
     height: 100vh;
     width: 100vw;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -20,7 +20,8 @@
     ;
 }
 
-@keyframes gradient {
+
+ @keyframes gradient {
     0% {
         background-position: 0% 50%;
     }
@@ -30,7 +31,7 @@
     100% {
         background-position: 0% 50%;
     }
-}
+} 
 
 .navigation {
     grid-area: nav;
