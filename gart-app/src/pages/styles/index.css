@@ -46,7 +46,7 @@
     font-family: 'Montserrat';
     padding:20px 0 0 0;
     font-weight: 600;
-    font-size: 250px;
+    font-size: 13vw;
 }
 
 .logopic {
@@ -66,6 +66,7 @@
     grid-area: text;
     font-family: 'Roboto';
     font-size: 35px;
+    font-size: 1.8vw;
     background-color: #393e46;
     color: #f9f7f7;
     text-align: center;
@@ -83,6 +84,7 @@
     padding: 30px 0 0 10px ;
     font-family: 'Roboto';
     font-size: 45px;
+    font-size: 2.3vw;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
