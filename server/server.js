@@ -3,14 +3,22 @@ const app = express();
 const port = 5000;
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
+const bodyParser = require("body-parser");
+const authRoute = require('./routes/auth');
+
 dotenv.config();
 
+//DB Connection
 mongoose.connect(process.env.DB_CONNECT, {
     useNewUrlParser: true,
 });
 
-const authRoute = require('./routes/auth');
 
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+
+//Routes
 app.use('/api/user', authRoute);
 
 
