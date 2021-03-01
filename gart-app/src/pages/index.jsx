@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./styles/index.css"
 import logo from './images/placeholder.svg'
 
-//colors: 222831(black), 393e46(charcoal), f38181(red), fce38a(yellow), f9f7f7(white)
 
 const Welcome = () => {
   return (

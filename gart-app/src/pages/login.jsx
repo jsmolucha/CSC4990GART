@@ -12,10 +12,11 @@ const login = () => {
                     <input id="uEmailField" type="text" placeholder="Email" name="email" required />
                     <input id="pWordField" type="password" placeholder="Password" name="psw" required/>
                     <button id="submitLogin" type="submit">Login</button>
+                    <p>Not registered? Sign up here!</p>
                 </form>
             </div>
             <div className="loginGreeting">
-                <h1 id="welcomeHeader">Welcome back, creative!</h1>
+                <h1 id="welcomeHeader">Welcome back,<span id="colorText"> creative!</span> </h1>
             </div>
 
         </div>
