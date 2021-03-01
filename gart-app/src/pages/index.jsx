@@ -7,7 +7,9 @@ import logo from './images/placeholder.svg'
 
 const Welcome = () => {
   return (
+    
     <div className="container">
+      
       <div className="logotype">GART </div>
       <div className="logopic">
         <img className="logoImg" src={logo} alt=""/>
