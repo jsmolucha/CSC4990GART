@@ -21,6 +21,4 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Routes
 app.use('/api/user', authRoute);
 
-
-
 app.listen(port, () => console.log(`Server started on port ${port}`));
