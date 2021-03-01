@@ -1,10 +1,12 @@
 /* colors: 222831(black), 393e46(charcoal), f38181(red), fce38a(yellow), f9f7f7(white) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+/*https://coolors.co/f0a202-f18805-d95d39-0e1428-7b9e89*/
+/*{"Marigold":"f0a202","Tangerine":"f18805","Flame":"d95d39","Oxford Blue":"0e1428","Morning Blue":"7b9e89"} */
 
 
 .loginCont {
-    background-image: url(./image.jpg), linear-gradient(rgb(119, 201, 212, 0.5),rgba(119, 201, 212, 0.5));
+    background-image: url(./image.jpg), linear-gradient(rgba(123, 158, 137, 0.8),rgba(123, 158, 137, 0.8));
     background-size: 100% 100%;
     background-blend-mode: overlay;
     height: 100vh;
@@ -36,11 +38,12 @@
     font-size: 45px;
     color: white;
     font-family:'Poppins';
+    text-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.40); 
 }
 
 .loginGreeting {
     grid-area: greet;
-    background-color: #393e46;
+    background-color: black;
     box-shadow:  0 1rem 1rem rgba(0, 0, 0, 0.25);
     border-radius: 0px 10px 10px 0px;
 
@@ -48,10 +51,13 @@
 }
 
 #welcomeHeader {
-    color: #FFFF;
+    color: white;    
     text-align: left;
     font-size: 100px;
     padding: 0 0 0 20px;
+}
+#colorText {
+    color: #f0a202;
 }
 
 .logincontainer {
@@ -79,11 +85,12 @@
     border-bottom: 2px solid black;
     background: none;
     margin: 40px;
-    padding-bottom: 10px;
-    padding-top: 20px;
+    padding-bottom: 5px;
+    padding-top: 15px;
     transition-duration: 0.4s;
     font-family: 'Poppins';
     font-weight: 300;
+    margin-bottom: 45px;
 }
 
 #uNameField::placeholder, #pWordField::placeholder {
@@ -94,8 +101,22 @@
 }
 
 #uNameField:focus, #pWordField:focus {
-    border-color: tomato;
+    border-color: #f0a202;
 }
 
+#submitLogin {
+    padding: 10px 40px 10px 40px;
+    border: none;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-size: 20px;
+    margin-bottom: 15px;
+}
 
+#submitLogin:hover {
+    background-color: #f0a202;
+    color: black;
+    
+}
 
