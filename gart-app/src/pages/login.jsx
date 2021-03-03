@@ -1,5 +1,5 @@
 import React from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles/login.css"
 
 
@@ -12,8 +12,9 @@ const login = () => {
                     <input id="uNameField" type="text" placeholder="Email" name="uname" required />
                     <input id="pWordField" type="password" placeholder="Password" name="psw" required/>
                     <button id="submitLogin" type="submit">Login</button>
-                    <p>Not registered? Sign up here!</p>
                 </form>
+                <Link to="/register" id="noReg">Not registered? Sign up here! </Link>
+
             </div>
             <div className="loginGreeting">
                 <h1 id="welcomeHeader">Welcome back,<span id="colorText"> creative!</span> </h1>
