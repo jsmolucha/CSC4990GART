@@ -5,6 +5,9 @@ const { registerValidation, loginValidation } = require('../validation')
 const jwt = require('jsonwebtoken');
 
 
+
+
+
 router.post('/newUser', async (req, res) => {
     let hashedPass = ""
     //hashes the users password
@@ -38,22 +41,25 @@ router.post('/newUser', async (req, res) => {
 });
 
 
-router.post('/login', async (req, res) => {
-    const {error} = loginValidation(req.body);
+router.post('/login', async (req, res, next) => {
+    const {error} = loginValidation(req.body.user);
     if (error) return res.status(400).send(error.details[0].message);
 
     //checking if the user exists in the DB
-    const user = await userAcc.findOne({email: req.body.email});
+    const user = await userAcc.findOne({email: req.body.user.email});
     if (!user) return res.status(400).send('Email or Password is Wrong!');
 
     //password checking
     
-    const valPass = await bcrypt.compare(req.body.psw, user.password);
+    const valPass = await bcrypt.compare(req.body.user.psw, user.password);
     if(!valPass) return res.status(400).send('Email or Password is Wrong!');
 
     //JSON WEBTOKEN
     const token = jwt.sign({id: user.userID}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token);
+    res.header('auth-token', token).redirect('/main');
+
+    next();
+    
         
 });
 
