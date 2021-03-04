@@ -4,7 +4,7 @@
 
 .container {
     background-size: 100% 100%;
-    background-image: url(./image.jpg), linear-gradient(rgba(123, 158, 137, 0.8),rgba(123, 158, 137, 0.8));
+    background-image: url(./image.jpg), linear-gradient(rgba(128, 223, 166, 0.8),rgba(128, 223, 166, 0.8));
     background-blend-mode: overlay;
     height: 100vh;
     width: 100vw;
