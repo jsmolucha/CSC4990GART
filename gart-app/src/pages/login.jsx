@@ -16,7 +16,6 @@ const Login = () => {
     
     const handleSubmit = e => {
         e.preventDefault();
-
         axios.post("http://localhost:5000/api/user/login", {user}).then(data => console.log(data));
     }
 
