@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+/*{"Marigold":"f0a202","Tangerine":"f18805","Flame":"d95d39","Oxford Blue":"0e1428","Morning Blue":"7b9e89"} */
 
 .container {
     background-size: 100% 100%;
-    background-image: url(./image.jpg), linear-gradient(rgba(240, 119, 119, 0.5),rgba(240, 119, 119, 0.5));
+    background-image: url(./image.jpg), linear-gradient(rgba(128, 223, 166, 0.8),rgba(128, 223, 166, 0.8));
     background-blend-mode: overlay;
     height: 100vh;
     width: 100vw;
@@ -39,8 +40,8 @@
 
 .logotype {
     grid-area: logo;
-    background-color: #222831;
-    color: #f9f7f7;
+    background-color: #f0a202;
+    color: black;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
     text-align: center;
     font-family: 'Montserrat';
@@ -51,7 +52,7 @@
 
 .logopic {
     grid-area: logopic;
-    background-color: #222831;
+    background-color: #f0a202;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
 
 }
@@ -67,8 +68,8 @@
     font-family: 'Roboto';
     font-size: 35px;
     font-size: 1.8vw;
-    background-color: #393e46;
-    color: #f9f7f7;
+    background-color: #f18805;
+    color: white;
     text-align: center;
     padding: 25px 0 0 0 ;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
@@ -79,8 +80,8 @@
 .slogan {
     grid-area: slogan;
     text-align: center;
-    background-color: #393e46;
-    color: #f9f7f7;
+    background-color: #f18805;
+    color: white;
     padding: 30px 0 0 10px ;
     font-family: 'Roboto';
     font-size: 45px;
@@ -90,8 +91,8 @@
 
 .loginflow, .signupflow {
     grid-area: login;
-    background-color: #f38181;
-    color: #f9f7f7;
+    background-color: #f0a202;
+    color: black;
     text-align: center;
     font-family: 'Roboto';
     font-weight: 600;
