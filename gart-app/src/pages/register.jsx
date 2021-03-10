@@ -4,26 +4,22 @@ import "./styles/register.css"
 
 const registerpage  = () => {
   return (
-    <div>
-      <h1>this is the register page</h1>
-      <form method="post" action="api/user/newUser">
-        <div className="loginContainer">
+    <div className="regCont">
+            <div className="regcontainer">
+                <form className="regForm" method="post" action = "register">
+                    <h1 id="signupHeader"> SIGNUP</h1>
+                    <input id="uNameField" type="text" placeholder="Email" name="uname" required />
+                    <input id="pWordField" type="password" placeholder="Password" name="psw" required/>
+                    <button id="submitReg" type="submit">Register</button>
+                </form>
+                <Link to="/login" id="haveAcct">Already with us? Log in now! </Link>
 
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required />
-
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required />
-
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required />
-
-          <button OnClick="modal"type="submit">Login</button>
+            </div>
+            <div className="regGreeting">
+                <h1 id="welcomeHeader">Welcome back,<span id="colorText"> creative!</span> </h1>
+            </div>
 
         </div>
-      </form>
-      <Link to="/">back to home</Link>
-    </div>
   );
 };
 
