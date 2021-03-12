@@ -40,7 +40,7 @@
 
 .logotype {
     grid-area: logo;
-    background-color: #f0a202;
+    background-color: rgb(240, 162, 2);
     color: black;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
     text-align: center;
