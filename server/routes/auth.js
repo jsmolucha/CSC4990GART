@@ -5,9 +5,6 @@ const { registerValidation, loginValidation } = require('../validation')
 const jwt = require('jsonwebtoken');
 
 
-
-
-
 router.post('/newUser', async (req, res) => {
     let hashedPass = ""
     //hashes the users password
@@ -56,7 +53,7 @@ router.post('/login', async (req, res, next) => {
 
     //JSON WEBTOKEN
     const token = jwt.sign({id: user.userID}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).redirect('/main');
+    res.header('auth-token', token).redirect('/localhost:3000/main');
 
     next();
     

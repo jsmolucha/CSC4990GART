@@ -3,9 +3,6 @@ import axios from "axios"
 //import { Link } from "react-router-dom";
 import "./styles/login.css"
 
-
-
-
 const Login = () => {
     const [user, setUser] = useState({});
 
