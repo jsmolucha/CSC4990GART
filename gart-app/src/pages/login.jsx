@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import axios from "axios"
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles/login.css"
 
-
-
+const asyncHandler = require('express-async-handler') 
 
 const Login = () => {
     const [user, setUser] = useState({});
@@ -13,11 +12,22 @@ const Login = () => {
         setUser({ ...user, [e.target.name]: e.target.value});
         console.log(user)
     }
-    
-    const handleSubmit = e => {
+    //asyncHandler is a module used as an alternative to try/catch
+    const handleSubmit = asyncHandler( async(e)  => {
         e.preventDefault();
-        axios.post("http://localhost:5000/api/user/login", {user}).then(data => console.log(data));
-    }
+
+        //response == to whatever is inside res.send() in this case its token
+
+        const response = await axios.post("http://localhost:5000/api/user/login", {user} )
+
+        console.log(response.data);
+        localStorage.setItem("token", response.data); 
+        alert("SUCCESS, ");
+        //needs to redirect to main... tba
+
+        //error handling tba
+
+    })
 
 
 
