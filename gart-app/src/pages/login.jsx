@@ -22,7 +22,11 @@ const Login = () => {
 
         console.log(response.data);
         localStorage.setItem("token", response.data); 
-        alert("SUCCESS, ");
+        alert(
+            `SUCCESS! The server generated this token for you ${JSON.stringify(
+              response.data
+            )}\n Im not sure what to do with this information :/`
+          );
         //needs to redirect to main... tba
 
         //error handling tba
