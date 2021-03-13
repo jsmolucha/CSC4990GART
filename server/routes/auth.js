@@ -46,24 +46,26 @@ router.post('/newUser', async (req, res) => {
 
  */
 
-let validator = async (req, res, next) => {
+let validator =  asyncHandler (async (req, res, next) => {
     // console.log("Validator")
     const {error} = await loginValidation(req.body.user);
 
     if (error) return res.status(400).send(error.details[0].message);
     next()
-}
+})
 //middle ware
-let userFinder = async (req, res, next) => {
+let userFinder = asyncHandler( async (req, res, next) => {
     // console.log("userFinder")
-    res.user = await userAcc.findOne({email: req.body.user.email});
+    console.log(req.body)
+    res.user = await userAcc.findOne({email: req.body.email});
+    
     if (!res.user) return res.status(400).send('Email or Password is Wrong!');
     next()
-}
+})
 //middleware
-let valPasser = async (req, res, next) => {
+let valPasser =  async (req, res, next) => {
     // console.log("valPasser")
-    res.valPass = await bcrypt.compare(req.body.user.psw, res.user.password);
+    res.valPass = await bcrypt.compare(req.body.psw, res.user.password);
     if(!res.valPass) return res.status(400).send('Email or Password is Wrong!');
     next()
 }
@@ -89,11 +91,16 @@ router.post('/login', validator, userFinder,valPasser, asyncHandler( async (req,
 */
     //JSON WEBTOKEN
    const token = jwt.sign({id: res.user.userID}, process.env.TOKEN_SECRET);
+//    console.log("hello", res.user)
+//    const oldUser = await UserModal.findOne({ res.user.email });
+//    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
+
+    await res.status(200).json({ result: res.user, token });
    console.log(token)
 
    //Instead of 5000 redirecting, it will send back data(token) to 3000 which could handle redirecting -carlos
 // res.header('auth-token', token).redirect("${APP_URL}/main");
-    await res.header('auth-token', token).send(token); 
+    // await res.header('auth-token', token).send(token); 
     //sends token, can alse send an {object} to send more data like username of whatever -carlos
 
     next();

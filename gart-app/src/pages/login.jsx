@@ -1,12 +1,22 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux'
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./styles/login.css";
+
+import { signin } from '../actions/auth';
+
+import { AUTH } from '../constants/actionTypes';
 
 const asyncHandler = require("express-async-handler");
 
+
+const initialState = {  email: '', psw: ''};
+
 const Login = () => {
     const [user, setUser] = useState({});
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -16,37 +26,40 @@ const Login = () => {
     const handleSubmit = asyncHandler(async (e) => {
         e.preventDefault();
 
-        try {
-            //axios request
-            //response == to whatever is inside res.send() in this case its token
-            const response = await axios.post(
-                "http://localhost:5000/api/user/login",
-                { user }
-            ) //.then(data => console.log(data))
+
+        dispatch( signin(user, history));
+        // try {
+        //     //axios request
+        //     //response == to whatever is inside res.send() in this case its token
+        //     const response = await axios.post(
+        //         "http://localhost:5000/api/user/login",
+        //         { user }
+        //     ) //.then(data => console.log(data))
             
-            localStorage.setItem("token", response.data); //temp, replace with sessions or whatever is used to store cookies and state
-            alert(
-                `SUCCESS! The server generated this token for you ${JSON.stringify(
-                    response.data
-                )}\n Im not sure what to do with this information :/`
-            );
-            // router.push("/main")
-            window.location.replace("/main"); //simple redirect.. vanilla js 
-        } catch (error) {
-            if (error.response) {
-                // Request made and server responded
-                console.log(error.response.data);
-                alert(error.response.data)
-                console.log(error.response.status);
-                // console.log(error.response.headers);
-            } else if (error.request) {
-                // The request was made but no response was received
-                console.log(error.request);
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                console.log("Error", error.message);
-            }
-        }
+        //     dispatch({ type: AUTH, response.data });
+        //     localStorage.setItem("token", response.data); //temp, replace with sessions or whatever is used to store cookies and state
+        //     alert(
+        //         `SUCCESS! The server generated this token for you ${JSON.stringify(
+        //             response.data
+        //         )}\n Im not sure what to do with this information :/`
+        //     );
+        //     // router.push("/main")
+        //     window.location.replace("/main"); //simple redirect.. vanilla js 
+        // } catch (error) {
+        //     if (error.response) {
+        //         // Request made and server responded
+        //         console.log(error.response.data);
+        //         alert(error.response.data)
+        //         console.log(error.response.status);
+        //         // console.log(error.response.headers);
+        //     } else if (error.request) {
+        //         // The request was made but no response was received
+        //         console.log(error.request);
+        //     } else {
+        //         // Something happened in setting up the request that triggered an Error
+        //         console.log("Error", error.message);
+        //     }
+        // }
 
         //needs to redirect to main... tba
 
