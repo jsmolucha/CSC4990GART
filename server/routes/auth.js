@@ -37,7 +37,6 @@ router.post('/newUser', async (req, res) => {
 
 });
 
-
 router.post('/login', async (req, res, next) => {
     const {error} = loginValidation(req.body.user);
     if (error) return res.status(400).send(error.details[0].message);
@@ -53,7 +52,7 @@ router.post('/login', async (req, res, next) => {
 
     //JSON WEBTOKEN
     const token = jwt.sign({id: user.userID}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).redirect('/localhost:3000/main');
+    res.header('auth-token', token)
 
     next();
     
