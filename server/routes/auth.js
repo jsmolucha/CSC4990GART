@@ -39,6 +39,7 @@ router.post('/newUser', async (req, res) => {
     }
 
 });
+
 /**
  middlewares; testing each ones individually
  will be exported in a file inside a middleware directory (tba) 
@@ -96,7 +97,7 @@ router.post('/login', validator, userFinder,valPasser, asyncHandler( async (req,
 //    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
 
     await res.status(200).json({ result: res.user, token });
-   console.log(token)
+    console.log(token)
 
    //Instead of 5000 redirecting, it will send back data(token) to 3000 which could handle redirecting -carlos
 // res.header('auth-token', token).redirect("${APP_URL}/main");
