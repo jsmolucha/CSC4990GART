@@ -1,3 +1,14 @@
+/**  (WIP)
+ * Controllers 
+ * A controller can be defined as the entity that will be responsible for manipulating models 
+ * and initiating the view render process with the data received from the corresponding models.
+ * 
+ * This is built to handle our post ie Fan Art
+ * 
+ * basically DB --> Model --> controller
+ */
+
+
 import express from 'express';
 import mongoose from 'mongoose';
 

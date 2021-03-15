@@ -1,3 +1,5 @@
+//Reducers (Redux) https://redux.js.org/faq/reducers
+//This is neccessary to store token/login info and to clear it to handle logout
 import * as actionType from '../constants/actionTypes';
 
 const authReducer = (state = { authData: null }, action) => {

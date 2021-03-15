@@ -1,3 +1,9 @@
+/**(WIP)
+ * Models are used to structure database 'tables'
+ * 
+ * Notice how likes and tags are intergrated... more tba
+ */
+
 import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema({
