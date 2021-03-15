@@ -1,12 +1,30 @@
-const router = require('express').Router();
-const userAcc = require('../models/users');
-const bcrypt = require("bcrypt");
-const { registerValidation, loginValidation } = require('../validation')
-const jwt = require('jsonwebtoken');
-const asyncHandler = require('express-async-handler')
-const { APP_URL } = require('../utils/constants') //imports react url
+/** Routes for login and signup
+ *  /login has been updated to send a json file per (axios) request
+ *  the json is composed of Token (which is stored in the redux store on client side)
+ *  and the user info such as username, id, email, encrypted password(test will be removed)
+ * 
+ *  Middleware have been generated to simplify block; They will be exported to middleware dir soon
+ * 
+ *  all comments will be removed once sign up/ip has been finished
+ * 
+ */
 
+import express from 'express';
+import userAcc from '../models/users.js'
+import bcrypt from 'bcrypt';
+import { registerValidation, loginValidation } from '../validation.js';
+import jwt from 'jsonwebtoken';
+import asyncHandler from 'express-async-handler'; 
 
+// const router = require('express').Router();
+// const userAcc = require('../models/users');
+// const bcrypt = require("bcrypt");
+// const { registerValidation, loginValidation } = require('../validation')
+// const jwt = require('jsonwebtoken');
+// const asyncHandler = require('express-async-handler')
+// const { APP_URL } = require('../utils/constants') //imports react url
+
+const router = express.Router();
 
 router.post('/newUser', async (req, res) => {
     let hashedPass = ""
@@ -111,4 +129,4 @@ router.post('/login', validator, userFinder,valPasser, asyncHandler( async (req,
 
 
 
-module.exports = router;
+export default router;

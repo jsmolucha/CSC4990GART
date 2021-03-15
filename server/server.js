@@ -1,12 +1,20 @@
-const express = require('express');
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cors from 'cors'
+import authRoute from './routes/auth.js'
+import postRoutes from './routes/posts.js'
+
 const app = express();
 const port = 5000;
-const mongoose = require("mongoose");
-const dotenv = require('dotenv');
-const bodyParser = require("body-parser"); //obsolete
-const authRoute = require('./routes/auth');
-const cors = require('cors');
-
+// const express = require('express');
+// const mongoose = require("mongoose");
+// const dotenv = require('dotenv');
+// const bodyParser = require("body-parser"); //obsolete
+// //routes
+// const authRoute = require('./routes/auth');
+// const postRoutes = require('./routes/posts.js')
+// const cors = require('cors');
 
 dotenv.config();
 
@@ -36,6 +44,8 @@ app.use(function(req, res, next) {
 
 //Routes
 app.use('/api/user', authRoute);
+app.use("/api/post", postRoutes);
 
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
+mongoose.set('useFindAndModify', false);
