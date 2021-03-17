@@ -46,6 +46,10 @@ app.use(function(req, res, next) {
 app.use('/api/user', authRoute);
 app.use("/api/post", postRoutes);
 
+app.get('/main', (req, res) => {
+  res.send('mainpage');
+})
+
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
 mongoose.set('useFindAndModify', false);
