@@ -7,7 +7,8 @@ export const registerValidation = (data) =>{
     const schema = Joi.object({
         uname: Joi.string().min(5).required(),
         email: Joi.string().min(6).required().email(),
-        psw: Joi.string().min(6).required()
+        psw: Joi.string().min(6).required(),
+        fname: Joi.string().min(6).required()
     });
 
     return schema.validate(data);
@@ -16,7 +17,7 @@ export const registerValidation = (data) =>{
 export const loginValidation = (data) =>{
     const schema = Joi.object({
         email: Joi.string().min(6).required().email(),
-        psw: Joi.string().min(6).required()
+        psw: Joi.string().min(6).required(),
     });
 
     return schema.validate(data);

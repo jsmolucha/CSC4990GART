@@ -1,8 +1,3 @@
-const router = require('express').Router();
-const userAcc = require('../models/users');
-const bcrypt = require("bcrypt");
-const { registerValidation, loginValidation } = require('../validation')
-const jwt = require('jsonwebtoken');
 
 /** Routes for login and signup
  *  /login has been updated to send a json file per (axios) request
@@ -51,7 +46,8 @@ router.post('/newUser', async (req, res) => {
     const user = new userAcc ({userID: Date.now(), 
                                username: req.body.uname, 
                                email: req.body.email, 
-                               password: hashedPass
+                               password: hashedPass,
+                               fullName: req.body.fname
                             });
 
     //saving user to DB

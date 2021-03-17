@@ -6,7 +6,7 @@ const registerpage  = () => {
   return (
     <div className="regCont">
             <div className="regcontainer">
-                <form className="regForm" method="post" action = "register">
+                <form className="regForm" method="post" action = "api/user/newUser">
                     <h1 id="signupHeader"> SIGNUP</h1>
                     <input id="fullName" type="text" placeholder="Full Name" name="fname" required />
                     <input id="uName" type="text" placeholder="Username" name="uname" required />

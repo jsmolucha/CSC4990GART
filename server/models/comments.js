@@ -25,3 +25,7 @@ var Comments = new Schema({
     ref: 'User'
   }
 });
+
+const comment = mongoose.model("Comment", Comments)
+
+export default comment;
