@@ -8,8 +8,11 @@ const registerpage  = () => {
             <div className="regcontainer">
                 <form className="regForm" method="post" action = "register">
                     <h1 id="signupHeader"> SIGNUP</h1>
-                    <input id="uNameField" type="text" placeholder="Email" name="uname" required />
-                    <input id="pWordField" type="password" placeholder="Password" name="psw" required/>
+                    <input id="fullName" type="text" placeholder="Full Name" name="fname" required />
+                    <input id="uName" type="text" placeholder="Username" name="uname" required />
+                    <input id="eMail" type="text" placeholder="Email" name="email" required/>
+                    <input id="pWord" type="password" placeholder="Password" name="psw" required/>
+
                     <button id="submitReg" type="submit">Register</button>
                 </form>
                 <Link to="/login" id="haveAcct">Already with us? Log in now! </Link>
