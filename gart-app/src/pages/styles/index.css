@@ -4,7 +4,7 @@
 
 .container {
     background-size: 100% 100%;
-    background-image: url(./image.jpg), linear-gradient(rgba(123, 158, 137, 0.8),rgba(123, 158, 137, 0.8));
+    background-image: url(./image.jpg), linear-gradient(rgba(128, 223, 166, 0.8),rgba(128, 223, 166, 0.8));
     background-blend-mode: overlay;
     height: 100vh;
     width: 100vw;
@@ -40,7 +40,7 @@
 
 .logotype {
     grid-area: logo;
-    background-color: #f0a202;
+    background-color: rgb(240, 162, 2);
     color: black;
     box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
     text-align: center;

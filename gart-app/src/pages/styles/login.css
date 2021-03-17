@@ -6,7 +6,7 @@
 
 
 .loginCont {
-    background-image: url(./image.jpg), linear-gradient(rgba(123, 158, 137, 0.8),rgba(123, 158, 137, 0.8));
+    background-image: url(./image.jpg), linear-gradient(rgba(240, 162, 2, 0.8),rgba(128, 223, 166, 0.8));
     background-size: 100% 100%;
     background-blend-mode: overlay;
     height: 100vh;
@@ -20,18 +20,6 @@
     ". form greet greet ."
     ". . . . ."
     ;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 #loginHeader {
@@ -64,7 +52,7 @@
     grid-area: form;
     box-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.25);
     background-color: rgba(255, 255, 255, .40);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
     border-radius: 10px 0 0 10px;
     position: relative;
     align-items: center;
@@ -91,6 +79,7 @@
     font-family: 'Poppins';
     font-weight: 300;
     margin-bottom: 45px;
+    width: 250px;
 }
 
 #uNameField::placeholder, #pWordField::placeholder {
@@ -120,3 +109,13 @@
     
 }
 
+#noReg {
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.4s;
+
+}
+
+#noReg:hover {
+    color: #f0a202;
+}

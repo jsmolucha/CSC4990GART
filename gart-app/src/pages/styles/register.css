@@ -1,7 +1,101 @@
-.loginContainer {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
+.regCont {
+    background-image: url(./image.jpg), linear-gradient(rgba(240, 162, 2, 0.8),rgba(128, 223, 166, 0.8));
+    background-size: 100% 100%;
+    background-blend-mode: overlay;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-template-areas:
+    ". . . . ."
+    ". form greet greet ."
+    ". form greet greet ."
+    ". . . . ."
+    ;
+}
+    
+#signupHeader {
+    font-size: 45px;
+    color: white;
+    font-family:'Poppins';
+    text-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.40); 
+}
+
+.regGreeting {
+    grid-area: greet;
+    background-color: black;
+    box-shadow:  0 1rem 1rem rgba(0, 0, 0, 0.25);
+    border-radius: 0px 10px 10px 0px;
+
+}
+
+.regcontainer {
+    grid-area: form;
+    box-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, .40);
+    backdrop-filter: blur(8px);
+    border-radius: 10px 0 0 10px;
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+#uNameField, #pWordField {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+    margin: 40px;
+    padding-bottom: 5px;
+    padding-top: 15px;
+    transition-duration: 0.4s;
+    font-family: 'Poppins';
+    font-weight: 300;
+    margin-bottom: 45px;
+    width: 250px;
+}
+
+#uNameField::placeholder, #pWordField::placeholder {
+    font-size: 15px;
+    color: rgba(53, 53, 53);
+    text-align: left;
+    transition: 5s;
+}
+
+#uNameField:focus, #pWordField:focus {
+    border-color: #f0a202;
+}
+
+#submitReg {
+    padding: 10px 40px 10px 40px;
+    border: none;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+#submitReg:hover {
+    background-color: #f0a202;
+    color: black;
     
 }
 
-input {
-    display: block;
+#haveAcct {
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.4s;
+
+}
+
+#haveAcct:hover {
+    color: #f0a202;
 }

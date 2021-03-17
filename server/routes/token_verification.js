@@ -1,4 +1,5 @@
-const jwt = require('jsonwebtoken');
+//needs to move to appropriate dir... tbd
+import jwt from 'jsonwebtoken';
 
 function authenticate(req, res, next){
     const token = req.header('auth-token');
