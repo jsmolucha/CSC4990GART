@@ -6,7 +6,7 @@ const accountpage  = () => {
     <div className="accountCont">
             <div className="accountcontainer">
             <div className="accountHead">
-                <h1 id="welcomeHeader"> <span id="colorText">___ Account</span> </h1>
+                <h1 id="welcomeHeader"> <span id="colorText">_____ Account</span> </h1>
                 <div id="userPosts">This is where the user posts will go</div>
             </div>
                 <Link to="/" id="toMain">Back to Exploring</Link>

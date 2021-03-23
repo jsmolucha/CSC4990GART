@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors'
 import authRoute from './routes/auth.js'
 import postRoutes from './routes/posts.js'
+import accRoutes from './routes/accounts.js'
 
 const app = express();
 const port = 5000;
@@ -45,6 +46,7 @@ app.use(function(req, res, next) {
 //Routes
 app.use('/api/user', authRoute);
 app.use("/api/post", postRoutes);
+app.use('/api/accounts', accRoutes)
 
 app.get('/main', (req, res) => {
   res.send('mainpage');
