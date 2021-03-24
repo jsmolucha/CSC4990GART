@@ -18,4 +18,5 @@ API.interceptors.request.use((req) => {
 
 
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
+export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
 // export const signUp = (formData) => API.post('/user/signup', formData);

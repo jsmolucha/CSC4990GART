@@ -56,7 +56,7 @@ const Mainpage  = () => {
             {/* <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar> */}
             {/* <Typography className={classes.userName} variant="h6">{user?.result.username}</Typography> */}
             <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
-            <Button component={Link} to="/account" variant="contained" color="primary" formaction="localhost:5000/api/accounts/userPosts" formmethod="get">To Account</Button>
+            <Button component={Link} to="/account" variant="contained" color="primary" formMethod="get" formAction="localhost:5000/api/accounts/userPosts" >To Account</Button>
           </div>
         ) : (
           <div>
