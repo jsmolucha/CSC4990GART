@@ -7,6 +7,11 @@ import decode from 'jwt-decode';
 import * as actionType from '../constants/actionTypes';
 import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import useStyles from './styles/main';
+import Gallery from 'react-grid-gallery';
+import IMAGES from "./IMAGES"
+import ReactDOM from 'react-dom';
+import Imagegrid from './imagegrid'
+
 /* We simply can use an array and loop and print each user */
 const Mainpage  = () => {
 
@@ -38,6 +43,13 @@ const Mainpage  = () => {
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
+  
+
+  /* setTimeout(() => {
+    ReactDOM.render(<Gallery images={IMAGES}/>, document.getElementById('app'));
+  }, 25); */
+
+  
   // const data = localStorage.getItem('profile')
   // const [value, setValue] = React.useState(
   //   localStorage.getItem('profile') || ''
@@ -46,7 +58,7 @@ const Mainpage  = () => {
   return (
     <div>
        {user?.result ? (
-          <div >
+          <div>
             <h1>You are logged in.</h1>
             <ul>
               <li>Username: {user?.result.username}</li>
@@ -58,14 +70,15 @@ const Mainpage  = () => {
             <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
           </div>
         ) : (
-          <div>
-            <h1>You are not logged in!</h1>
+          <div className={classes.appBar2}>
             <Button component={Link} to="/login" variant="contained" color="primary">Sign In</Button>
-
+            <h1>You are not logged in!</h1>
           </div>
         )}
-
       <Link to="/">back to welcome</Link>
+      <div id='app'>
+        <Imagegrid/>
+      </div>
     </div>
   );
 };
