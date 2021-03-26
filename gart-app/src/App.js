@@ -5,7 +5,6 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-
 //Pages
 import Welcome from "./pages"; 
 import mainpage from "./pages/mainpage";

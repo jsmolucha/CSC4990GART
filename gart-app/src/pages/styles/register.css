@@ -47,29 +47,29 @@
     text-align: center;
 }
 
-#uNameField, #pWordField {
+#uName, #eMail, #pWord, #fullName{
     outline: none;
     border: none;
     border-bottom: 2px solid black;
     background: none;
-    margin: 40px;
-    padding-bottom: 5px;
-    padding-top: 15px;
     transition-duration: 0.4s;
     font-family: 'Poppins';
     font-weight: 300;
-    margin-bottom: 45px;
     width: 250px;
+    margin-bottom: 20px;
+    padding: 5px;
 }
 
-#uNameField::placeholder, #pWordField::placeholder {
+#uName::placeholder, #pWord::placeholder, #eMail::placeholder, #fullName::placeholder {
     font-size: 15px;
     color: rgba(53, 53, 53);
     text-align: left;
     transition: 5s;
+    color: rgba(0, 0, 0, 0.5);
+
 }
 
-#uNameField:focus, #pWordField:focus {
+#uName:focus, #pWord:focus, #eMail:focus, #fullName:focus {
     border-color: #f0a202;
 }
 

@@ -1,3 +1,4 @@
+
 /** Routes for login and signup
  *  /login has been updated to send a json file per (axios) request
  *  the json is composed of Token (which is stored in the redux store on client side)
@@ -45,7 +46,8 @@ router.post('/newUser', async (req, res) => {
     const user = new userAcc ({userID: Date.now(), 
                                username: req.body.uname, 
                                email: req.body.email, 
-                               password: hashedPass
+                               password: hashedPass,
+                               fullName: req.body.fname
                             });
 
     //saving user to DB
