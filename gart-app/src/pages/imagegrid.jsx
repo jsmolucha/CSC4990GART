@@ -7,7 +7,7 @@ import Gallery from 'react-grid-gallery';
 const Imagegrid = () => {
     return(
         setTimeout(() => {
-            ReactDOM.render(<Gallery images={IMAGES}/>, document.getElementById('app'));
+            ReactDOM.render(<Gallery images={IMAGES}/>, document.getElementById('middle'));
         }, 10)
     )
 }
