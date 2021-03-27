@@ -17,6 +17,7 @@ const port = 5000;
 // const cors = require('cors');
 
 dotenv.config();
+// console.log(process.env.AWS_S3_BUCKET)
 
 //DB Connection
 mongoose.connect(process.env.DB_CONNECT, {

@@ -9,25 +9,26 @@
  */
 
 import jwt from "jsonwebtoken";
-
-const secret = 'test';
+import dotenv from 'dotenv';
+// const secret = process.env.TOKEN_SECRET
 
 const auth = async (req, res, next) => {
   try {
+    console.log(req.headers.authorization)
     const token = req.headers.authorization.split(" ")[1];
     const isCustomAuth = token.length < 500;
 
     let decodedData;
 
     if (token && isCustomAuth) {      
-      decodedData = jwt.verify(token, secret);
+      decodedData = jwt.verify(token, process.env.TOKEN_SECRET);
 
-      //req.userId = decodedData?.id;
+      req.userID = decodedData?.id;
 
     } else {
       decodedData = jwt.decode(token);
 
-      //req.userId = decodedData?.sub;
+      req.userID = decodedData?.sub;
     }    
 
     next();
