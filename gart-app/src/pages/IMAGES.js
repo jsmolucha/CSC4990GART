@@ -16,7 +16,7 @@ const IMAGES =
 },
 {
         src: "https://c7.staticflickr.com/9/8106/28941228886_86d1450016_b.jpg",
-        thumbnail: "https://c7.staticflickr.com/9/8106/28941228886_86d1450016_n.jpg",
+        thumbnail: "https://c7.staticflickr.com/9/8106/28941228886_86d1450016_n.jpg", 
         thumbnailWidth: 271,
         thumbnailHeight: 320,
         tags: [{value: "Nature", title: "Nature | Flowers"}],
