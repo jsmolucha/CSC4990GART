@@ -1,22 +1,61 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from 'react-redux'
-import { accountInfo } from '../actions/auth';
+import axios from 'axios';
+const { API_URL } = require('../constants/constants')
 
-const asyncHandler = require("express-async-handler");
 
+const API = axios.create({ baseURL: `${API_URL}` });
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      images: []
+    };
+}
+
+
+componenetDidMount() {
+  let user = JSON.parse(localStorage.getItem('profile'));
+  axios.get('http://localhost:5000/api/accounts/userPosts', {
+        params: {
+          ID : user.result.userID
+        }
+  })
+    .then( res => {
+        this.setState({
+          isLoaded: true,
+          images: res.data
+        });
+      }, 
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
+}
+
+render() {
+  const { error, isLoaded, images } = this.state;
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
+  else {
+    return <div> {this.state.images.title}</div>
+  }
+}
+
+}
+
+/*
 const Accountpage  = () => {
 
   let user = JSON.parse(localStorage.getItem('profile'));
-  //const history = useHistory();
-  const dispatch = useDispatch();
-
-  const getData = asyncHandler(async (e) => {
-    e.preventDefault();
-    dispatch(accountInfo(user));
-
-  });
-
   //getData()
   return (
     <div className="accountCont">
@@ -32,5 +71,5 @@ const Accountpage  = () => {
         </div>
   );
 };
-
-export default Accountpage;
+*/
+export default MyComponent; 

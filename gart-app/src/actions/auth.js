@@ -31,7 +31,7 @@ export const signin = (formData, router) => async (dispatch) => {
     }
 };
 
-
+/*
 export const accountInfo = (formData, router) => async(dispatch) => {
     try {
         const { data } = await api.accountInfo(formData);
@@ -54,6 +54,8 @@ export const accountInfo = (formData, router) => async(dispatch) => {
     }
     
 }
+*/
+
 // This is signup code from the video source 
 // export const signup = (formData, router) => async (dispatch) => {
 //   try {
