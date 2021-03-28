@@ -13,40 +13,62 @@ class MyComponent extends React.Component {
       isLoaded: false,
       images: []
     };
-}
-
-
-componenetDidMount() {
-  let user = JSON.parse(localStorage.getItem('profile'));
-  axios.get('http://localhost:5000/api/accounts/userPosts', {
-        params: {
-          ID : user.result.userID
-        }
-  })
-    .then( res => {
-        this.setState({
-          isLoaded: true,
-          images: res.data
-        });
-      }, 
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
+  }
+  
+  
+  componentDidMount() {
+    let user = JSON.parse(localStorage.getItem('profile'));
+    console.log("user:", user)
+    // console.log(this)
+    axios.get(`http://localhost:5000/api/accounts/${user.result.userID}`, {
+      params: {
+        ID : user.result.userID
       }
+    })
+    .then( res => {
+      // console.log(res.data,"response")
+      this.setState({
+        isLoaded: true,
+        images: res.data
+      });
+    }, 
+    (error) => {
+      console.log("error")
+      this.setState({
+        isLoaded: true,
+        error
+      });
+    }
     )
-}
-
-render() {
+  }
+  
+  render() {
   const { error, isLoaded, images } = this.state;
+  // return(<div onLoad={componenetDidMount()}>
+  //   Loading
+  // </div>)
+  
+  // </div>
+  // componenetDidMount()
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <div >Loading... ok
+      {/* <div> {console.log(this.state)}</div> */}
+    </div>;
   }
   else {
-    return <div> {this.state.images.title}</div>
+    return <div>
+      <h1>Ok its loaded now</h1> 
+      
+      {this.state.images.map(p => {
+      return <div key={p._id}>
+        <img key={p._id} src={p.filePath} alt={`${p.title} by ${p.creator}`} />;
+        <h3>{`${p.title} by ${p.creator}`}</h3>
+        </div>
+    })}
+      {console.log(this.state.images)}
+      </div>
   }
 }
 
