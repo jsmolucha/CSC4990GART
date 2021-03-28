@@ -13,7 +13,7 @@ import login from "./pages/login";
 import error from "./pages/404";
 import upload from "./pages/upload"
 import MyComponent from "./pages/account"
-
+import Post from './pages/post/post'
 
 class App extends Component {
   render() {
@@ -27,6 +27,7 @@ class App extends Component {
         <Route exact path="/register" component={registerpage} />
         <Route exact path="/upload" component={upload} />
         <Route exact path="/account" component={MyComponent} />
+        <Route exact path="/@:username" component={Post} />
         <Redirect to="/404" /> 
         </Switch>
       </Router>
