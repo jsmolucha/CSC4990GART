@@ -7,6 +7,12 @@ import decode from 'jwt-decode';
 import * as actionType from '../constants/actionTypes';
 import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import useStyles from './styles/main';
+import Imagegrid from './imagegrid'
+import "./styles/mainstyles.css"
+import upload from "./images/upload.svg"
+import logo from "./images/placeholder.svg"
+import search from "./images/search.svg"
+
 /* We simply can use an array and loop and print each user */
 const Mainpage  = () => {
 
@@ -15,14 +21,10 @@ const Mainpage  = () => {
   const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const classes = useStyles();
-
-
   const logout = () => {
 
     dispatch({ type: actionType.LOGOUT });
-
     history.push('/main');
-
     setUser(null);
   };
 
@@ -31,45 +33,58 @@ const Mainpage  = () => {
 
     if (token) {
       const decodedToken = decode(token);
-
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
-
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
+  
   // const data = localStorage.getItem('profile')
   // const [value, setValue] = React.useState(
   //   localStorage.getItem('profile') || ''
   // );
-  
+
+
   return (
-    <div>
-       {user?.result ? (
-          <div >
-            <h1>You are logged in.</h1>
-            <ul>
-              <li>Username: {user?.result.username}</li>
-              <li>ID: {user?.result._id}</li>
-              <li>Email: {user?.result.email}</li>
-            </ul>
-            {/* <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar> */}
-            {/* <Typography className={classes.userName} variant="h6">{user?.result.username}</Typography> */}
-            <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
-            <Button component={Link} to="/account" variant="contained" color="primary">To Account</Button>
+    <div className="containerMain">
+      <div id="navigation">
+        <div id="logoContainer">
+          <img id='logoSVG' src={logo} alt=""/>
+          <h3 id="logoText">GART</h3>
+          <input id="searchBar" type="text" placeholder="Search"/>
+        </div>
+        <div id="searchContainer">
+        </div>
+      </div>
+      <div id="leftmost">
+        <div id="welcomeContainer">
+          <h2 id="welcMsg">Welcome</h2>
+          <button id="upload">
+            <img id='uploadSVG' src={upload} alt=""/>
+          </button>
+          <div id="supportTextContainer"> 
+            <p id="supportText"> We currently support PNG, JPEG, SVG, and some 3D formats.</p>
           </div>
-        ) : (
           <div>
-            <h1>You are not logged in!</h1>
-            <Button component={Link} to="/login" variant="contained" color="primary">Sign In</Button>
-           
-
+            <button id='explore'>Explore</button>
           </div>
-        )}
+          <div>
+            <button id='favorites'>Favorite Posts</button>
+          </div>
+          <div>
+            <button id='support'>Support</button>
+          </div>
+        </div>
+      </div>
+      <div id="middle"> 
 
-      <Link to="/">back to welcome</Link>
+      </div>
+      <div id="rightmost">
+
+
+      </div>
     </div>
   );
-};
+}
 
 export default Mainpage;

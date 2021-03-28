@@ -6,6 +6,7 @@ import {
   Redirect
 } from "react-router-dom";
 //Pages
+import ReactDOM from "react-dom"
 import Welcome from "./pages"; 
 import mainpage from "./pages/mainpage";
 import registerpage from "./pages/register"
@@ -14,6 +15,7 @@ import error from "./pages/404";
 import upload from "./pages/upload"
 import MyComponent from "./pages/account"
 import Post from './pages/post/post'
+
 
 class App extends Component {
   render() {
@@ -34,6 +36,7 @@ class App extends Component {
     )
   }
 }
+
 export default App;
 
 
