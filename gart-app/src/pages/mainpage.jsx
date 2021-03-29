@@ -11,6 +11,7 @@ import "./styles/mainstyles.css"
 import upload from "./images/upload.svg"
 import logo from "./images/placeholder.svg"
 import search from "./images/search.svg"
+import Upload from "./upload/upload.jsx"
 
 /* We simply can use an array and loop and print each user */
 const Mainpage  = () => {
@@ -43,7 +44,6 @@ const Mainpage  = () => {
   //   localStorage.getItem('profile') || ''
   // );
 
-
   return (
     <div className="containerMain">
       <div id="navigation">
@@ -58,7 +58,7 @@ const Mainpage  = () => {
       <div id="leftmost">
         <div id="welcomeContainer">
           <h2 id="welcMsg">Welcome</h2>
-          <button id="upload">
+          <button id="upload" >
             <img id='uploadSVG' src={upload} alt=""/>
           </button>
           <div id="supportTextContainer"> 
@@ -76,6 +76,7 @@ const Mainpage  = () => {
         </div>
       </div>
       <div id="middle"> 
+  
 
       </div>
       <div id="rightmost">
@@ -87,20 +88,20 @@ const Mainpage  = () => {
             <ul>
               <li>{user?.result.username}</li>
               <li>{user?.result._id}</li>
-              
             </ul>
           </div>
         ) : (
-          <div className={classes.appBar2}>
-            <h1>You are not logged in!</h1>
+          <div className='noLogin'>
+            <Link to="/login">
+              <button id='loginButton'>Sign in</button>
+            </Link>
+            <Link id='statusText' to='/register'>Create an account!</Link>
           </div>
         )}
           </div>
-
         </div>
       </div>
     </div>
   );
 }
-
 export default Mainpage;
