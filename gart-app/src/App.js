@@ -12,6 +12,7 @@ import mainpage from "./pages/mainpage";
 import registerpage from "./pages/register"
 import login from "./pages/login";
 import error from "./pages/404";
+import MyComponent from "./pages/account"
 
 
 
@@ -25,6 +26,7 @@ class App extends Component {
         <Route exact path="/main" component={mainpage} />
         <Route exact path="/404" component={error} />
         <Route exact path="/register" component={registerpage} />
+        <Route exact path="/account" component={MyComponent} />
         <Redirect to="/404" /> 
         </Switch>
       </Router>
