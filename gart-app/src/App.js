@@ -5,6 +5,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import {PrivateRoute} from "./actions/auth"
 //Pages
 import ReactDOM from "react-dom"
 import Welcome from "./pages"; 
@@ -24,7 +25,7 @@ class App extends Component {
         <Switch>
         <Route exact path="/" component={Welcome} />
         <Route exact path="/login" component={login} />
-        <Route exact path="/main" component={mainpage} />
+        <PrivateRoute exact path="/main" component={mainpage} />
         <Route exact path="/404" component={error} />
         <Route exact path="/register" component={registerpage} />
         <Route exact path="/upload" component={upload} />
