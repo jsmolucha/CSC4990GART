@@ -92,10 +92,10 @@ const Mainpage  = () => {
           </div>
         ) : (
           <div className='noLogin'>
-            <Link to="/login">
-              <button id='loginButton'>Sign in</button>
-            </Link>
-            <Link id='statusText' to='/register'>Create an account!</Link>
+              <button id='loginButton'>
+                <Link to="/login" id='loginlink'> Sign In</Link>
+              </button>
+              <Link id='statusText' to='/register'>Create an account</Link>
           </div>
         )}
           </div>

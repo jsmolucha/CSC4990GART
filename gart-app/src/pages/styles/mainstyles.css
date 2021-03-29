@@ -200,3 +200,44 @@
 #support {
    
 }
+
+.noLogin {
+    display: flex;
+    flex-direction: column;
+}
+
+#loginlink {
+   text-decoration: none;
+   font-family: 'Inter';
+   color: white;
+   font-weight: 600;
+   font-size: 25px;
+}
+
+#loginButton{   
+    margin: 50% auto 15px auto;
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    transition: .3s ease-out;
+    background-color: #e48100;
+
+}
+
+#loginButton:hover {
+    transform: scale(1.2);
+    background-color: #ad6200;
+
+
+}
+
+#statusText {
+    text-decoration: none;
+    text-align: center;
+    color: #B2BDCD;
+    font-weight: 200;
+    text-align: center;
+    font-size: 15px;
+}
