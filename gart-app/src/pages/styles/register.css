@@ -58,7 +58,6 @@
     width: 250px;
     margin-bottom: 20px;
     padding: 5px;
-    color: rgba(0, 0, 0, 0.2);
 }
 
 #uName::placeholder, #pWord::placeholder, #eMail::placeholder, #fullName::placeholder {
@@ -66,6 +65,8 @@
     color: rgba(53, 53, 53);
     text-align: left;
     transition: 5s;
+    color: rgba(0, 0, 0, 0.5);
+
 }
 
 #uName:focus, #pWord:focus, #eMail:focus, #fullName:focus {

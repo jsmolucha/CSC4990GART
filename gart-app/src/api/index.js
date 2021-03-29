@@ -17,6 +17,14 @@ API.interceptors.request.use((req) => {
 });
 
 
+export const fetchPosts = () => API.get('/api/post');
+export const createPost = (newPost) => API.post('/api/post/', newPost,  {headers: {
+  'Content-Type': 'multipart/form-data'
+}});
+export const likePost = (id) => API.patch(`/api/post/${id}/likePost`);
+export const updatePost = (id, updatedPost) => API.patch(`/api/post/${id}`, updatedPost);
+export const deletePost = (id) => API.delete(`/api/post/${id}`);
+
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
 //export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
 // export const signUp = (formData) => API.post('/user/signup', formData);
