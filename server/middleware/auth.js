@@ -22,12 +22,20 @@ const auth = async (req, res, next) => {
     if (token && isCustomAuth) {      
       decodedData = jwt.verify(token, secret);
 
+<<<<<<< Updated upstream
       //req.userId = decodedData?.id;
+=======
+      //req.userID = decodedData?.id;
+>>>>>>> Stashed changes
 
     } else {
       decodedData = jwt.decode(token);
 
+<<<<<<< Updated upstream
       //req.userId = decodedData?.sub;
+=======
+      //req.userID = decodedData?.sub;
+>>>>>>> Stashed changes
     }    
 
     next();
