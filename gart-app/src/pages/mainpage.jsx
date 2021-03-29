@@ -5,7 +5,6 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 import * as actionType from '../constants/actionTypes';
-import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
 import useStyles from './styles/main';
 import Imagegrid from './imagegrid'
 import "./styles/mainstyles.css"
@@ -80,8 +79,25 @@ const Mainpage  = () => {
 
       </div>
       <div id="rightmost">
+        <div id='profileContainer'>
+          <div>
+          {user?.result ? (
+          <div>
+            <h1>You are logged in</h1>
+            <ul>
+              <li>{user?.result.username}</li>
+              <li>{user?.result._id}</li>
+              
+            </ul>
+          </div>
+        ) : (
+          <div className={classes.appBar2}>
+            <h1>You are not logged in!</h1>
+          </div>
+        )}
+          </div>
 
-
+        </div>
       </div>
     </div>
   );
