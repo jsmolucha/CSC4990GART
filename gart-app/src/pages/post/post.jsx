@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import PostCard from "./postCard/postCard";
 import Gallery from "react-grid-gallery";
-// import CardGallery from "react-card-image-gallery";
 import Masonry from "react-masonry-css";
 import styles from './styles.css'
 // const { API_URL } = require('../constants/constants')
@@ -56,7 +55,7 @@ class Post extends React.Component {
   render() {
     const { error, isLoaded, images } = this.state;
     const breakpointColumnsObj = {
-      default: 4,
+      default: 5,
       1100: 3,
       700: 2,
       500: 1
@@ -78,7 +77,7 @@ class Post extends React.Component {
       );
     } else {
       return (
-        <div>
+        <div >
           <h1>Welcome to {this.state.owner}' profile page</h1>
           {/* <Post post={post} setCurrentId={setCurrentId} /> */}
           <Masonry
@@ -88,7 +87,7 @@ class Post extends React.Component {
           >
             {this.state.images.map((p) => {
               return (
-                <div key={p._id}>
+                <div key={p._id} style={{backgroundColor: "#fff"}}>
                   <PostCard post={p} setCurrentId={this.state.setCurrentId} />
                   {/* <img key={p._id} src={p.filePath} alt={`${p.title} by ${p.creator}`} />;
         <h3>{`${p.title} by ${p.creator}`}</h3> */}
