@@ -1,0 +1,243 @@
+/* 0B0E11 151A21 242C37 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600&display=swap');
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+
+::-webkit-scrollbar-track {
+    background: #0B0E11;
+  }
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    background-color: #e48100;
+  }
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+.containerMain {
+    display: grid;
+    width: 100%;
+    height: 100vw;
+    grid-template-areas: 
+    "nav nav nav"
+    "left middle right";
+    grid-template-rows: .05fr auto;
+    grid-template-columns:.75fr 3fr .75fr ;
+}
+
+#leftmost, #middle, #rightmost, #navigation {
+    background-color: #0B0E11;
+    box-shadow: -6px 0px 6px rgba(0, 0, 0, 0.25),  6px 0px 6px rgba(0, 0, 0, 0.25) ;
+
+}
+
+#leftmost {
+    grid-area: left;
+    position: -webkit-sticky;
+    padding: 0 10px 0 10px;
+}
+
+#middle {
+    grid-area: middle;
+    z-index: 1;
+}
+
+#rightmost {
+    grid-area: right;
+    position: -webkit-sticky;
+    padding: 0 10px 0 10px;
+
+}
+
+#navigation {
+    grid-area: nav;
+    
+}
+
+#welcMsg {
+    font-family: 'Inter';
+    color: white;
+    margin: 0px 0 20px 0;
+    font-size: 40px;
+    padding: 20px 0 0 0;
+    text-align: center;
+}
+
+#welcomeContainer {
+    background-color: #151A21;
+    border-radius: 10px;
+    height: 23%;
+
+}
+
+#profileContainer {
+    background-color: #151A21;
+    border-radius: 10px;
+    height: 23%;
+}
+
+#upload {
+    width: 50%;
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 0px;
+    border-radius: 10px;
+    background-color: #e48100;
+    outline: none;
+    border: none;
+    transition: .3s ease-out;
+}
+
+#upload:hover {
+    background-color: #ad6200;
+    transform: scale(1.2)
+
+}
+
+#uploadTxt {
+    color: white;
+    text-align: center;
+    font-family: 'Inter';
+    font-weight: 700;
+}
+
+#supportText {
+    font-family: 'Inter';
+    font-style: italic;
+    color: #B2BDCD;
+    font-weight: 200;
+    text-align: center;
+    font-size: 12px;
+}
+
+#uploadSVG {
+    width: 20%;
+}
+
+#supportTextContainer {
+    width: 55%;
+    margin: 0 auto 0 auto;
+
+}
+
+#searchBar {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px ;
+    border-radius: 10px;
+    border: none;
+    width: 30%;
+    height: 50px;
+    background-color: #242c37;
+    font-size: 20px;
+    color: #B2BDCD;
+    transition: .3s ease-out;
+    outline: none;
+    text-indent: 14px;
+}
+
+#searchBar::placeholder {
+    color: #B2BDCD;
+    font-family: 'Inter';
+    font-size: 20px;
+    text-indent: 14px
+
+}
+
+#searchBar:focus {
+    transform: scale(1.1)
+}
+
+#logoContainer {
+    display: flex;    
+    justify-content: center;
+}
+
+#logoSVG {
+    width: 2.5%;
+    margin: 0 0 0 0;
+}
+ 
+#logoText {
+    color: #e48100;
+    font-size: 40px;
+    margin: auto 0 auto 0;
+}
+
+#explore, #favorites, #support{
+    display: block;
+    background: none;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Inter';
+    margin: 20px auto 0 auto;
+    transition: .3s ease-out;
+    padding: 5px;
+    border-radius: 10px;
+
+}
+
+#explore:hover, #favorites:hover, #support:hover{
+    background-color: #e48100;
+}
+
+#favorites {
+    
+}
+
+#support {
+   
+}
+
+.noLogin {
+    display: flex;
+    flex-direction: column;
+}
+
+#loginlink {
+   text-decoration: none;
+   font-family: 'Inter';
+   color: white;
+   font-weight: 600;
+   font-size: 25px;
+}
+
+#loginButton{   
+    margin: 50% auto 15px auto;
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    transition: .3s ease-out;
+    background-color: #e48100;
+
+}
+
+#loginButton:hover {
+    transform: scale(1.2);
+    background-color: #ad6200;
+
+
+}
+
+#statusText {
+    text-decoration: none;
+    text-align: center;
+    color: #B2BDCD;
+    font-weight: 200;
+    text-align: center;
+    font-size: 15px;
+}

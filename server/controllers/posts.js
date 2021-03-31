@@ -1,101 +1,126 @@
 /**  (WIP)
- * Controllers 
- * A controller can be defined as the entity that will be responsible for manipulating models 
+ * Controllers
+ * A controller can be defined as the entity that will be responsible for manipulating models
  * and initiating the view render process with the data received from the corresponding models.
- * 
+ *
  * This is built to handle our post ie Fan Art
- * 
+ *
  * basically DB --> Model --> controller
  */
 
+import express from "express";
+import mongoose from "mongoose";
 
-import express from 'express';
-import mongoose from 'mongoose';
+import PostMessage from "../models/postMessage.js";
+import asyncHandler from "express-async-handler";
 
-import PostMessage from '../models/postMessage.js';
-
+import formidable from "formidable";
 const router = express.Router();
 
-export const getPosts = async (req, res) => { 
-    try {
-        const postMessages = await PostMessage.find();
-                
-        res.status(200).json(postMessages);
-    } catch (error) {
-        res.status(404).json({ message: error.message });
-    }
-}
+// import { upload } from "../utils/upload.js";
+// const singleUpload = upload.single("image");
 
-export const getPost = async (req, res) => { 
-    const { id } = req.params;
+export const getPosts = async (req, res) => {
+  try {
+    const postMessages = await PostMessage.find();
 
-    try {
-        const post = await PostMessage.findById(id);
-        
-        res.status(200).json(post);
-    } catch (error) {
-        res.status(404).json({ message: error.message });
-    }
-}
+    res.status(200).json(postMessages);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
-export const createPost = async (req, res) => {
-    const post = req.body;
+export const getPost = async (req, res) => {
+  const { id } = req.params;
 
-    const newPostMessage = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
-
-    try {
-        await newPostMessage.save();
-
-        res.status(201).json(newPostMessage );
-    } catch (error) {
-        res.status(409).json({ message: error.message });
-    }
-}
-
-export const updatePost = async (req, res) => {
-    const { id } = req.params;
-    const { title, message, creator, selectedFile, tags } = req.body;
-    
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
-
-    const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
-
-    await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
-
-    res.json(updatedPost);
-}
-
-export const deletePost = async (req, res) => {
-    const { id } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
-
-    await PostMessage.findByIdAndRemove(id);
-
-    res.json({ message: "Post deleted successfully." });
-}
-
-export const likePost = async (req, res) => {
-    const { id } = req.params;
-
-    if (!req.userId) {
-        return res.json({ message: "Unauthenticated" });
-      }
-
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
-    
+  try {
     const post = await PostMessage.findById(id);
 
-    const index = post.likes.findIndex((id) => id ===String(req.userId));
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
-    if (index === -1) {
-      post.likes.push(req.userId);
-    } else {
-      post.likes = post.likes.filter((id) => id !== String(req.userId));
+import { upload } from "../utils/upload.js";
+const singleUpload = upload.single("file");
+// const formInput = upload.single("data");
+export const createPost = asyncHandler(async (req, res) => {
+  await singleUpload(req, res, async function (err) {
+    if (err) {
+      return res
+        .status(422)
+        .send({
+          errors: [{ title: "Image Upload Error", detail: err.message }],
+        });
     }
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
-    res.status(200).json(updatedPost);
-}
+    const postData = req.body;
+    console.log(postData);
+    const newPostMessage = new PostMessage({
+      ...postData,
+      // creator: req.userID,
+      createdAt: new Date().toISOString(),
+      filePath: req.file.location,
+    });
 
+    try {
+      await newPostMessage.save();
+      console.log(newPostMessage);
+      res.status(201).json(newPostMessage);
+    } catch (error) {
+      res.status(409).json({ message: error.message });
+    }
+  });
+});
+
+export const updatePost = async (req, res) => {
+  const { id } = req.params;
+  const { title, description, creator, filePath, tags } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No post with id: ${id}`);
+
+  const updatedPost = { creator, title, description, tags, filePath, _id: id };
+
+  await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+
+  res.json(updatedPost);
+};
+
+export const deletePost = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No post with id: ${id}`);
+
+  await PostMessage.findByIdAndRemove(id);
+
+  res.json({ message: "Post deleted successfully." });
+};
+
+export const likePost = async (req, res) => {
+  const { id } = req.params;
+
+  if (!req.userID) {
+    return res.json({ message: "Unauthenticated" });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No post with id: ${id}`);
+
+  const post = await PostMessage.findById(id);
+
+  const index = post.likes.findIndex((id) => id === String(req.userID));
+
+  if (index === -1) {
+    post.likes.push(req.userID);
+  } else {
+    post.likes = post.likes.filter((id) => id !== String(req.userID));
+  }
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
+    new: true,
+  });
+  res.status(200).json(updatedPost);
+};
 
 export default router;

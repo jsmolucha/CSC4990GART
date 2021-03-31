@@ -4,8 +4,9 @@
 //if successfull then data = JSON then dispatch stores it (reducers/auth.js) in localstorage
 //Server is designed to send 400 status error to which is handled here
 
-import { AUTH } from '../constants/actionTypes';
+import { AUTH, FETCH_ALL } from '../constants/actionTypes';
 import * as api from '../api/index.js';
+import { Redirect, Route } from 'react-router';
 
 export const signin = (formData, router) => async (dispatch) => {
   try {
@@ -30,6 +31,25 @@ export const signin = (formData, router) => async (dispatch) => {
         }
     }
 };
+
+export const PrivateRoute = ({component: Component, ...rest}) => (
+    <Route
+    {...rest}
+    render={props =>
+        localStorage.getItem("profile") ? (
+            <Component {...props} />
+        ) : (
+            <Redirect 
+                to ={{
+                    pathname: "/login",
+                    state: {from: props.location}
+                }}
+            />
+        )
+    }
+    />
+);
+
 // This is signup code from the video source 
 // export const signup = (formData, router) => async (dispatch) => {
 //   try {

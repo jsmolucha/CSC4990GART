@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors'
 import authRoute from './routes/auth.js'
 import postRoutes from './routes/posts.js'
+import accRoutes from './routes/accounts.js'
 
 const app = express();
 const port = 5000;
@@ -17,6 +18,7 @@ const port = 5000;
 // const cors = require('cors');
 
 dotenv.config();
+// console.log(process.env.AWS_S3_BUCKET)
 
 //DB Connection
 mongoose.connect(process.env.DB_CONNECT, {
@@ -45,6 +47,7 @@ app.use(function(req, res, next) {
 //Routes
 app.use('/api/user', authRoute);
 app.use("/api/post", postRoutes);
+app.use('/api/accounts', accRoutes)
 
 app.get('/main', (req, res) => {
   res.send('mainpage');

@@ -2,6 +2,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
+
+  container: {
+    backgroundColor: 'black',
+  },
+  appBar2: {
+
+  },
   appBar: {
     borderRadius: 15,
     margin: '30px 0',
@@ -27,6 +34,10 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     width: '400px',
+  },
+  mainCont: {
+    backgroundColor: 'black',
+
   },
   userName: {
     display: 'flex',
