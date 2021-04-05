@@ -11,7 +11,7 @@ import {
 
 
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (post, router) => async (dispatch) => {
   try {
     const { data } = await api.createPost(post);
 
@@ -19,10 +19,11 @@ export const createPost = (post) => async (dispatch) => {
     console.log("Success");
     //   alert("Im called")
     dispatch({ type: CREATE, payload: data });
+    alert("Success")
     //   console.log(data)
     //   dispatch({ type: AUTH, data });
     //   alert("Success")
-    //   router.push('/main'); //redirect to main page
+      router.push(`/post/${data._id}`); //redirect to main page
   } catch (error) {
     if (error.response) {
       // Request made and server responded

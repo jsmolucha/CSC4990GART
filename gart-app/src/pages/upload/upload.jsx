@@ -1,14 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import Dropzone, { useDropzone } from "react-dropzone";
-
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import decode from "jwt-decode";
-import * as actionType from "../../constants/actionTypes";
-
+import ModalImage from "react-modal-image";
+// import decode from "jwt-decode";
+// import * as actionType from "../../constants/actionTypes";
 import { createPost } from "../../actions/post";
-// import "../styles/styles.css"
-// import Box from "@material-ui/core/Box";
+import useStyles from "./styles";
 import {
   Box,
   Container,
@@ -22,50 +20,19 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-// import { Form, Row, Col, Button } from 'react-bootstrap';
-// import './styles.scss';
-
-// const useStyles = makeStyles((theme) => ({
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    minWidth: 275,
-    maxWidth: 500,
-    // flexGrow: 1,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-  textField: {
-    //  width: 200,
-  },
-  card: {
-    minHeight: 500,
-  },
-  img: {
-    maxWidth: 500,
-  },
-});
+// import { makeStyles } from "@material-ui/core/styles";
+import PublishIcon from "@material-ui/icons/Publish";
 
 export default function Upload({ currentId, setCurrentId }) {
   const { acceptedFiles } = useDropzone();
 
+  const [dropper, setDropper] = useState({});
   const [postData, setPostData] = useState({
     title: "",
     description: "",
     tags: "",
     filePath: "",
-    creator:  ""
+    creator: "",
   });
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
@@ -75,7 +42,6 @@ export default function Upload({ currentId, setCurrentId }) {
   const location = useLocation();
   const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  // const classes = useStyles();
 
   //for dropzone and oth
   const [file, setFile] = useState(null); // state for storing actual image
@@ -88,7 +54,6 @@ export default function Upload({ currentId, setCurrentId }) {
   const [isPreviewAvailable, setIsPreviewAvailable] = useState(false); // state to show preview only for images
   const dropRef = useRef(); // React ref for managing the hover state of droppable area// state for storing actual image
   const classes = useStyles();
-  // const bull = <span className={classes.bullet}>•</span>;
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -113,38 +78,16 @@ export default function Upload({ currentId, setCurrentId }) {
 
     alert("submit");
     console.log(postData);
-    // if (currentId === 0) {
-    // const { title, description } = postData;
-    // setPostData({
-    //   ...postData,
-    //   creator:  user?.result?.userID,
-    // })
-    // console.log(user)
-    const data = { ...postData, creator: user.result.userID }
-    // data.creator = user.result.userID;
-    // data
-    console.log(data,"<<<<")
+
+    const data = { ...postData, creator: user.result.userID };
     if (file) {
       const formData = new FormData();
       formData.append("file", file, data);
-      // formData.append("data", data);
-      // formData.append('imageUpload',this.new_attachments)
       formData.append("title", postData.title);
       formData.append("description", postData.description);
       formData.append("creator", user.result.userID);
       formData.append("tags", postData.tags);
-      
-      console.log(formData.get("file"));
-      // console.log(data)
-      // setErrorMsg('');
-      // await axios.post(`${API_URL}/upload`, formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data'
-      //   }
-      // });
-      // const data = {formData}
-      // console.log(data)
-      await dispatch(createPost(formData));
+      await dispatch(createPost(formData, history));
       clear();
     }
 
@@ -159,25 +102,14 @@ export default function Upload({ currentId, setCurrentId }) {
     setFile(uploadedFile);
 
     console.log(uploadedFile);
-    // let formData = new FormData()
-
-    // const fileObjects = acceptedFiles.map(file => {
-    //   console.log(file)
-    //   formData.append('assets', file, file.name)
-    // })
-    // console.log(formData)
-    // console.log(formData.getAll('assets'))
 
     const fileReader = new FileReader();
     fileReader.onload = () => {
       setPreviewSrc(fileReader.result);
-      // console.log(fileReader.result)
       // setPostData({ ...postData, filePath: fileReader })}
     };
     fileReader.readAsDataURL(uploadedFile);
-    // console.log(fileReader.readAsDataURL(uploadedFile))
     setIsPreviewAvailable(uploadedFile.name.match(/\.(jpeg|jpg|png)$/));
-    // dropRef.current.style.border = "2px dashed #e9ebeb";
   };
 
   const updateBorder = (dragState) => {
@@ -188,12 +120,6 @@ export default function Upload({ currentId, setCurrentId }) {
     }
   };
 
-  //   const handleChange = (e) => {
-  //     setPostData({ ...postData, message: e.target.value })
-  //     // setPostData({ ...postData, filePath: fileReader.result })}
-  //     console.log(user);
-  // };
-
   if (!user?.result?.username) {
     return (
       <Paper className={classes.paper}>
@@ -203,17 +129,15 @@ export default function Upload({ currentId, setCurrentId }) {
       </Paper>
     );
   }
-  // maxWidth="sm"
-  // { title, description, creator, filePath, tags } form guide
-  return (
-    // <React.Fragment>
 
+  return (
     <Box pt={2}>
       <form
         autoComplete="off"
         noValidate
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleOnSubmit}
+        onChange={handleInputChange}
       >
         <Container maxWidth="sm">
           <Card className={classes.root}>
@@ -227,12 +151,7 @@ export default function Upload({ currentId, setCurrentId }) {
               </Typography>
               <Grid container alignItems="flex-start" spacing={3} mt={2}>
                 <Grid item sm={12}>
-                  <Paper
-                    elevation={3}
-                    className="dropper"
-                    p={2}
-                    style={{ height: 200 }}
-                  >
+                  <div className={classes.dropperArea}>
                     <Dropzone
                       onDrop={onDrop}
                       onDone={({ base64 }) =>
@@ -248,16 +167,21 @@ export default function Upload({ currentId, setCurrentId }) {
                         <section>
                           <div {...getRootProps()}>
                             <input {...getInputProps()} name="filePath" />
-
                             <Grid container justify="center">
+                              <>
+                                <PublishIcon fontSize="large" />
+                                &nbsp;
+                              </>
                               <Typography
                                 variant="h5"
                                 component="h2"
-                                style={{
-                                  // left: '50%',
-                                  // top: '60%',
-                                  transform: "translate(1%, 100%)",
-                                }}
+                                style={
+                                  {
+                                    // left: '50%',
+                                    // top: '60%',
+                                    // transform: "translate(1%, 100%)",
+                                  }
+                                }
                               >
                                 Drag 'n' drop some files here, or click to
                                 select files
@@ -267,7 +191,7 @@ export default function Upload({ currentId, setCurrentId }) {
                         </section>
                       )}
                     </Dropzone>
-                  </Paper>
+                  </div>
                 </Grid>
                 <Grid item xs={12}>
                   {previewSrc ? (
@@ -276,13 +200,18 @@ export default function Upload({ currentId, setCurrentId }) {
                         {(e) =>
                           setPostData({ ...postData, filePath: previewSrc })
                         }
-                        {/* {console.log(previewSrc)} */}
-                        <img
+                        <ModalImage
+                          className={classes.modalImage}
+                          small={previewSrc}
+                          large={previewSrc}
+                          alt="Preview"
+                        />
+                        {/* <img
                           style={{ width: "100%" }}
                           className="preview-image"
                           src={previewSrc}
                           alt="Preview"
-                        />
+                        /> */}
                       </div>
                     ) : (
                       <div className="preview-message">
@@ -301,6 +230,7 @@ export default function Upload({ currentId, setCurrentId }) {
                     label="Title"
                     variant="outlined"
                     name="title"
+                    value={postData.title}
                     onChange={(e) =>
                       setPostData({ ...postData, title: e.target.value })
                     }
@@ -313,6 +243,9 @@ export default function Upload({ currentId, setCurrentId }) {
                     label="Description"
                     variant="outlined"
                     name="description"
+                    value={postData.description}
+                    multiline
+                    rows={3}
                     onChange={(e) =>
                       setPostData({ ...postData, description: e.target.value })
                     }
@@ -325,8 +258,9 @@ export default function Upload({ currentId, setCurrentId }) {
                     label="Tags"
                     variant="outlined"
                     name="tags"
-                    multiline
-                    rows={3}
+                    // multiline
+                    value={postData.tags}
+                    // rows={3}
                     onChange={(e) =>
                       setPostData({
                         ...postData,

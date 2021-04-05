@@ -22,7 +22,7 @@ import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded"
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 
 import ModalImage from "react-modal-image";
-import './fontFamily.css'
+import "./fontFamily.css";
 const PostCard = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -32,12 +32,12 @@ const PostCard = ({ post, setCurrentId }) => {
     if (post.likes.length > 0) {
       return post.likes.find((like) => like === user?.result?.userID) ? (
         <>
-          <FavoriteRoundedIcon fontSize="large" />
+          <FavoriteRoundedIcon fontSize="medium" />
           {/* &nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` } */}
         </>
       ) : (
         <>
-          <FavoriteRoundedIcon fontSize="large" />
+          <FavoriteRoundedIcon fontSize="medium" />
           {/* &nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'} */}
         </>
       );
@@ -45,7 +45,7 @@ const PostCard = ({ post, setCurrentId }) => {
 
     return (
       <>
-        <FavoriteBorderRoundedIcon fontSize="large" />
+        <FavoriteBorderRoundedIcon fontSize="medium" />
         &nbsp;
       </>
     );
@@ -55,7 +55,7 @@ const PostCard = ({ post, setCurrentId }) => {
     <Card className={classes.card} id="cardBody">
       {/* <CardActionArea> */}
       <ModalImage
-      className={classes.modalImage}
+        className={classes.modalImage}
         small={post.filePath}
         large={post.filePath}
         alt={post.description}
@@ -69,7 +69,7 @@ const PostCard = ({ post, setCurrentId }) => {
         title={post.title}
       /> */}
       <div className={classes.overlay}>
-        <Typography variant="h6" >{post.name}</Typography>
+        <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
         </Typography>
@@ -88,10 +88,7 @@ const PostCard = ({ post, setCurrentId }) => {
       <CardContent>
         {/* <Typography className={classes.title} gutterBottom variant="h5" component="h2">{post.title}</Typography> */}
         {/* <Typography gutterBottom variant="h5" component="h2">? */}
-        <h3>
-
-          {post.title}
-        </h3>
+        <h3>{post.title}</h3>
         {/* </Typography> */}
 
         {post.description && (
@@ -101,32 +98,36 @@ const PostCard = ({ post, setCurrentId }) => {
         )}
       </CardContent>
       <CardActions className={classes.cardActions}>
-        {user?.result?.userID === post?.creator && (
-          <Button
-            size="small"
-            color="secondary"
-            onClick={() => dispatch(deletePost(post._id))}
-          >
-            <DeleteIcon fontSize="small" /> Delete
-          </Button>
-        )}
-
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2">
             {post.tags.map((tag) => `#${tag} `)}
           </Typography>
         </div>
 
-        <div className={classes.likeoverlay}>
+        {user?.result?.userID === parseInt(post?.creator) && (
           <Button
             size="small"
-            color="secondary"
-            disabled={!user?.result.userID === post.creator}
-            onClick={() => dispatch(likePost(post._id))}
+            // color="primary"
+            onClick={() => dispatch(deletePost(post._id))}
           >
-            <Likes />
+            <DeleteIcon fontSize="small" />
           </Button>
-        </div>
+        )}
+
+        {user?.result?.userID !== parseInt(post?.creator) && (
+          <div className={classes.likeoverlay}>
+            <Button
+              size="small"
+              color="secondary"
+              disabled={!user?.result.userID === parseInt(post.creator)}
+              onClick={() => {
+                dispatch(likePost(post._id), console.log("like"));
+              }}
+            >
+              <Likes />
+            </Button>
+          </div>
+        )}
       </CardActions>
       {/* </CardActionArea> */}
     </Card>
