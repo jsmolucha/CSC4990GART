@@ -59,7 +59,9 @@ const Mainpage  = () => {
         <div id="welcomeContainer">
           <h2 id="welcMsg">Welcome</h2>
           <button id="upload" >
-            <img id='uploadSVG' src={upload} alt=""/>
+            <Link to="/upload">
+              <img id='uploadSVG' src={upload} alt=""/>
+            </Link>
           </button>
           <div id="supportTextContainer"> 
             <p id="supportText"> We currently support PNG, JPEG, SVG, and some 3D formats.</p>
