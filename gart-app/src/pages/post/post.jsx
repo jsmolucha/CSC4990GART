@@ -3,7 +3,8 @@ import axios from "axios";
 import PostCard from "./postCard/postCard";
 import Gallery from "react-grid-gallery";
 import Masonry from "react-masonry-css";
-import styles from './styles.css'
+import styles from "./styles.css";
+import { Box, Container } from "@material-ui/core/";
 // const { API_URL } = require('../constants/constants')
 
 // const API = axios.create({ baseURL: `${API_URL}` });
@@ -37,7 +38,7 @@ class Post extends React.Component {
           // console.log(res.data,"response")
           this.setState({
             isLoaded: true,
-            images: res.data,
+            images: res.data.reverse(),
             owner: username,
             setCurrentId: user.result.userID,
           });
@@ -55,10 +56,10 @@ class Post extends React.Component {
   render() {
     const { error, isLoaded, images } = this.state;
     const breakpointColumnsObj = {
-      default: 5,
+      default: 3,
       1100: 3,
       700: 2,
-      500: 1
+      500: 1,
     };
     // return(<div onLoad={componenetDidMount()}>
     //   Loading
@@ -77,25 +78,32 @@ class Post extends React.Component {
       );
     } else {
       return (
-        <div >
-          <h1>Welcome to {this.state.owner}' profile page</h1>
-          {/* <Post post={post} setCurrentId={setCurrentId} /> */}
-          <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-          >
-            {this.state.images.map((p) => {
-              return (
-                <div key={p._id} style={{backgroundColor: "#fff"}}>
-                  <PostCard post={p} setCurrentId={this.state.setCurrentId} />
-                  {/* <img key={p._id} src={p.filePath} alt={`${p.title} by ${p.creator}`} />;
+        <div className="profilePage">
+          <Box height="100%">
+            <Container  justifyContent="center" m={2}>
+            <h1 className="welcomeMessage">Welcome to {this.state.owner}' profile page</h1>
+            </Container>
+
+            <Container>
+            {/* <Post post={post} setCurrentId={setCurrentId} /> */}
+            <Masonry
+              breakpointCols={breakpointColumnsObj}
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid_column"
+              >
+              {this.state.images.map((p) => {
+                return (
+                  <div key={p._id} style={{ backgroundColor: "transparent" }}>
+                    <PostCard post={p} setCurrentId={this.state.setCurrentId} />
+                    {/* <img key={p._id} src={p.filePath} alt={`${p.title} by ${p.creator}`} />;
         <h3>{`${p.title} by ${p.creator}`}</h3> */}
-                </div>
-              );
-            })}
+                  </div>
+                );
+              })}
             </Masonry>
-          {/* {console.log(this.state.images)} */}
+            {/* {console.log(this.state.images)} */}
+</Container>
+          </Box>
         </div>
       );
     }
@@ -104,7 +112,7 @@ class Post extends React.Component {
 
 /*
 const Accountpage  = () => {
-
+  
   let user = JSON.parse(localStorage.getItem('profile'));
   //getData()
   return (
