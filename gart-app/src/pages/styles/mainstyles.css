@@ -173,7 +173,7 @@
     margin: auto 0 auto 0;
 }
 
-#explore, #favorites, #support{
+#explore, #favorites, #support, #logout{
     display: block;
     background: none;
     outline: none;

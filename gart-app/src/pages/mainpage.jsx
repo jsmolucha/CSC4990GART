@@ -24,7 +24,7 @@ const Mainpage  = () => {
   const logout = () => {
 
     dispatch({ type: actionType.LOGOUT });
-    history.push('/main');
+    history.push('/');
     setUser(null);
   };
 
@@ -72,6 +72,9 @@ const Mainpage  = () => {
           </div>
           <div>
             <button id='support'>Support</button>
+          </div>
+          <div>
+            <button id='logout' onClick={logout}>Log Out</button>
           </div>
         </div>
       </div>
