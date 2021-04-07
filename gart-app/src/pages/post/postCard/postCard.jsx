@@ -14,16 +14,17 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import { useDispatch } from "react-redux";
 import moment from "moment";
-
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { likePost, deletePost } from "../../../actions/post";
 // '../../../actions/posts';
 import useStyles from "./styles";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
-
+import EditIcon from '@material-ui/icons/Edit';
 import ModalImage from "react-modal-image";
 import "./fontFamily.css";
 const PostCard = ({ post, setCurrentId }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -108,9 +109,9 @@ const PostCard = ({ post, setCurrentId }) => {
           <Button
             size="small"
             // color="primary"
-            onClick={() => dispatch(deletePost(post._id))}
+            onClick={() => history.push(`/edit/${post._id}`)}
           >
-            <DeleteIcon fontSize="small" />
+            <EditIcon fontSize="small" />
           </Button>
         )}
 
