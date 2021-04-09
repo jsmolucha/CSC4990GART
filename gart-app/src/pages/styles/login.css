@@ -43,13 +43,13 @@
 #welcomeHeader {
     color: white;    
     text-align: left;
-    font-size: 92px;
+    font-size: 7rem;
     padding: 0 0 0 20px;
 }
 
 #colorText {
-    background: #a8ff78;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3EB489, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #a8ff78; 
+    background: -webkit-linear-gradient(to right, #3EB489, #a8ff78);
     background-image: linear-gradient(to right, #3EB489, #a8ff78); 
     background-size: 100%;
     -webkit-background-clip: text;
@@ -61,7 +61,7 @@
 .logincontainer {
     grid-area: form;
     box-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, .40);
+    background-color: rgba(255, 255, 255, .50);
     backdrop-filter: blur(8px);
     border-radius: 10px 0 0 10px;
     position: relative;
