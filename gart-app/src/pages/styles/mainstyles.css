@@ -72,14 +72,14 @@
 #welcomeContainer {
     background-color: #151A21;
     border-radius: 10px;
-    height: 23%;
+    height: 33%;
 
 }
 
 #profileContainer {
     background-color: #151A21;
     border-radius: 10px;
-    height: 23%;
+    height: 33%;
 }
 
 #upload {
@@ -173,7 +173,7 @@
     margin: auto 0 auto 0;
 }
 
-#explore, #favorites, #support{
+#explore, #favorites, #support, #logout{
     display: block;
     background: none;
     outline: none;

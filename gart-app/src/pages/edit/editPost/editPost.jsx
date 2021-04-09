@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalImage from "react-modal-image";
 // import decode from "jwt-decode";
 // import * as actionType from "../../constants/actionTypes";
-import { createPost } from "../../actions/post";
+import { createPost, deletePost, updatePost } from "../../../actions/post";
 import useStyles from "./styles";
 import {
   Box,
@@ -23,16 +23,12 @@ import {
 // import { makeStyles } from "@material-ui/core/styles";
 import PublishIcon from "@material-ui/icons/Publish";
 
-export default function Upload({ currentId, setCurrentId }) {
+export default function EditPost({ currentId, setCurrentId, image }) {
   const { acceptedFiles } = useDropzone();
 
   const [dropper, setDropper] = useState({});
   const [postData, setPostData] = useState({
-    title: "",
-    description: "",
-    tags: "",
-    filePath: "",
-    creator: "",
+    ...image
   });
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
@@ -68,9 +64,9 @@ export default function Upload({ currentId, setCurrentId }) {
 
   const clear = () => {
     // setCurrentId(0);
-    setPostData({ title: "", description: "", tags: "", filePath: "" });
-    setFile({});
-    setPreviewSrc("");
+    setPostData({ ...image });
+    // setFile({});
+    // setPreviewSrc("");
   };
 
   const handleOnSubmit = async (event) => {
@@ -80,19 +76,19 @@ export default function Upload({ currentId, setCurrentId }) {
     console.log(postData);
 
     const data = { ...postData, creator: user.result.userID };
-    if (file) {
-      const formData = new FormData();
-      formData.append("file", file, data);
-      formData.append("title", postData.title);
-      formData.append("description", postData.description);
-      formData.append("creator", user.result.userID);
-      formData.append("tags", postData.tags);
-      await dispatch(createPost(formData, history));
-      clear();
-    }
+    // if (file) {
+    //   const formData = new FormData();
+    //   formData.append("file", file, data);
+    //   formData.append("title", postData.title);
+    //   formData.append("description", postData.description);
+    //   formData.append("creator", user.result.userID);
+    //   formData.append("tags", postData.tags);
+    //   await dispatch(createPost(formData, history));
+    //   clear();
+    // }
 
-    // } else {
-    //   // dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+    // // } else {
+    dispatch(updatePost(image._id, { ...data }, history));
     //   // clear();
     // }
   };
@@ -150,79 +146,16 @@ export default function Upload({ currentId, setCurrentId }) {
                 Published as @{user?.result.username}
               </Typography>
               <Grid container alignItems="flex-start" spacing={3} mt={2}>
-                <Grid item sm={12}>
-                  <div className={classes.dropperArea}>
-                    <Dropzone
-                      onDrop={onDrop}
-                      onDone={({ base64 }) =>
-                        setPostData({ ...postData, selectedFile: base64 })
-                      }
-                      onChange={(e) =>
-                        setPostData({ ...postData, filePath: e.target.value })
-                      }
-                      onDragEnter={() => updateBorder("over")}
-                      onDragLeave={() => updateBorder("leave")}
-                    >
-                      {({ getRootProps, getInputProps }) => (
-                        <section>
-                          <div {...getRootProps()}>
-                            <input {...getInputProps()} name="filePath" />
-                            <Grid container justify="center">
-                              <>
-                                <PublishIcon fontSize="large" />
-                                &nbsp;
-                              </>
-                              <Typography
-                                variant="h5"
-                                component="h2"
-                                style={
-                                  {
-                                    // left: '50%',
-                                    // top: '60%',
-                                    // transform: "translate(1%, 100%)",
-                                  }
-                                }
-                              >
-                                Drag 'n' drop some files here, or click to
-                                select files
-                              </Typography>
-                            </Grid>
-                          </div>
-                        </section>
-                      )}
-                    </Dropzone>
-                  </div>
-                </Grid>
+
                 <Grid item xs={12}>
-                  {previewSrc ? (
-                    isPreviewAvailable ? (
-                      <div className="image-preview">
-                        {(e) =>
-                          setPostData({ ...postData, filePath: previewSrc })
-                        }
-                        <ModalImage
-                          className={classes.modalImage}
-                          small={previewSrc}
-                          large={previewSrc}
-                          alt="Preview"
-                        />
-                        {/* <img
-                          style={{ width: "100%" }}
-                          className="preview-image"
-                          src={previewSrc}
-                          alt="Preview"
-                        /> */}
-                      </div>
-                    ) : (
-                      <div className="preview-message">
-                        <p>No preview available for this file</p>
-                      </div>
-                    )
-                  ) : (
-                    <div className="preview-message">
-                      <p>Image preview will be shown here after selection</p>
-                    </div>
-                  )}
+
+                  <ModalImage
+                    className={classes.modalImage}
+                    small={image.filePath}
+                    large={image.filePath}
+                    alt="Preview"
+                  />
+
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -287,6 +220,26 @@ export default function Upload({ currentId, setCurrentId }) {
                 color="secondary"
               >
                 Clear
+              </Button>
+              <Button
+                style={{ margin: 5 }}
+                variant="contained"
+                color="secondary"
+                // color="primary"
+                onClick={() => dispatch(deletePost(postData._id))}
+              >
+                Delete
+                {/* <EditIcon fontSize="small" /> */}
+              </Button>
+              <Button
+                style={{ margin: 5 }}
+                variant="contained"
+                color="secondary"
+                // color="primary"
+                onClick={() => history.goBack()}
+              >
+                Cancel
+                {/* <EditIcon fontSize="small" /> */}
               </Button>
             </CardActions>
           </Card>

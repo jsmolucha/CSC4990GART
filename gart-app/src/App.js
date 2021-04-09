@@ -16,8 +16,8 @@ import error from "./pages/404";
 import upload from "./pages/upload"
 import MyComponent from "./pages/account"
 import Post from './pages/post/post'
-
-
+import Permalink from './pages/post/permaPost'
+import Edit from "./pages/edit/edit"
 class App extends Component {
   render() {
     return (
@@ -31,6 +31,9 @@ class App extends Component {
         <Route exact path="/upload" component={upload} />
         <Route exact path="/account" component={MyComponent} />
         <Route exact path="/@:username" component={Post} />
+        <Route exact path="/post/:postId" component={Permalink} />
+        <Route exact path="/edit/:postId" component={Edit} />
+        
         <Redirect to="/404" /> 
         </Switch>
       </Router>

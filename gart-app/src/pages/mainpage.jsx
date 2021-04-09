@@ -22,7 +22,7 @@ const Mainpage  = () => {
   const logout = () => {
 
     dispatch({ type: actionType.LOGOUT });
-    history.push('/main');
+    history.push('/');
     setUser(null);
   };
 
@@ -57,8 +57,10 @@ const Mainpage  = () => {
       <div id="leftmost">
         <div id="welcomeContainer">
           <h2 id="welcMsg">Welcome</h2>
-          <button id="upload">
-            <img id='uploadSVG' src={upload} alt=""/>
+          <button id="upload" >
+            <Link to="/upload">
+              <img id='uploadSVG' src={upload} alt=""/>
+            </Link>
           </button>
           <div id="supportTextContainer"> 
             <p id="supportText"> We currently support PNG, JPEG, SVG, and some 3D formats.</p>
@@ -71,6 +73,9 @@ const Mainpage  = () => {
           </div>
           <div>
             <button id='support'>Support</button>
+          </div>
+          <div>
+            <button id='logout' onClick={logout}>Log Out</button>
           </div>
         </div>
       </div>
