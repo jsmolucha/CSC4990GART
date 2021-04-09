@@ -88,7 +88,7 @@
     transition-duration: 0.4s;
     font-family: 'Inter';
     font-weight: 300;
-    margin-bottom: 30px;
+    margin-bottom: 10%;
     width: 250px;
 }
 
@@ -110,7 +110,7 @@
     border-radius: 10px;
     font-family: 'Inter';
     font-size: 20px;
-    margin-bottom: 10%;
+    margin: 5% 0 10% 0;
 }
 
 #submitLogin:hover {
