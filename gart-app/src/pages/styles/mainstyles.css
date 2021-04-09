@@ -13,7 +13,7 @@
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
-    background-color: #e48100;
+    background-color: #3EB489;
   }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -91,14 +91,14 @@
     margin-bottom: 20px;
     padding: 0px;
     border-radius: 10px;
-    background-color: #e48100;
+    background-color: #3EB489;
     outline: none;
     border: none;
     transition: .3s ease-out;
 }
 
 #upload:hover {
-    background-color: #ad6200;
+    background-color: #339672;
     transform: scale(1.2)
 
 }
@@ -168,7 +168,7 @@
 }
  
 #logoText {
-    color: #e48100;
+    color: #3EB489;
     font-size: 40px;
     margin: auto 0 auto 0;
 }
@@ -190,7 +190,7 @@
 }
 
 #explore:hover, #favorites:hover, #support:hover{
-    background-color: #e48100;
+    background-color: #339672;
 }
 
 #favorites {
@@ -222,13 +222,13 @@
     border: none;
     outline: none;
     transition: .3s ease-out;
-    background-color: #e48100;
+    background-color: #3EB489;
 
 }
 
 #loginButton:hover {
     transform: scale(1.2);
-    background-color: #ad6200;
+    background-color: #339672;
 
 
 }
