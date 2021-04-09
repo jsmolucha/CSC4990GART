@@ -79,7 +79,7 @@ const useStyle = makeStyles((theme) => ({
     logoText: {
         flexGrow: 1,
         // color: "#FFF",
-        color: "#e48100",
+        color: "#3EB489",
         fontSize: 40,
         // margin: "auto 0 auto 0",
         marginRight: theme.spacing(2),

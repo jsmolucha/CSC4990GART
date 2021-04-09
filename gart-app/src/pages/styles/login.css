@@ -29,6 +29,7 @@
     color: white;
     font-family:'Inter';
     text-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.40); 
+    margin-bottom: 20%;
 }
 
 .loginGreeting {
@@ -82,15 +83,15 @@
     border: none;
     border-bottom: 2px solid black;
     background: none;
-    margin: 15px;
     padding-bottom: 5px;
     padding-top: 15px;
     transition-duration: 0.4s;
     font-family: 'Inter';
     font-weight: 300;
-    margin-bottom: 10%;
+    margin: 0 1% 10% 0 ;
     width: 250px;
 }
+
 
 #uNameField::placeholder, #pWordField::placeholder {
     font-size: 15px;
@@ -110,7 +111,7 @@
     border-radius: 10px;
     font-family: 'Inter';
     font-size: 20px;
-    margin: 5% 0 10% 0;
+    margin: 1% 0 10% 0;
 }
 
 #submitLogin:hover {

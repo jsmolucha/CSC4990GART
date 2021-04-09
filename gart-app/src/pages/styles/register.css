@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
 .regCont {
-    background-image: url(./image.jpg), linear-gradient(rgba(240, 162, 2, 0.8),rgba(128, 223, 166, 0.8));
-    background-size: 100% 100%;
-    background-blend-mode: overlay;
+    background-color: #242c37;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f6f5f7' fill-opacity='0.33'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: 75% 75%;
     height: 100vh;
     width: 100vw;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -27,7 +27,7 @@
 
 .regGreeting {
     grid-area: greet;
-    background-color: black;
+    background-color: #151A21;
     box-shadow:  0 1rem 1rem rgba(0, 0, 0, 0.25);
     border-radius: 0px 10px 10px 0px;
 
@@ -56,7 +56,7 @@
     font-family: 'Poppins';
     font-weight: 300;
     width: 250px;
-    margin-bottom: 20px;
+    margin-bottom: 8%;
     padding: 5px;
 }
 
@@ -70,7 +70,7 @@
 }
 
 #uName:focus, #pWord:focus, #eMail:focus, #fullName:focus {
-    border-color: #f0a202;
+    border-color: #3EB489;
 }
 
 #submitReg {
@@ -84,7 +84,7 @@
 }
 
 #submitReg:hover {
-    background-color: #f0a202;
+    background-color: #3EB489;
     color: black;
     
 }
@@ -97,5 +97,5 @@
 }
 
 #haveAcct:hover {
-    color: #f0a202;
+    color: #3EB489;
 }
