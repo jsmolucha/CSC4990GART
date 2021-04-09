@@ -43,7 +43,7 @@
 #welcomeHeader {
     color: white;    
     text-align: left;
-    font-size: 7rem;
+    font-size: 6vw;
     padding: 0 0 0 20px;
 }
 
@@ -110,21 +110,13 @@
     border-radius: 10px;
     font-family: 'Inter';
     font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10%;
 }
 
 #submitLogin:hover {
     background-color: #3EB489;
     color: white;
     
-}
-
-#submit-border-wrap {
-    max-width: 250px;
-    padding: 1rem;
-    position: relative;
-    background: linear-gradient(to right, orange, green);
-    padding: 3px;
 }
 
 #noReg {
@@ -138,11 +130,4 @@
 #noReg:hover {
     color: #3EB489;
 }
-
-.border-gradient {
-    border: 10px solid;
-    border-image-slice: 1;
-    border-width: 5px;
-    border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
-  }
 
