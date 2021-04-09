@@ -1,6 +1,4 @@
-// import React, { useState } from "react";
 import React, { useState, useEffect } from 'react';
-// import { Link } from "react-router-dom";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
@@ -45,6 +43,7 @@ const Mainpage  = () => {
   // const [value, setValue] = React.useState(
   //   localStorage.getItem('profile') || ''
   // );
+  
 
   return (
     <div className="containerMain">
@@ -88,8 +87,7 @@ const Mainpage  = () => {
         </div>
       </div>
       <div id="middle"> 
-  
-
+      
       </div>
       <div id="rightmost">
         <div id='profileContainer'>
