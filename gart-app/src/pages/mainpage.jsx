@@ -11,6 +11,8 @@ import logo from "./images/placeholder.svg"
 import search from "./images/search.svg"
 import Upload from "./upload/upload.jsx"
 
+import NavBar from './Nav/navbar'
+
 /* We simply can use an array and loop and print each user */
 const Mainpage  = () => {
 
@@ -45,7 +47,11 @@ const Mainpage  = () => {
 
   return (
     <div className="containerMain">
-      <div id="navigation">
+    <div id="navigation">
+
+      <NavBar props={user}></NavBar>
+    </div>
+      {/* <div id="navigation">
         <div id="logoContainer">
           <img id='logoSVG' src={logo} alt=""/>
           <h3 id="logoText">GART</h3>
@@ -53,7 +59,8 @@ const Mainpage  = () => {
         </div>
         <div id="searchContainer">
         </div>
-      </div>
+
+      </div> */}
       <div id="leftmost">
         <div id="welcomeContainer">
           <h2 id="welcMsg">Welcome</h2>
