@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardActions,
@@ -23,12 +23,32 @@ import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 import EditIcon from '@material-ui/icons/Edit';
 import ModalImage from "react-modal-image";
 import "./fontFamily.css";
+import axios from "axios";
+import { API_URL } from "../../../constants/constants";
 const PostCard = ({ post, setCurrentId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
+  const [username, setUsername] = useState({})
 
+  
+  useEffect(async () => {
+    // POST request using axios inside useEffect React hook
+    // const article = { title: 'React Hooks POST Request Example' };
+    if (post.userID) {
+      console.log(post.userID)
+      await axios.get(`${API_URL}/api/accounts/creator/${post.userID}`)
+        .then(response => setUsername(response.data));
+      console.log(username)
+    }
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, [username]);
+
+  // setUsername = async () =>{
+  //   username =  await axios.get(`${API_URL}/api/accounts/creator/${post.userID}`)
+  // }
+  // useEffect
   const Likes = () => {
     if (post.likes.length > 0) {
       return post.likes.find((like) => like === user?.result?.userID) ? (
@@ -89,7 +109,9 @@ const PostCard = ({ post, setCurrentId }) => {
       <CardContent>
         {/* <Typography className={classes.title} gutterBottom variant="h5" component="h2">{post.title}</Typography> */}
         {/* <Typography gutterBottom variant="h5" component="h2">? */}
-        <h3>{post.title}</h3>
+        <h3>{post.title}</h3> 
+        {/* <p>by <a href={}>@{()=>{ */}
+        {/* // let username = axios.get(`${API_URL}/api/accounts/creator/${post.userID}`)}}</a></p> */}
         {/* </Typography> */}
 
         {post.description && (
