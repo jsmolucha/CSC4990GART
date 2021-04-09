@@ -25,7 +25,7 @@ class App extends Component {
         <Switch>
         <Route exact path="/" component={Welcome} />
         <Route exact path="/login" component={login} />
-        <PrivateRoute exact path="/main" component={mainpage} />
+        <Route exact path="/main" component={mainpage} />
         <Route exact path="/404" component={error} />
         <Route exact path="/register" component={registerpage} />
         <Route exact path="/upload" component={upload} />
