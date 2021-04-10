@@ -28,8 +28,8 @@
     font-size: 45px;
     color: white;
     font-family:'Inter';
-    text-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.40); 
-    margin-bottom: 20%;
+    /* text-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.40);  */
+    margin-bottom: 15%;
 }
 
 .loginGreeting {
@@ -62,7 +62,7 @@
 .logincontainer {
     grid-area: form;
     box-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, .50);
+    background-color: rgba(255, 255, 255, .40);
     backdrop-filter: blur(8px);
     border-radius: 10px 0 0 10px;
     position: relative;
@@ -71,6 +71,7 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
+
 }
 
 .loginBack {
@@ -81,23 +82,31 @@
 #uNameField, #pWordField {
     outline: none;
     border: none;
-    border-bottom: 2px solid black;
-    background: none;
+    /* border-bottom: 2px solid black; */
+    background:#242c37;
+    border-radius: 10px;
     padding-bottom: 5px;
-    padding-top: 15px;
+    padding-top: 10px;
     transition-duration: 0.4s;
     font-family: 'Inter';
     font-weight: 300;
+    font-size: 15px;
     margin: 0 1% 10% 0 ;
     width: 250px;
+    height: 50px;
+    color: #B2BDCD;
+    text-indent: 10px;
 }
 
 
 #uNameField::placeholder, #pWordField::placeholder {
     font-size: 15px;
-    color: rgba(53, 53, 53);
+    color: #B2BDCD;
     text-align: left;
     transition: 5s;
+    text-indent: 10px;
+    font-family: 'Inter';
+
 }
 
 #uNameField:focus, #pWordField:focus {
