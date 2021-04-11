@@ -17,13 +17,6 @@ import { registerValidation, loginValidation } from '../validation.js';
 import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler'; 
 
-// const router = require('express').Router();
-// const userAcc = require('../models/users');
-// const bcrypt = require("bcrypt");
-// const { registerValidation, loginValidation } = require('../validation')
-// const jwt = require('jsonwebtoken');
-// const asyncHandler = require('express-async-handler')
-// const { APP_URL } = require('../utils/constants') //imports react url
 
 const router = express.Router();
 
@@ -50,10 +43,11 @@ router.post('/newUser', async (req, res) => {
                                fullName: req.body.fname
                             });
 
+    const token = jwt.sign({id: user.userID}, process.env.TOKEN_SECRET);
     //saving user to DB
     try {
         await user.save();
-        res.send("User added");
+        res.status(200).json({ result: res.user, token });
     } catch(err){
         console.log(err);
     }
@@ -119,8 +113,8 @@ router.post('/login', validator, userFinder,valPasser, asyncHandler( async (req,
     await res.status(200).json({ result: res.user, token });
     console.log(token)
 
-   //Instead of 5000 redirecting, it will send back data(token) to 3000 which could handle redirecting -carlos
-// res.header('auth-token', token).redirect("${APP_URL}/main");
+    //Instead of 5000 redirecting, it will send back data(token) to 3000 which could handle redirecting -carlos
+    // res.header('auth-token', token).redirect("${APP_URL}/main");
     // await res.header('auth-token', token).send(token); 
     //sends token, can alse send an {object} to send more data like username of whatever -carlos
 
