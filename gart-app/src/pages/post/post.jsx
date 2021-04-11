@@ -1,10 +1,9 @@
 import React from "react";
 import axios from "axios";
 import PostCard from "./postCard/postCard";
-import Gallery from "react-grid-gallery";
 import Masonry from "react-masonry-css";
-import styles from "./styles.css";
 import { Box, Container } from "@material-ui/core/";
+import NavBar from '../Nav/navbar'
 // const { API_URL } = require('../constants/constants')
 
 // const API = axios.create({ baseURL: `${API_URL}` });
@@ -79,30 +78,39 @@ class Post extends React.Component {
     } else {
       return (
         <div className="profilePage">
-          <Box height="100%">
-            <Container  justifyContent="center" m={2}>
-            <h1 className="welcomeMessage">Welcome to {this.state.owner}' profile page</h1>
-            </Container>
-
+          <NavBar props={this.state.setCurrentId}></NavBar>
+          <Box height="100%" >
+            <Box display="flex" justifyContent="center" m={2} p={1} >
+              {/* <Container justifyContent="center" m={2}> */}
+                <h1 className="welcomeMessage">@{this.state.owner}</h1>
+                {/* <h3>welcome</h3> */}
+              {/* </Container> */}
+            </Box>
+            <Box display="flex" justifyContent="center" m={1} p={1} >
+              {/* <Container justifyContent="center" m={2}> */}
+                {/* <h1 className="welcomeMessage">@{this.state.owner}</h1> */}
+                <h4>If we wanted to add user bio we can place it here</h4>
+              {/* </Container> */}
+            </Box>
             <Container>
-            {/* <Post post={post} setCurrentId={setCurrentId} /> */}
-            <Masonry
-              breakpointCols={breakpointColumnsObj}
-              className="my-masonry-grid"
-              columnClassName="my-masonry-grid_column"
+              {/* <Post post={post} setCurrentId={setCurrentId} /> */}
+              <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column"
               >
-              {this.state.images.map((p) => {
-                return (
-                  <div key={p._id} style={{ backgroundColor: "transparent" }}>
-                    <PostCard post={p} setCurrentId={this.state.setCurrentId} />
-                    {/* <img key={p._id} src={p.filePath} alt={`${p.title} by ${p.creator}`} />;
+                {this.state.images.map((p) => {
+                  return (
+                    <div key={p._id} style={{ backgroundColor: "transparent" }}>
+                      <PostCard post={p} setCurrentId={this.state.setCurrentId} />
+                      {/* <img key={p._id} src={p.filePath} alt={`${p.title} by ${p.creator}`} />;
         <h3>{`${p.title} by ${p.creator}`}</h3> */}
-                  </div>
-                );
-              })}
-            </Masonry>
-            {/* {console.log(this.state.images)} */}
-</Container>
+                    </div>
+                  );
+                })}
+              </Masonry>
+              {/* {console.log(this.state.images)} */}
+            </Container>
           </Box>
         </div>
       );

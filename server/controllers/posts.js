@@ -92,12 +92,12 @@ var bucketParams = {
 
 export const updatePost = async (req, res) => {
   const { id } = req.params;
-  const { title, description, creator, filePath, tags } = req.body;
+  const { title, description, creator, filePath, tags, username } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No post with id: ${id}`);
 
-  const updatedPost = { creator, title, description, tags, filePath, _id: id };
+  const updatedPost = { creator, title, description, tags, filePath, username, _id: id };
 
   await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 
@@ -105,7 +105,7 @@ export const updatePost = async (req, res) => {
 };
 
 
-
+//research how to delete from bucket
 export const deletePost = async (req, res) => {
   const { id } = req.params;
 
@@ -117,16 +117,20 @@ export const deletePost = async (req, res) => {
   res.json({ message: "Post deleted successfully." });
 };
 
-export const likePost = async (req, res) => {
+export const likePost = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!req.userID) {
+
+    console.log("uhh")
     return res.json({ message: "Unauthenticated" });
   }
 
-  if (!mongoose.Types.ObjectId.isValid(id))
+  if (!mongoose.Types.ObjectId.isValid(id)){
+    console.log("like2")
     return res.status(404).send(`No post with id: ${id}`);
 
+  }
   const post = await PostMessage.findById(id);
 
   const index = post.likes.findIndex((id) => id === String(req.userID));
@@ -139,7 +143,8 @@ export const likePost = async (req, res) => {
   const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
     new: true,
   });
+  console.log(updatePost)
   res.status(200).json(updatedPost);
-};
+})
 
 export default router;

@@ -56,6 +56,7 @@ export const likePost = (id) => async (dispatch) => {
   const user = JSON.parse(localStorage.getItem('profile'));
 
   try {
+     console.log(user.token)
     const { data } = await api.likePost(id, user?.token);
 
     dispatch({ type: LIKE, payload: data });

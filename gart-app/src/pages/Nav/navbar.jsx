@@ -21,10 +21,13 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSmile, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PersonIcon from '@material-ui/icons/Person';
 
-
+//this
 const useStyle = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -151,15 +154,29 @@ export default function NavBar({ props }) {
         setUser(null);
     };
 
+ 
+    const profile = async () =>{
+        // let username =
+        let user = JSON.parse(localStorage.getItem("profile"));//will change
+        console.log(user)
+        if(user?.result?.username){
+            history.push(`/@${user.result.username}`);
+        }
+    }
 
     const classes = useStyle();
 
     return (
         <>
-            {/* {console.log(user)} */}
+            {console.log(location.pathname)}
             <AppBar position="static" className={classes.appbar}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
+                    onClick={
+                        () =>{
+                            history.push("/main")
+                        }
+                    }>
                         <img className={classes.logo} src={logo} alt="" />
                     </IconButton>
                     <Hidden xsDown>
@@ -171,18 +188,20 @@ export default function NavBar({ props }) {
                     {user?.result ? (
                         <>
                             <Hidden xsDown>
-                                <button className={classes.accountBtn} >Account</button>
+                                <button className={classes.accountBtn} onClick={profile} >Account</button>
                                 <button className={classes.logOut} onClick={logout}>Logout</button>
                             </Hidden>
                             <Hidden smUp>
                                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
-                                    >
-                                    <PersonIcon></PersonIcon>
+                                    onClick={profile} >
+                                         <FontAwesomeIcon icon={faSmile}/>
+                                    {/* <PersonIcon></PersonIcon> */}
                                 </IconButton>
                                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
                                     onClick={logout}
                                 >
-                                    <ExitToAppIcon></ExitToAppIcon>
+                                     <FontAwesomeIcon icon={faSignOutAlt}/>
+                                    {/* <ExitToAppIcon></ExitToAppIcon> */}
                                 </IconButton>
                             </Hidden>
                         </>
