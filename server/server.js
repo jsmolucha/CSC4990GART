@@ -5,6 +5,8 @@ import cors from 'cors'
 import authRoute from './routes/auth.js'
 import postRoutes from './routes/posts.js'
 import accRoutes from './routes/accounts.js'
+import testRoute from './routes/test.js'
+import passport from './passport/setup.js'
 
 const app = express();
 const port = 5000;
@@ -29,6 +31,9 @@ mongoose.connect(process.env.DB_CONNECT, {
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); //changed bodyparser ->express -carlos
 app.use(cors())
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 
 app.use(function(req, res, next) {
@@ -45,7 +50,7 @@ app.use(function(req, res, next) {
 
 
 //Routes
-app.use('/api/user', authRoute);
+app.use('/api/user', testRoute);
 app.use("/api/post", postRoutes);
 app.use('/api/accounts', accRoutes)
 
