@@ -77,10 +77,11 @@ export const createPost = asyncHandler(async (req, res) => {
 
 
 
-
+const credentials = new aws.SharedIniFileCredentials({profile: 'default'});
+aws.config.credentials = credentials;
 aws.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  accessSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
+  // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  // accessSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
   // signatureVersion: "v4",
   region: "us-east-2",
 });

@@ -1,31 +1,31 @@
 // import React from "react";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import useStyles from '../styles/main'
+// import useStyles from '../styles/main'
 import logo from "../images/placeholder.svg"
-import search from "../images/search.svg"
+// import search from "../images/search.svg"
 import { Link, useHistory, useLocation } from 'react-router-dom';
 // import {dispatch} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import * as actionType from '../../constants/actionTypes';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import InputBase from '@material-ui/core/InputBase';
+// import Paper from '@material-ui/core/Paper';
+// import Grid from '@material-ui/core/Grid';
+// import InputBase from '@material-ui/core/InputBase';
 import Hidden from '@material-ui/core/Hidden';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 // import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSmile, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import PersonIcon from '@material-ui/icons/Person';
+// import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+// import PersonIcon from '@material-ui/icons/Person';
 
 //this
 const useStyle = makeStyles((theme) => ({
@@ -148,16 +148,14 @@ export default function NavBar({ props }) {
 
     const logout = () => {
         dispatch({ type: actionType.LOGOUT });
-
         history.push('/');
-
         setUser(null);
     };
 
  
     const profile = async () =>{
         // let username =
-        let user = JSON.parse(localStorage.getItem("profile"));//will change
+        // let user = JSON.parse(localStorage.getItem("profile"));//will change
         console.log(user)
         if(user?.result?.username){
             history.push(`/@${user.result.username}`);

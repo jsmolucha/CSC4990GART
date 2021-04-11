@@ -3,73 +3,37 @@ import {
   Card,
   CardActions,
   CardContent,
-  // CardMedia,
   Button,
   Typography,
-  // CardActionArea,
 } from "@material-ui/core/";
 import IconButton from '@material-ui/core/IconButton';
-// import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
-// import DeleteIcon from "@material-ui/icons/Delete";
-// import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-// import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
+
 import { useDispatch } from "react-redux";
 import moment from "moment";
-import { Link, useHistory, useLocation } from "react-router-dom";
-import { likePost, deletePost } from "../../../actions/post";
+import {  useHistory, useLocation } from "react-router-dom";
+import { likePost } from "../../../actions/post";
 // '../../../actions/posts';
 import useStyles from "./styles";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
-import EditIcon from '@material-ui/icons/Edit';
 import ModalImage from "react-modal-image";
 import "./fontFamily.css";
-import axios from "axios";
-import { API_URL } from "../../../constants/constants";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faHeart, faHippo, faInfoCircle, faPenNib } from "@fortawesome/free-solid-svg-icons";
+// import Heart from './Heart'
+
 const PostCard = ({ post, setCurrentId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
-  const [username, setUsername] = useState({})
-
-
-  useEffect(async () => {
-    // POST request using axios inside useEffect React hook
-    // const article = { title: 'React Hooks POST Request Example' };
-    if (post.userID) {
-      console.log(post.userID)
-      await axios.get(`${API_URL}/api/accounts/creator/${post.userID}`)
-        .then(response => setUsername(response.data));
-      console.log(username)
-    }
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, [username]);
-
-  // setUsername = async () =>{
-  //   username =  await axios.get(`${API_URL}/api/accounts/creator/${post.userID}`)
-  // }
-  // useEffect
-
-
-
-
-  const Refresh = () => {
-    return Likes()
-  }
 
 
   const Likes = () => {
+    
+    
 
-    const [likeState, setLikeState] = useState({})
-    useEffect(() => {
-      setLikeState()
-    }, [likeState])
     if (post.likes.length > 0) {
-
-
       return post.likes.find((like) => parseInt(like) === parseInt(user?.result?.userID)) ? (
         <>
           <FavoriteRoundedIcon fontSize="large" />
@@ -83,7 +47,6 @@ const PostCard = ({ post, setCurrentId }) => {
         </>
       );
     }
-
     return (
       <>
         <FavoriteBorderRoundedIcon fontSize="large" />
@@ -94,37 +57,9 @@ const PostCard = ({ post, setCurrentId }) => {
   };
 
 
-  // const Likes = () => {
-  //   if (post.likes.length >= 1) {
-  //     // console.log(post.likes)
-  //     post.likes.forEach(
-  //       liker => {
-  //         // console.log(liker, user?.result?.userID)
-  //         // console.log("_")
-  //         if (parseInt(liker) == parseInt(user?.result?.userID)) {
-  //           return (<>
-  //             {console.log("loved")}
-  //             <FavoriteRoundedIcon fontSize="medium" />
-  //             </>
-  //           )
-  //         }
-  //       }
-  //     )
-  //   }
-
-  //   return (
-  //     <>
-  //       <FavoriteBorderRoundedIcon fontSize="medium" />
-  //   &nbsp;
-  //     </>
-  //   );
-
-
-  // };
 
   return (
     <Card className={classes.card} id="cardBody">
-      {/* <CardActionArea> */}
       <ModalImage
         className={classes.modalImage}
         small={post.filePath}
@@ -187,6 +122,8 @@ const PostCard = ({ post, setCurrentId }) => {
 
           {user?.result?.userID !== parseInt(post?.creator) && (
             <div className={classes.likeoverlay}>
+              {/* postId, userID , creator, likes */}
+              {/* <Heart postId={post._id} userID={user?.result?.userID} creator={post.creator} likes={post.likes}  /> */}
               <Button
                 size="small"
                 color="secondary"
@@ -194,9 +131,10 @@ const PostCard = ({ post, setCurrentId }) => {
                 onClick={() => {
                   dispatch(likePost(post._id))
                   // refresh()
-                }}
+                }
+              }
+            
               >
-
                 <Likes />
               </Button>
             </div>
