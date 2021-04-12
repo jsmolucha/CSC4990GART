@@ -61,8 +61,8 @@
     font-weight: 300;
     font-size: 15px;
     margin: 0 1% 5% 0 ;
-    width: 250px;
-    height: 50px;
+    width: 13.5vw;
+    height: 2.5vw;
     color: #B2BDCD;
     text-indent: 10px;
 }
@@ -83,7 +83,7 @@
 }
 
 #submitReg {
-    padding: 10px 40px 10px 40px;
+    padding: .6vw 2vw .6vw 2vw;
     border: none;
     transition-duration: 0.4s;
     border-radius: 10px;
