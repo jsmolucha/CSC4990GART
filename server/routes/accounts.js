@@ -63,5 +63,25 @@ router.get('/creator/:id', asyncHandler( async (req,res) => {
     }
 }))
 
+router.post('/getUsername', asyncHandler(
+    async (req,res) =>{
+        console.log(req.body)
+        // let id = req.body
+        // let user = await users.findOne({ userID: creator})
+        // console.log(user)
+        // // user = user.username;
+        
+    
+        // if(user){
+        //     // console.log("sending data", user.username)
+        //     // return(posts);
+        //     res.send(user.username)
+        // }
+
+    }
+)
+
+)
+
 
 export default router

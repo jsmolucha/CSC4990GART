@@ -47,6 +47,7 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     margin: '10px',
+    paddingRight: "10px",
     // marginBottom: '10px',
   },
   title: {
@@ -55,7 +56,16 @@ export default makeStyles({
   cardActions: {
     // padding: '0 16px 8px 16px',
     display: 'flex',
-    justifyContent: 'space-between',
+    // justifyContent: 'flex-end',
+    // justifyContent: 'space-evenly',
+  },
+  tagContainer: {
+    width: '100%',
+
+  },
+  postButton:{
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   modalImage:{
     width: "100%",

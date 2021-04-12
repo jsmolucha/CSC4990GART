@@ -1,30 +1,33 @@
 // import React from "react";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import useStyles from '../styles/main'
+// import useStyles from '../styles/main'
 import logo from "../images/placeholder.svg"
-import search from "../images/search.svg"
+// import search from "../images/search.svg"
 import { Link, useHistory, useLocation } from 'react-router-dom';
 // import {dispatch} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import * as actionType from '../../constants/actionTypes';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import InputBase from '@material-ui/core/InputBase';
+// import Paper from '@material-ui/core/Paper';
+// import Grid from '@material-ui/core/Grid';
+// import InputBase from '@material-ui/core/InputBase';
 import Hidden from '@material-ui/core/Hidden';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 // import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import PersonIcon from '@material-ui/icons/Person';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSmile, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
+// import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+// import PersonIcon from '@material-ui/icons/Person';
 
+//this
 const useStyle = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -79,7 +82,7 @@ const useStyle = makeStyles((theme) => ({
     logoText: {
         flexGrow: 1,
         // color: "#FFF",
-        color: "#3EB489",
+        color: "#a8ff78",
         fontSize: 40,
         // margin: "auto 0 auto 0",
         marginRight: theme.spacing(2),
@@ -107,7 +110,7 @@ const useStyle = makeStyles((theme) => ({
         background: "none",
         outline: "none",
         border: "none",
-        color: "#009874",
+        color: "#3EB489",
         fontSize: 25,
         fontWeight: 600,
         fontFamily: 'Inter',
@@ -137,7 +140,7 @@ const { API_URL } = require('../../constants/constants')
 
 const API = axios.create({ baseURL: `${API_URL}` });
 
-export default function NavBar({ props }) {
+export default function NavBar() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch();
     const location = useLocation();
@@ -145,21 +148,33 @@ export default function NavBar({ props }) {
 
     const logout = () => {
         dispatch({ type: actionType.LOGOUT });
-
         history.push('/');
-
         setUser(null);
     };
 
+ 
+    const profile = async () =>{
+        // let username =
+        // let user = JSON.parse(localStorage.getItem("profile"));//will change
+        console.log(user)
+        if(user?.result?.username){
+            history.push(`/@${user.result.username}`);
+        }
+    }
 
     const classes = useStyle();
 
     return (
         <>
-            {/* {console.log(user)} */}
+            {console.log(location.pathname)}
             <AppBar position="static" className={classes.appbar}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
+                    onClick={
+                        () =>{
+                            history.push("/main")
+                        }
+                    }>
                         <img className={classes.logo} src={logo} alt="" />
                     </IconButton>
                     <Hidden xsDown>
@@ -171,18 +186,20 @@ export default function NavBar({ props }) {
                     {user?.result ? (
                         <>
                             <Hidden xsDown>
-                                <button className={classes.accountBtn} >Account</button>
+                                <button className={classes.accountBtn} onClick={profile} >Account</button>
                                 <button className={classes.logOut} onClick={logout}>Logout</button>
                             </Hidden>
                             <Hidden smUp>
                                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
-                                    >
-                                    <PersonIcon></PersonIcon>
+                                    onClick={profile} >
+                                         <FontAwesomeIcon icon={faSmile}/>
+                                    {/* <PersonIcon></PersonIcon> */}
                                 </IconButton>
                                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
                                     onClick={logout}
                                 >
-                                    <ExitToAppIcon></ExitToAppIcon>
+                                     <FontAwesomeIcon icon={faSignOutAlt}/>
+                                    {/* <ExitToAppIcon></ExitToAppIcon> */}
                                 </IconButton>
                             </Hidden>
                         </>

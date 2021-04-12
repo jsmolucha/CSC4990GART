@@ -12,6 +12,7 @@ import search from "./images/search.svg"
 import Upload from "./upload/upload.jsx"
 
 import NavBar from './Nav/navbar'
+import MaintPost from './post/mainPost';
 
 /* We simply can use an array and loop and print each user */
 const Mainpage  = () => {
@@ -87,7 +88,7 @@ const Mainpage  = () => {
         </div>
       </div>
       <div id="middle"> 
-      
+      <MaintPost></MaintPost>
       </div>
       <div id="rightmost">
         <div id='profileContainer'>

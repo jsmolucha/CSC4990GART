@@ -32,10 +32,10 @@ export const getPosts = async (req, res) => {
 
 export const getPost = async (req, res) => {
   const { id } = req.params;
-  console.log(id)
+  // console.log(id)
   try {
     const post = await PostMessage.findById(id);
-    console.log(post)
+    // console.log(post)
     res.status(200).json(post);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -43,6 +43,7 @@ export const getPost = async (req, res) => {
 };
 
 import { upload } from "../utils/upload.js";
+import { generateKeyPairSync } from "crypto";
 const singleUpload = upload.single("file");
 // const formInput = upload.single("data");
 export const createPost = asyncHandler(async (req, res) => {
@@ -55,7 +56,7 @@ export const createPost = asyncHandler(async (req, res) => {
         });
     }
     const postData = req.body;
-    console.log(postData);
+    // console.log(postData);
     const newPostMessage = new PostMessage({
       ...postData,
       // creator: req.userID,
@@ -65,7 +66,7 @@ export const createPost = asyncHandler(async (req, res) => {
 
     try {
       await newPostMessage.save();
-      console.log(newPostMessage);
+      // console.log(newPostMessage);
       res.status(201).json(newPostMessage);
     } catch (error) {
       res.status(409).json({ message: error.message });
@@ -77,56 +78,83 @@ export const createPost = asyncHandler(async (req, res) => {
 
 
 
-
+const credentials = new aws.SharedIniFileCredentials({ profile: 'default' });
+aws.config.credentials = credentials;
 aws.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  accessSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
+  // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  // accessSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
   // signatureVersion: "v4",
   region: "us-east-2",
 });
 
 const s3 = new aws.S3();
 var bucketParams = {
-  Bucket : 'gartimagebucket2021'
+  Bucket: 'gartimagebucket2021'
 };
 
 export const updatePost = async (req, res) => {
   const { id } = req.params;
-  const { title, description, creator, filePath, tags } = req.body;
+  const { title, description, creator, filePath, tags, username } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No post with id: ${id}`);
 
-  const updatedPost = { creator, title, description, tags, filePath, _id: id };
+  const updatedPost = { creator, title, description, tags, filePath, username, _id: id };
 
   await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 
   res.json(updatedPost);
 };
 
-
-
+const getKeysViaFilePath = (filePath) =>{
+  let temp = filePath.split("/")
+  // console.log(temp[temp.length - 1])
+  return temp[temp.length - 1]
+}
+//research how to delete from bucket
 export const deletePost = async (req, res) => {
   const { id } = req.params;
+
+  const post = await PostMessage.findById(id);
+  let keys = getKeysViaFilePath(post.filePath)
+
+  // console.log("keys",keys)
+  var params = { Bucket: 'gartimagebucket2021', Key: keys};
+
+
+
+  s3.deleteObject(params, function (err, data) {
+    if (err) console.log(err, err.stack);  // error
+    else console.log("Image successfully delete from AWS BUCKET");                 // deleted
+  });
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No post with id: ${id}`);
 
   await PostMessage.findByIdAndRemove(id);
+  // console.log("sudo delete")
 
   res.json({ message: "Post deleted successfully." });
 };
 
-export const likePost = async (req, res) => {
+
+
+
+
+export const likePost = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!req.userID) {
+
+    // console.log("uhh")
     return res.json({ message: "Unauthenticated" });
   }
 
-  if (!mongoose.Types.ObjectId.isValid(id))
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    // console.log("like2")
     return res.status(404).send(`No post with id: ${id}`);
 
+  }
   const post = await PostMessage.findById(id);
 
   const index = post.likes.findIndex((id) => id === String(req.userID));
@@ -139,7 +167,8 @@ export const likePost = async (req, res) => {
   const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
     new: true,
   });
+  // console.log(updatePost)
   res.status(200).json(updatedPost);
-};
+})
 
 export default router;

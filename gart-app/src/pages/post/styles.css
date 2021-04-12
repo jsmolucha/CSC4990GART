@@ -31,3 +31,8 @@
 .welcomeMessage {
   margin: auto;
 }
+
+.welcomeHeader{
+  display: flex ;
+  justify-content: center;
+}
