@@ -8,7 +8,7 @@ import NavBar from '../Nav/navbar'
 
 // const API = axios.create({ baseURL: `${API_URL}` });
 
-class Post extends React.Component {
+class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -118,24 +118,5 @@ class Post extends React.Component {
   }
 }
 
-/*
-const Accountpage  = () => {
-  
-  let user = JSON.parse(localStorage.getItem('profile'));
-  //getData()
-  return (
-    <div className="accountCont">
-            <div className="accountcontainer">
-            <div className="accountHead">
-                <h1 id="welcomeHeader"> <span id="colorText">{user.result.username}'s Account</span> </h1>
-                <div id="userPosts">This is where the user posts will go</div>
-            </div>
-                <Link to="/" id="toMain">Back to Exploring</Link>
-            </div>
-            
 
-        </div>
-  );
-};
-*/
-export default Post;
+export default Profile;

@@ -82,7 +82,7 @@ const useStyle = makeStyles((theme) => ({
     logoText: {
         flexGrow: 1,
         // color: "#FFF",
-        color: "#e48100",
+        color: "#a8ff78",
         fontSize: 40,
         // margin: "auto 0 auto 0",
         marginRight: theme.spacing(2),
@@ -110,7 +110,7 @@ const useStyle = makeStyles((theme) => ({
         background: "none",
         outline: "none",
         border: "none",
-        color: "#009874",
+        color: "#3EB489",
         fontSize: 25,
         fontWeight: 600,
         fontFamily: 'Inter',
@@ -140,7 +140,7 @@ const { API_URL } = require('../../constants/constants')
 
 const API = axios.create({ baseURL: `${API_URL}` });
 
-export default function NavBar({ props }) {
+export default function NavBar() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch();
     const location = useLocation();

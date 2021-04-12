@@ -227,7 +227,10 @@ export default function EditPost({ currentId, setCurrentId, image }) {
                 variant="contained"
                 color="secondary"
                 // color="primary"
-                onClick={() => dispatch(deletePost(postData._id))}
+                onClick={() => {dispatch(deletePost(postData._id))
+                history.push('/delete')}
+                
+                }
               >
                 Delete
                 {/* <EditIcon fontSize="small" /> */}

@@ -6,6 +6,8 @@ import Masonry from "react-masonry-css";
 import styles from "./styles.css";
 import { Box, Container } from "@material-ui/core/";
 import { sizing } from '@material-ui/system';
+
+import NavBar from "../Nav/navbar"
 // import Permalink from './permaPost';
 // const { API_URL } = require('../constants/constants')
 
@@ -76,6 +78,7 @@ class Permalink extends React.Component {
     } else {
       return (
         <div className="profilePage">
+          <NavBar />
           <Box display="flex" height={"100%"}>
             {/* <Container m={2}> */}
               {/* <Post post={post} setCurrentId={setCurrentId} /> */}

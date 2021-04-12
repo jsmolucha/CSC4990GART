@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import { useDispatch } from "react-redux";
 import moment from "moment";
-import {  useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { likePost } from "../../../actions/post";
 // '../../../actions/posts';
 import useStyles from "./styles";
@@ -28,10 +28,11 @@ const PostCard = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
 
+  // const [isClick, setClick] = useState(false);
 
   const Likes = () => {
-    
-    
+
+
 
     if (post.likes.length > 0) {
       return post.likes.find((like) => parseInt(like) === parseInt(user?.result?.userID)) ? (
@@ -55,6 +56,12 @@ const PostCard = ({ post, setCurrentId }) => {
     );
 
   };
+
+  // const [buttonText, setButtonText] = useState(<Likes />);
+
+  // useEffect(()=>{
+  //   setButtonText(<Likes />)
+  // },[buttonText])
 
 
 
@@ -130,12 +137,15 @@ const PostCard = ({ post, setCurrentId }) => {
                 disabled={user?.result.userID === parseInt(post.creator)}
                 onClick={() => {
                   dispatch(likePost(post._id))
+                  // setClick(!isClick)
                   // refresh()
                 }
-              }
-            
+                }
+
               >
+
                 <Likes />
+
               </Button>
             </div>
           )}
