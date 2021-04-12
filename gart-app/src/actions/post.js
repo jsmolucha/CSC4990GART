@@ -41,6 +41,17 @@ export const createPost = (post, router) => async (dispatch) => {
   }
 };
 
+export const updatePost = (id, post, router) => async (dispatch) => {
+  try {
+    const { data } = await api.updatePost(id, post);
+
+    dispatch({ type: UPDATE, payload: data });
+    router.push(`/post/${data._id}`); 
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const likePost = (id) => async (dispatch) => {
   const user = JSON.parse(localStorage.getItem('profile'));
 

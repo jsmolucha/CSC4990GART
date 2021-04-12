@@ -10,7 +10,7 @@
 
 import express from "express";
 import mongoose from "mongoose";
-
+import aws from 'aws-sdk'
 import PostMessage from "../models/postMessage.js";
 import asyncHandler from "express-async-handler";
 
@@ -32,10 +32,10 @@ export const getPosts = async (req, res) => {
 
 export const getPost = async (req, res) => {
   const { id } = req.params;
-
+  console.log(id)
   try {
     const post = await PostMessage.findById(id);
-
+    console.log(post)
     res.status(200).json(post);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -73,6 +73,23 @@ export const createPost = asyncHandler(async (req, res) => {
   });
 });
 
+
+
+
+
+
+aws.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  accessSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
+  // signatureVersion: "v4",
+  region: "us-east-2",
+});
+
+const s3 = new aws.S3();
+var bucketParams = {
+  Bucket : 'gartimagebucket2021'
+};
+
 export const updatePost = async (req, res) => {
   const { id } = req.params;
   const { title, description, creator, filePath, tags } = req.body;
@@ -86,6 +103,8 @@ export const updatePost = async (req, res) => {
 
   res.json(updatedPost);
 };
+
+
 
 export const deletePost = async (req, res) => {
   const { id } = req.params;

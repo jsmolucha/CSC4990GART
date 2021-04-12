@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import "./styles/login.css";
+import asset1 from "./images/splash.svg"
 // import axios from "axios";
 
 // This hook returns a reference to the dispatch function from the Redux store. 
@@ -78,6 +79,7 @@ const Login = () => {
     
     return (
         <div className="loginCont">
+            
         <div className="logincontainer">
         <form
         className="loginForm"
@@ -99,9 +101,8 @@ const Login = () => {
                         name="psw"
                         required
                     />
-                    <button id="submitLogin" type="submit">
-                        Login
-          </button>
+
+                    <button id="submitLogin" className="rounded-corners-gradient-borders"  type="submit">Login</button>
                 </form>
                 <Link to="/register" id="noReg">
                     Not registered? Sign up here!{" "}

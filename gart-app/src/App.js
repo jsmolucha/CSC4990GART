@@ -17,7 +17,8 @@ import upload from "./pages/upload"
 import MyComponent from "./pages/account"
 import Post from './pages/post/post'
 import Permalink from './pages/post/permaPost'
-
+import Edit from "./pages/edit/edit"
+import NavBar from './pages/Nav/navbar'
 class App extends Component {
   render() {
     return (
@@ -32,6 +33,9 @@ class App extends Component {
         <Route exact path="/account" component={MyComponent} />
         <Route exact path="/@:username" component={Post} />
         <Route exact path="/post/:postId" component={Permalink} />
+        <Route exact path="/edit/:postId" component={Edit} />
+        <Route exact path="/nav" component={NavBar} />
+        
         <Redirect to="/404" /> 
         </Switch>
       </Router>
