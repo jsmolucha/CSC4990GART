@@ -12,6 +12,7 @@ import express from "express";
 import mongoose from "mongoose";
 import aws from 'aws-sdk'
 import PostMessage from "../models/postMessage.js";
+import User from "../models/users.js"
 import asyncHandler from "express-async-handler";
 
 import formidable from "formidable";
@@ -156,19 +157,25 @@ export const likePost = asyncHandler(async (req, res) => {
 
   }
   const post = await PostMessage.findById(id);
-
+  const liker = await User.findOne({"userID" : req.userID})
   const index = post.likes.findIndex((id) => id === String(req.userID));
 
+  // console.log(liker)
   if (index === -1) {
     post.likes.push(req.userID);
+    liker.likes.push(id)
   } else {
     post.likes = post.likes.filter((id) => id !== String(req.userID));
+    liker.likes = liker.likes.filter((postId) => postId !== String(id));
   }
   const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
     new: true,
   });
+  const updatedUser = await User.findByIdAndUpdate(liker._id, liker, {
+    new: true,
+  });
   // console.log(updatePost)
-  res.status(200).json(updatedPost);
+  res.status(200).json({updatedPost, updatedUser});
 })
 
 export default router;

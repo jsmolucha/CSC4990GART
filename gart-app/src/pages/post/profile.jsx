@@ -4,6 +4,12 @@ import PostCard from "./postCard/postCard";
 import Masonry from "react-masonry-css";
 import { Box, Container } from "@material-ui/core/";
 import NavBar from '../Nav/navbar'
+import FollowButton from './followButton'
+// import { useDispatch } from "react-redux";
+// import {
+//   Button
+// } from "@material-ui/core/";
+// import { followUser } from '../../actions/auth'
 // const { API_URL } = require('../constants/constants')
 
 // const API = axios.create({ baseURL: `${API_URL}` });
@@ -17,15 +23,32 @@ class Profile extends React.Component {
       images: [],
       owner: null,
       setCurrentId: null,
+      followers: [],
+      currentUsername: null,
+      followCount: null,
     };
   }
 
   componentDidMount() {
     const { username } = this.props.match.params;
-    console.log(username);
     let user = JSON.parse(localStorage.getItem("profile"));
-    // console.log("user:", user)
-    // console.log(this)
+
+    axios.get(`http://localhost:5000/api/accounts/follow/${username}`)
+      .then(
+        (res) => {
+          console.log(res.data, "response")
+          this.setState({
+            followers: res.data
+          });
+        },
+        (error) => {
+          console.log("error");
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
     axios
       .get(`http://localhost:5000/api/accounts/username/${username}`, {
         params: {
@@ -40,6 +63,9 @@ class Profile extends React.Component {
             images: res.data.reverse(),
             owner: username,
             setCurrentId: user.result.userID,
+            currentUsername: user?.result?.username,
+            followCount: this.state.followers.length
+            // followers: user?.result?.followers
           });
         },
         (error) => {
@@ -50,6 +76,9 @@ class Profile extends React.Component {
           });
         }
       );
+
+
+
   }
 
   render() {
@@ -72,7 +101,6 @@ class Profile extends React.Component {
       return (
         <div>
           Loading... ok
-          {/* <div> {console.log(this.state)}</div> */}
         </div>
       );
     } else {
@@ -81,15 +109,21 @@ class Profile extends React.Component {
           <NavBar props={this.state.setCurrentId}></NavBar>
           <Box height="100%" >
             <Box display="flex" justifyContent="center" m={2} p={1} >
-              {/* <Container justifyContent="center" m={2}> */}
-                <h1 className="welcomeMessage">@{this.state.owner}</h1>
-                {/* <h3>welcome</h3> */}
-              {/* </Container> */}
-            </Box>
+              <h1 className="welcomeMessage">@{this.state.owner}</h1>
+
+            </Box>  
+            {(this.state.owner != this.state.currentUsername) && (
+              <Box display="flex" justifyContent="center"  >
+                <FollowButton username={this.state.owner} followers={this.state.followers}
+                  userID={this.state.setCurrentId}  />
+              </Box>)}
             <Box display="flex" justifyContent="center" m={1} p={1} >
               {/* <Container justifyContent="center" m={2}> */}
-                {/* <h1 className="welcomeMessage">@{this.state.owner}</h1> */}
-                <h4>If we wanted to add user bio we can place it here</h4>
+              {/* <h1 className="welcomeMessage">@{this.state.owner}</h1> */}
+              <h4>this user has {this.state.followCount} {
+                (this.state.followCount=== 1) ? ("follower") : ("followers")
+              }</h4>
+              {/* <h4>If we wanted to add user bio we can place it here</h4> */}
               {/* </Container> */}
             </Box>
             <Container>

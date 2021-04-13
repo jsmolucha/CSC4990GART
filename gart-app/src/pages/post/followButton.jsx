@@ -1,37 +1,39 @@
-
-import React, { useEffect, useState } from "react";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faEdit, faHeart, faHippo, faInfoCircle, faPenNib } from "@fortawesome/free-solid-svg-icons";
-import { likePost } from "../../../actions/post";
-import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
-import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import IconButton from '@material-ui/core/IconButton';
-
-const FollowButton = ({ PID, likes, userID }) => {
+import {
+    Button
+} from "@material-ui/core/";
+import { followUser } from '../../actions/auth'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+const FollowButton = ({ username, followers, userID}) => {
     const dispatch = useDispatch();
-    const [likeStatus, setLikeStatus] = useState(true);
+    const [followStatus, setFollowStatus] = useState(true);
     const [load, setLoad] = useState(false)
 
 
 
-const Likes = () =>{
+const Follow = () =>{
 
 
         // console.log("status: " ,Boolean(followStatus))
-        if(likeStatus){
-            return <FavoriteRoundedIcon fontSize="large" />
+        if(followStatus){
+            return <>
+            <FontAwesomeIcon icon={faEye} size="lg" />
+            {/* <FontAwesomeIcon icon={faEye} size="lg" /> */}
+            
+            </>
         }else
-        return <FavoriteBorderRoundedIcon fontSize="large" />
+        return  <FontAwesomeIcon icon={faEyeSlash} size="lg" />
     }
 
  
     useEffect(() => {
-        // console.log(likeStatus)
+        console.log(followStatus)
         let status = false
 
-        if (likes > 0) {
-            if (Boolean(likes.find(
+        if (followers > 0) {
+            if (Boolean(followers.find(
                 (uid) => parseInt(uid) === parseInt(userID)
             ) ) ){
                 // console.log(">>>>")
@@ -45,7 +47,7 @@ const Likes = () =>{
         
         //  console.log("usereffect", status)
         //  console.log(followers)
-        setLikeStatus(status);
+        setFollowStatus(status);
         setLoad(true)
         // Follow()
     }, []);
@@ -55,13 +57,13 @@ const Likes = () =>{
     
 
     return (
-        <IconButton
-            size="small"
+        <Button
+            size="large"
             color="secondary"
             // disabled={user?.result.userID === parseInt(post.creator)}
             onClick={() => {
-                dispatch(likePost(PID))
-                setLikeStatus(!likeStatus)
+                dispatch(followUser(username))
+                setFollowStatus(!followStatus)
                 // Follow()
                 // setClick(!isClick)
                 // refresh()
@@ -71,11 +73,13 @@ const Likes = () =>{
         >
 
             {(load) && (
-                <Likes />
+                <Follow />
              )} 
-          
 
-        </IconButton>
+             {/* {} */}
+          {/* {s} */}
+
+        </Button>
     )
 }
 

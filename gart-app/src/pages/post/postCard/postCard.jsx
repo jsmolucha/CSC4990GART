@@ -20,7 +20,7 @@ import ModalImage from "react-modal-image";
 import "./fontFamily.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faHeart, faHippo, faInfoCircle, faPenNib } from "@fortawesome/free-solid-svg-icons";
-// import Heart from './Heart'
+import Heart from './Heart'
 
 const PostCard = ({ post, setCurrentId }) => {
   const history = useHistory();
@@ -131,7 +131,8 @@ const PostCard = ({ post, setCurrentId }) => {
             <div className={classes.likeoverlay}>
               {/* postId, userID , creator, likes */}
               {/* <Heart postId={post._id} userID={user?.result?.userID} creator={post.creator} likes={post.likes}  /> */}
-              <Button
+              <Heart PID={post._id} likes={post.likes} userID={user?.result?.userID} />
+              {/* <Button
                 size="small"
                 color="secondary"
                 disabled={user?.result.userID === parseInt(post.creator)}
@@ -146,7 +147,7 @@ const PostCard = ({ post, setCurrentId }) => {
 
                 <Likes />
 
-              </Button>
+              </Button> */}
             </div>
           )}
         </div>

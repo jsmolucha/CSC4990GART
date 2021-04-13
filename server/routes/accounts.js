@@ -6,7 +6,8 @@ const router = express.Router();
 
 // import 
 import asyncHandler from 'express-async-handler'; 
-
+import { followUser} from '../controllers/auth.js'
+import auth from "../middleware/auth.js";
 
 router.get('/:id', asyncHandler( async (req,res) => {
     console.log("I have been invoked")
@@ -20,6 +21,22 @@ router.get('/:id', asyncHandler( async (req,res) => {
         console.log("sending data")
         // return(posts);
         res.send(posts)
+
+    }
+
+}));
+router.get('/follow/:username', asyncHandler( async (req,res) => {
+    console.log("I have been invoked")
+    console.log(req.params);
+    let username = req.params.username;
+
+    let account = await users.findOne({ "username": username});
+    // console.log("posts", posts)
+
+    if(account){
+        console.log("sending data 2")
+        // return(posts);
+        res.send(account.followers)
 
     }
 
@@ -82,6 +99,9 @@ router.post('/getUsername', asyncHandler(
 )
 
 )
+
+//this route id used to follow users
+router.patch('/:username/followUser', auth, followUser);
 
 
 export default router

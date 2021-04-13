@@ -25,6 +25,8 @@ export const likePost = (id) => API.patch(`/api/post/${id}/likePost`);
 export const updatePost = (id, updatedPost) => API.patch(`/api/post/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/api/post/${id}`);
 
+export const followUser = (username) => API.patch(`/api/accounts/${username}/followUser`);
+
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
 //export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
 // export const signUp = (formData) => API.post('/user/signup', formData);
