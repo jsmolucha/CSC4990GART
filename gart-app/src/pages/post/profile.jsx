@@ -32,7 +32,7 @@ class Profile extends React.Component {
   componentDidMount() {
     const { username } = this.props.match.params;
     let user = JSON.parse(localStorage.getItem("profile"));
-
+    document.title = username
     axios.get(`http://localhost:5000/api/accounts/follow/${username}`)
       .then(
         (res) => {
@@ -106,6 +106,8 @@ class Profile extends React.Component {
     } else {
       return (
         <div className="profilePage">
+          {/* <title>{ this.state.owner }</title> */}
+
           <NavBar props={this.state.setCurrentId}></NavBar>
           <Box height="100%" >
             <Box display="flex" justifyContent="center" m={2} p={1} >
