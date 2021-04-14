@@ -20,6 +20,8 @@ import Permalink from './pages/post/permaPost'
 import Edit from "./pages/edit/edit"
 import NavBar from './pages/Nav/navbar'
 import Delete from './pages/delete'
+
+import LikedPost from './pages/post/likedPost'
 class App extends Component {
   render() {
     return (
@@ -37,6 +39,7 @@ class App extends Component {
         <Route exact path="/edit/:postId" component={Edit} />
         <Route exact path="/nav" component={NavBar} />
         <Route exact path="/delete" component={Delete} />
+        <Route exact path="/likes" component={LikedPost} />
         
         <Redirect to="/404" /> 
         </Switch>

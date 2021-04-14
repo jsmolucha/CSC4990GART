@@ -77,7 +77,8 @@ const Mainpage  = () => {
             <button id='explore'>Explore</button>
           </div>
           <div>
-            <button id='favorites'>Favorite Posts</button>
+            <button id='favorites'>
+              <Link to="/likes" id='loginlink'> Favorite Posts</Link></button>
           </div>
           <div>
             <button id='support'>Support</button>

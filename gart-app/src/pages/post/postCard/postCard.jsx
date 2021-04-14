@@ -102,7 +102,7 @@ const PostCard = ({ post, setCurrentId }) => {
           <div className={classes.details}>
             <Typography variant="body2" color="textSecondary" component="h2">
               {
-                post.tags.map((tag) => <>{`#${tag.trim()} `}</>)
+                post?.tags?.map((tag) => <>{`#${tag.trim()} `}</>)
               }
             </Typography>
           </div>
