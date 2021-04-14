@@ -12,7 +12,7 @@ import {
   Container,
   Grid,
   TextField,
-  withStyles,
+  // withStyles,
   Paper,
   Card,
   CardActions,
@@ -22,6 +22,7 @@ import {
 } from "@material-ui/core";
 // import { makeStyles } from "@material-ui/core/styles";
 import PublishIcon from "@material-ui/icons/Publish";
+
 
 export default function Upload({ currentId, setCurrentId }) {
   const { acceptedFiles } = useDropzone();
@@ -33,13 +34,14 @@ export default function Upload({ currentId, setCurrentId }) {
     tags: "",
     filePath: "",
     creator: "",
+    username: "",
   });
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
   //User and submit info
   const dispatch = useDispatch();
-  const location = useLocation();
+  // const location = useLocation();
   const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
@@ -68,7 +70,7 @@ export default function Upload({ currentId, setCurrentId }) {
 
   const clear = () => {
     // setCurrentId(0);
-    setPostData({ title: "", description: "", tags: "", filePath: "" });
+    setPostData({ title: "", description: "", tags: "" ,filePath: "" });
     setFile({});
     setPreviewSrc("");
   };
@@ -87,6 +89,7 @@ export default function Upload({ currentId, setCurrentId }) {
       formData.append("description", postData.description);
       formData.append("creator", user.result.userID);
       formData.append("tags", postData.tags);
+      formData.append("username", postData.username);
       await dispatch(createPost(formData, history));
       clear();
     }
@@ -138,6 +141,8 @@ export default function Upload({ currentId, setCurrentId }) {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleOnSubmit}
         onChange={handleInputChange}
+        onLoad={(e) =>
+          setPostData({ ...postData, username: user?.result.username})}
       >
         <Container maxWidth="sm">
           <Card className={classes.root}>
@@ -261,13 +266,9 @@ export default function Upload({ currentId, setCurrentId }) {
                     // multiline
                     value={postData.tags}
                     // rows={3}
-                    onChange={(e) =>
-                      setPostData({
-                        ...postData,
-                        tags: e.target.value.split(","),
-                      })
-                    }
+                    onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}
                   />
+                  
                 </Grid>
               </Grid>
             </CardContent>

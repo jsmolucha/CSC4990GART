@@ -24,9 +24,9 @@ import {
 import PublishIcon from "@material-ui/icons/Publish";
 
 export default function EditPost({ currentId, setCurrentId, image }) {
-  const { acceptedFiles } = useDropzone();
+  // const { acceptedFiles } = useDropzone();
 
-  const [dropper, setDropper] = useState({});
+  // const [dropper, setDropper] = useState({});
   const [postData, setPostData] = useState({
     ...image
   });
@@ -75,7 +75,8 @@ export default function EditPost({ currentId, setCurrentId, image }) {
     alert("submit");
     console.log(postData);
 
-    const data = { ...postData, creator: user.result.userID };
+    const data = { ...postData, creator: user.result.userID, username: user.result.username };
+    console.log(data)
     // if (file) {
     //   const formData = new FormData();
     //   formData.append("file", file, data);
@@ -226,7 +227,10 @@ export default function EditPost({ currentId, setCurrentId, image }) {
                 variant="contained"
                 color="secondary"
                 // color="primary"
-                onClick={() => dispatch(deletePost(postData._id))}
+                onClick={() => {dispatch(deletePost(postData._id))
+                history.push('/delete')}
+                
+                }
               >
                 Delete
                 {/* <EditIcon fontSize="small" /> */}

@@ -12,6 +12,7 @@ import search from "./images/search.svg"
 import Upload from "./upload/upload.jsx"
 
 import NavBar from './Nav/navbar'
+import MaintPost from './post/mainPost';
 
 /* We simply can use an array and loop and print each user */
 const Mainpage  = () => {
@@ -76,7 +77,8 @@ const Mainpage  = () => {
             <button id='explore'>Explore</button>
           </div>
           <div>
-            <button id='favorites'>Favorite Posts</button>
+            <button id='favorites'>
+              <Link to="/likes" id='loginlink'> Favorite Posts</Link></button>
           </div>
           <div>
             <button id='support'>Support</button>
@@ -87,7 +89,7 @@ const Mainpage  = () => {
         </div>
       </div>
       <div id="middle"> 
-      
+      <MaintPost></MaintPost>
       </div>
       <div id="rightmost">
         <div id='profileContainer'>

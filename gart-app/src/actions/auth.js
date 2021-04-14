@@ -4,9 +4,21 @@
 //if successfull then data = JSON then dispatch stores it (reducers/auth.js) in localstorage
 //Server is designed to send 400 status error to which is handled here
 
-import { AUTH, FETCH_ALL } from '../constants/actionTypes';
+import { AUTH, FETCH_ALL, LIKE } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 import { Redirect, Route } from 'react-router';
+
+
+// import { AUTH } from "../constants/actionTypes";
+// import * as api from "../api/index.js";
+// import {
+//   FETCH_ALL,
+//   CREATE,
+//   UPDATE,
+//   DELETE,
+//   LIKE,
+// } from "../constants/actionTypes";
+
 
 export const signin = (formData, router) => async (dispatch) => {
   try {
@@ -50,6 +62,20 @@ export const PrivateRoute = ({component: Component, ...rest}) => (
     />
 );
 
+
+export const followUser = (username) => async (dispatch) => {
+    const user = JSON.parse(localStorage.getItem('profile'));
+  
+    try {
+      //  console.log(user.token)
+      const { data } = await api.followUser(username, user?.token);
+    //   const { data } = await api.likePost(id, user?.token);
+  
+    //   dispatch({ type: LIKE, payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 // This is signup code from the video source 
 // export const signup = (formData, router) => async (dispatch) => {
 //   try {

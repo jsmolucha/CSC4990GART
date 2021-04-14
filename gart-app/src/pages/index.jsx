@@ -1,26 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/index.css"
-import logo from './images/placeholder.svg'
+import leftimage from "./images/comp1.svg"
 
 
 const Welcome = () => {
   return (
     
-    <div className="container">
-      
-      <div className="logotype">GART </div>
-      <div className="logopic">
-        <img className="logoImg" src={logo} alt=""/>
+    <div className="container-full">
+      <div className="container-left">
+        <div className="logo-name">GART </div>
+          <hr className="line-div"></hr> 
+        <div className="tag-line"> Join the hundreds of people sharing their passion for creating fan art!</div>
+        <div className="register">
+          <button className="register-button">
+            <Link to="/register" className="register">REGISTER</Link>
+          </button>
+          
+        </div>
+        <div className="login-link">
+          <Link to="/login" className="login">or log in with an existing account</Link>
+        </div>
+        
       </div>
-      <div className="slogan">A creative forum for gaming art </div>
-      <div className="loginflow">
-        <Link to="/login" className="headertext_li">LOGIN</Link>
+      <div className="container-right">
+        <img src={leftimage} alt=""/>
       </div>
-      <div className="signupflow">
-        <Link to="/register" className="headertext_su">SIGNUP</Link>
-      </div>
-      <div className="statementMain"> Join the hundreds of people sharing their passion for creating fan art!</div>
     </div>
     
   );
