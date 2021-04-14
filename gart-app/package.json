@@ -13,6 +13,8 @@
     "express-async-handler": "^1.1.4",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-dropzone": "^11.3.1",
