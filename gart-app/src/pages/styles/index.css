@@ -1,126 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
-/*{"Marigold":"f0a202","Tangerine":"f18805","Flame":"d95d39","Oxford Blue":"0e1428","Morning Blue":"7b9e89"} */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-.container {
-    background-size: 100% 100%;
-    background-image: url(./image.jpg), linear-gradient(rgba(128, 223, 166, 0.8),rgba(128, 223, 166, 0.8));
-    background-blend-mode: overlay;
+.container-full {
+    background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
     height: 100vh;
     width: 100vw;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows: auto;
     display: grid;
     grid-template-areas: 
-    "nav nav nav nav nav nav nav"
-    "logopic logo logo logo . slogan slogan"
-    "logopic logo logo logo . . ."
-    " . . . . . login ."
-    " . text text . signup . ."
-    ". . . . . . ."
+    "left right"
     ;
 }
-
-
- @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-} 
-
-.navigation {
-    grid-area: nav;
-}
-
-.logotype {
-    grid-area: logo;
-    background-color: rgb(240, 162, 2);
-    color: black;
-    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    font-family: 'Montserrat';
-    padding:20px 0 0 0;
-    font-weight: 600;
-    font-size: 13vw;
-}
-
-.logopic {
-    grid-area: logopic;
-    background-color: #f0a202;
-    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+.container-left {
+    grid-area: left;
+    margin-top: 18%;
 
 }
 
-.logoImg {
-    height: auto;
-    width: auto;
-    padding: 30px 0 0 0 ;
+.container-right {
+    grid-area: right;
+    margin-top: 5%;
 }
 
-.statementMain {
-    grid-area: text;
-    font-family: 'Roboto';
-    font-size: 35px;
-    font-size: 1.8vw;
-    background-color: #f18805;
-    color: white;
-    text-align: center;
-    padding: 25px 0 0 0 ;
-    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
-
+.logo-name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 9vw;
+    color: #FFFFFF;
+    margin-left: 5%;
 
 }
 
-.slogan {
-    grid-area: slogan;
-    text-align: center;
-    background-color: #f18805;
-    color: white;
-    padding: 30px 0 0 10px ;
-    font-family: 'Roboto';
-    font-size: 45px;
-    font-size: 2.3vw;
-    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
+.tag-line {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 1.9vw;
+    line-height: 2.29vw;
+    color: #FFFFFF;
+    width: 70%;
+    margin-left: 5%;
+    margin-bottom: 3% ;
+    text-align: left;
+
 }
 
-.loginflow, .signupflow {
-    grid-area: login;
-    background-color: #f0a202;
-    color: black;
-    text-align: center;
-    font-family: 'Roboto';
-    font-weight: 600;
-    font-size: 50px;
-    box-shadow: -6px 6px 6px rgba(0, 0, 0, 0.25);
-    transition: transform .5s;
-    padding-top: 55px;
+.line-div {
+    border: 3px solid #FFFFFF;
+    width: 65%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+}
+
+.register-button {
+    width: 20.365vw;
+    height: 5.052vw;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
     outline: none;
-
+    border: none;
+    margin-left: 5%;
+    transition: .3s ease;
 }
 
-.loginflow:hover, .signupflow:hover {
-    transform: scale(1.25); 
-
+.register-button:hover {
+    transform: scale(1.1);
 }
-
-.signupflow {
-    grid-area: signup;
-    font-family: 'Roboto';
-  
-}
-
-.headertext_su, .headertext_li  {
+.register {
     text-decoration: none;
-    color: #f9f7f7;
-    font-family: 'Roboto';
-
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.500vw;
+    color: #FFFFFF;
+    margin-bottom: 1%;
 }
 
-
-
+.login {
+    text-decoration: none;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 1.250vw;
+    color: #FFFFFF;
+    margin-left: 6.5%;
+    transition: .3s ease;
+}
+.login:hover {
+    color: #C4C4C4;
+}

@@ -13,6 +13,7 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    username: String,
     tags: [String],
     filePath: String,
     likes: { type: [String], default: [] },

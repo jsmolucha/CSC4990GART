@@ -42,7 +42,7 @@ const handleSubmit = asyncHandler(async (e) => {
 
             </div>
             <div className="regGreeting">
-                <h1 id="welcomeHeader">Welcome back,<span id="colorText"> creative!</span> </h1>
+                <h1 id="welcomeHeader">Start sharing your art<span id="colorText"> today!</span> </h1>
             </div>
 
         </div>
