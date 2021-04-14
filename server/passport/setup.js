@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt'
 import userAcc from '../models/users.js'
 import passport from 'passport'
-import LocalStrategy from 'passport-local'
+import  LocalStrategy from 'passport-local'
+const {Strategy} = LocalStrategy
 
 
 

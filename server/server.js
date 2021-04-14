@@ -31,6 +31,7 @@ mongoose.connect(process.env.DB_CONNECT, {
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); //changed bodyparser ->express -carlos
 app.use(cors())
+
 app.use(passport.initialize())
 app.use(passport.session())
 
