@@ -3,22 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600&display=swap');
 
-/*https://coolors.co/f0a202-f18805-d95d39-0e1428-7b9e89*/
-/*{"Marigold":"f0a202","Tangerine":"f18805","Flame":"d95d39","Oxford Blue":"0e1428","Morning Blue":"7b9e89"} */
-
-
 .loginCont {
    
-    background-color: #242c37;
-    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f6f5f7' fill-opacity='0.33'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-size: 75% 75%; 
+    background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
     height: 100vh;
     width: 100vw;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     display: grid;
     grid-template-areas:
     ". . . . ."
+    ". form greet greet ."
     ". form greet greet ."
     ". form greet greet ."
     ". . . . ."
@@ -26,18 +21,37 @@
 }
 
 #loginHeader {
-    font-size: 45px;
+    font-size: 3.750vw;
     color: white;
     font-family:'Inter';
-    margin-bottom: 5%;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 8%;
+}
+
+.helper-text {
+    font-family: 'Inter';
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2vw;
+    margin: 0;
+    text-align: center;
+
 }
 
 .loginGreeting {
     grid-area: greet;
-    background-color: #151A21;
-    border-radius: 0px 10px 10px 0px;
+    background-color: #FFF;
+    border-radius: 0px 20px 20px 0px;
     z-index: 1;
 
+}
+
+.image-2 {
+    display: block;
+    margin: 1.5% auto;
+    width: 65%;
+    height: auto;
 }
 
 #welcomeHeader {
@@ -62,14 +76,8 @@
     grid-area: form;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
-    border-radius: 10px 0 0 10px;
-    position: relative;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-
+    border-radius: 20px 0 0 20px;
+  
 }
 
 .loginBack {
@@ -80,62 +88,85 @@
 #uNameField, #pWordField {
     outline: none;
     border: none;
-    /* border-bottom: 2px solid black; */
-    background:#242c37;
-    border-radius: 10px;
-    padding-bottom: 5px;
-    padding-top: 10px;
-    transition-duration: 0.4s;
+    background:#FFF;
+    border-radius: 20px;
     font-family: 'Inter';
     font-weight: 300;
-    font-size: 15px;
-    margin: 0 1% 10% 0 ;
-    width: 250px;
-    height: 50px;
-    color: #B2BDCD;
-    text-indent: 10px;
+    font-size: 0.938vw;
+    width: 16vw;
+    height: 3.5vw;
+    color: rgba(0, 0, 0, 0.8);    
+    text-indent: 10px; 
+}
+
+#uNameField {
+    margin: 15% auto 0 auto;
+    display: block;
+}
+
+#pWordField { 
+    margin: 5% auto 0 auto;
+    display: block;
 }
 
 
 #uNameField::placeholder, #pWordField::placeholder {
-    font-size: 15px;
-    color: #B2BDCD;
+    font-size: 0.938vw;
+    color: rgba(0, 0, 0, 0.8);    
     text-align: left;
-    transition: 5s;
-    text-indent: 10px;
+    text-indent: 0.521vw;
     font-family: 'Inter';
 
-}
-
-#uNameField:focus, #pWordField:focus {
-    border-color: #3EB489;
 }
 
 #submitLogin {
-    padding: 10px 40px 10px 40px;
+    width: 8.229vw;
+    height: 3.5vw;
     border: none;
-    transition-duration: 0.4s;
-    border-radius: 10px;
+    border-radius: 20px;
     font-family: 'Inter';
     font-size: 20px;
-    margin: 1% 0 10% 0;
+    margin: 10% auto 5% auto;
+    display: block;
+    background: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.875vw;
+    color: white;
+    transition: .3s;
+    
 }
 
 #submitLogin:hover {
-    background-color: #3EB489;
-    color: white;
     
+    background: rgba(255, 255, 255, 0.2);
 }
 
 #noReg {
     text-decoration: none;
-    color: #151A21;
+    color: rgba(255, 255, 255, 0.5);
     transition-duration: 0.4s;
     font-family: 'Inter';
-
+    font-weight: 200;
+    margin: 0 22% ;
+    font-size: 0.938vw;
 }
 
 #noReg:hover {
-    color: #3EB489;
+    color: #C4C4C4;
 }
 
+@media only screen and (max-width: 600px) {
+    .loginCont {
+        background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr ;
+        grid-template-areas:
+        " . . . ."
+        ". form greet . "
+        ". . . ."
+    }
+}

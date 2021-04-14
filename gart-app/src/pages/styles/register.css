@@ -19,10 +19,12 @@
 }
     
 #signupHeader {
-    font-size: 45px;
+    font-size: 3.750vw;
     color: white;
-    font-family: 'Inter';
-    margin-bottom: 5%;
+    font-family:'Inter';
+    font-weight: 900;
+    text-align: center;
+    margin-top: 8%;
 }
 
 .regGreeting {
@@ -39,13 +41,6 @@
     background-color: rgba(255, 255, 255, .40);
     backdrop-filter: blur(8px);
     border-radius: 10px 0 0 10px;
-    position: relative;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-
 }
 
 #uName, #eMail, #pWord, #fullName{
