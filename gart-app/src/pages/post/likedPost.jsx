@@ -53,7 +53,7 @@ class LikedPost extends React.Component {
     render() {
         const { error, isLoaded, images } = this.state;
         const breakpointColumnsObj = {
-            default: 3,
+            default: 2,
             1100: 3,
             700: 2,
             500: 1,
@@ -75,24 +75,34 @@ class LikedPost extends React.Component {
             );
         } else {
             return (<>
-                <NavBar />
-                <Box>
+                <div className="profilePage">
 
-                <Masonry
-                    breakpointCols={breakpointColumnsObj}
-                    className="my-masonry-grid"
-                    columnClassName="my-masonry-grid_column"
-                    >
-                    {this.state.images.map((p) => {
-                        return (
-                            <div key={p._id} style={{ backgroundColor: "transparent" }}>
-                                <PostCard post={p} setCurrentId={this.state.setCurrentId} />
-                            </div>
-                        );
-                    })}
-                </Masonry>
+                    <NavBar />
+                    <Box>
+                        <Box height="100%" >
+                            <Box display="flex" justifyContent="center" m={2} p={1} >
+                                <h1>View Your Likes</h1>
+
+                            </Box>  </Box>
+                        <Container>
+
+                            <Masonry
+                                breakpointCols={breakpointColumnsObj}
+                                className="my-masonry-grid"
+                                columnClassName="my-masonry-grid_column"
+                            >
+                                {this.state.images.map((p) => {
+                                    return (
+                                        <div key={p._id} style={{ backgroundColor: "transparent" }}>
+                                            <PostCard post={p} setCurrentId={this.state.setCurrentId} />
+                                        </div>
+                                    );
+                                })}
+                            </Masonry>
+                        </Container>
                     </Box>
-                 </>)
+                </div>
+            </>)
 
         }
     }
