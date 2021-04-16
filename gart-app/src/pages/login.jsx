@@ -103,12 +103,12 @@ const Login = () => {
                         name="psw"
                         required
                     />
-
                     <button id="submitLogin" className="rounded-corners-gradient-borders"  type="submit">LOGIN</button>
                 </form>
-                <Link to="/register" id="noReg">
-                    New user? Register here!{" "}
-                </Link>
+                <div className="link-register">
+                    <Link to="/register" id="noReg">New user? Register here!{" "}</Link>
+                </div>
+                
             </div>
             <div className="loginGreeting">
                 <img src={comp2} alt="" className="image-2"/>
