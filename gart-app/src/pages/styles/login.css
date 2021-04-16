@@ -36,7 +36,6 @@
     font-size: 1.2vw;
     margin: 0;
     text-align: center;
-
 }
 
 .loginGreeting {
@@ -44,7 +43,6 @@
     background-color: #FFF;
     border-radius: 0px 20px 20px 0px;
     z-index: 1;
-
 }
 
 .image-2 {
@@ -61,28 +59,12 @@
     padding: 0 0 0 20px;
 }
 
-#colorText {
-    background: #a8ff78; 
-    background: -webkit-linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
-    background-image: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent;
-}
-
 .logincontainer {
     grid-area: form;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
     border-radius: 20px 0 0 20px;
   
-}
-
-.loginBack {
-    text-decoration: none;
-    color: #f38181 ;
 }
 
 #uNameField, #pWordField {
@@ -116,7 +98,6 @@
     text-align: left;
     text-indent: 0.521vw;
     font-family: 'Inter';
-
 }
 
 #submitLogin {
@@ -125,7 +106,7 @@
     border: none;
     border-radius: 20px;
     font-family: 'Inter';
-    font-size: 20px;
+    font-size: 1.042vw;
     margin: 10% auto 5% auto;
     display: block;
     background: rgba(255, 255, 255, 0.3);
@@ -138,7 +119,6 @@
 }
 
 #submitLogin:hover {
-    
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -148,25 +128,41 @@
     transition-duration: 0.4s;
     font-family: 'Inter';
     font-weight: 200;
-    margin: 0 22% ;
     font-size: 0.938vw;
+}
+
+.link-register {
+    display: flex;
+    justify-content: center;
 }
 
 #noReg:hover {
     color: #C4C4C4;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
     .loginCont {
         background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
         height: 100vh;
         width: 100vw;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr ;
         grid-template-rows: 1fr 1fr 1fr ;
         grid-template-areas:
-        " . . . ."
-        ". form greet . "
-        ". . . ."
+        " . . . "
+        ". form .  "
+        ". . . "
+    }
+
+    .loginGreeting {
+        display: none;
+    }
+
+    .logincontainer {
+        grid-area: form;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(8px);
+        border-radius: 20px 20px 20px 20px;
+      
     }
 }
