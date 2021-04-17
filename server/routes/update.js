@@ -3,7 +3,8 @@ import users from '../models/users.js'
 
 const router = express.Router();
 
-router.update('/update', auth, updateUser);
+router.post('/updateForm', loadUpdate);
+router.patch('/updateData', updateProfile)
 
 export default router;
 
