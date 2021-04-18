@@ -2,16 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
 .regCont {
-    background-color: #242c37;
-    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f6f5f7' fill-opacity='0.33'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-size: 75% 75%;
+    background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
     height: 100vh;
     width: 100vw;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     display: grid;
     grid-template-areas:
     ". . . . ."
+    ". form greet greet ."
     ". form greet greet ."
     ". form greet greet ."
     ". . . . ."
@@ -19,92 +18,137 @@
 }
     
 #signupHeader {
-    font-size: 45px;
+    font-size: 3.750vw;
     color: white;
-    font-family: 'Inter';
-    margin-bottom: 5%;
+    font-family:'Inter';
+    font-weight: 900;
+    text-align: center;
+    margin-top: 8%;
 }
 
 .regGreeting {
     grid-area: greet;
-    background-color: #151A21;
-    box-shadow:  0 1rem 1rem rgba(0, 0, 0, 0.25);
-    border-radius: 0px 10px 10px 0px;
+    background-color: #FFF;
+    border-radius: 0px 20px 20px 0px;
 
 }
 
 .regcontainer {
     grid-area: form;
-    box-shadow: -1rem 1rem 1rem rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, .40);
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
-    border-radius: 10px 0 0 10px;
-    position: relative;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+    border-radius: 20px 0 0 20px;
+  
+}
 
+.reg-image {
+    display: block;
+    margin: 1.5% auto;
+    width: 65%;
+    height: auto;
+}
+
+.helper-text-signup {
+    font-family: 'Inter';
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2vw;
+    margin: 0 0 5%;
+    text-align: center;
 }
 
 #uName, #eMail, #pWord, #fullName{
-   
     outline: none;
     border: none;
-    background:#242c37;
-    border-radius: 10px;
-    padding-bottom: 5px;
-    padding-top: 10px;
-    transition-duration: 0.4s;
+    background:#FFF;
+    border-radius: 20px;
     font-family: 'Inter';
     font-weight: 300;
-    font-size: 15px;
-    margin: 0 1% 5% 0 ;
-    width: 13.5vw;
+    font-size: 0.938vw;
+    width: 14.5vw;
     height: 2.5vw;
-    color: #B2BDCD;
+    color: rgba(0, 0, 0, 0.8);    
     text-indent: 10px;
+    display: block;
+    margin: 0 auto 5% auto;
+    
 }
 
 #uName::placeholder, #pWord::placeholder, #eMail::placeholder, #fullName::placeholder {
-    font-size: 15px;
-    color: #B2BDCD;
+    font-size: 0.781vw;
+    color: rgba(0, 0, 0, 0.8);    
     text-align: left;
-    transition: 5s;
     text-indent: 10px;
     font-family: 'Inter';
 
-
-}
-
-#uName:focus, #pWord:focus, #eMail:focus, #fullName:focus {
-    border-color: #3EB489;
 }
 
 #submitReg {
-    padding: .6vw 2vw .6vw 2vw;
+    width: 8.229vw;
+    height: 3.5vw;
     border: none;
-    transition-duration: 0.4s;
-    border-radius: 10px;
+    border-radius: 20px;
     font-family: 'Inter';
-    font-size: 20px;
+    font-size: 1.250vw;
+    font-weight: 900;
     margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    display: block;
+    margin: 0 auto 3% auto;
+    transition: .3s;
+
 }
 
 #submitReg:hover {
-    background-color: #3EB489;
-    color: black;
-    
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
 }
 
 #haveAcct {
     text-decoration: none;
-    color: black;
+    color: rgba(255, 255, 255, 0.5);
     transition-duration: 0.4s;
+    font-family: 'Inter';
+    font-weight: 200;
+    font-size: 0.938vw;
+   /* margin-left: 3.646vw; */
+}
+
+.link-login {
+    display: flex;
+    justify-content: center;
+    
 
 }
 
 #haveAcct:hover {
-    color: #3EB489;
+    color: #C4C4C4;
+}
+
+@media only screen and (max-width: 1000px) {
+    .regCont {
+        background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template-rows: 1fr 1fr 1fr ;
+        grid-template-areas:
+        " . . . "
+        ". form .  "
+        ". . . "
+    }
+
+    .regGreeting {
+        display: none;
+    }
+
+    .regcontainer {
+        grid-area: form;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(8px);
+        border-radius: 20px 20px 20px 20px;
+      
+    }
 }
