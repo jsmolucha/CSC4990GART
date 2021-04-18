@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import { authenticate } from '../actions/auth';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 import * as actionType from '../constants/actionTypes';
@@ -10,6 +11,7 @@ import upload from "./images/upload.svg"
 import logo from "./images/placeholder.svg"
 import search from "./images/search.svg"
 import Upload from "./upload/upload.jsx"
+import axios from 'axios'
 
 import NavBar from './Nav/navbar'
 import MaintPost from './post/mainPost';
@@ -21,15 +23,21 @@ const Mainpage  = () => {
   const location = useLocation();
   const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [loggedIn, setLoggedIn] = useState(false)
   const classes = useStyles();
   const logout = () => {
-
+    /*
     dispatch({ type: actionType.LOGOUT });
     history.push('/');
     setUser(null);
+    */
   };
 
   useEffect(() => {
+      authenticate().then(res => {setLoggedIn(res.data.authenticated)})
+
+
+    
     const token = user?.token;
 
     if (token) {
@@ -39,6 +47,7 @@ const Mainpage  = () => {
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
+  
   
   // const data = localStorage.getItem('profile')
   // const [value, setValue] = React.useState(

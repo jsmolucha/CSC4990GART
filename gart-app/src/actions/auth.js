@@ -68,6 +68,11 @@ export const signup = (formData, router) => async (dispatch) => {
       }
   };
 
+export const authenticate = () => {
+    const res =  api.authenticate()
+    console.log(res)
+}
+
 export const PrivateRoute = ({component: Component, ...rest}) => (
     <Route
     {...rest}

@@ -22,9 +22,20 @@ router.post("/login", (req,res,next) => {
             if (err) {
                 return res.status(400).json({errors: err})
             }
+            console.log(req.sessionID)
             return res.status(200).json({success: `logged in ${user.id}`})
         });
     })(req,res,next);
+})
+
+
+
+
+router.get('/authenticate', (req,res,next) => {
+    if(req.isAuthenticated()){
+        console.log(req.body)
+        return req.isAuthenticated()
+    }
 })
 
 export default router

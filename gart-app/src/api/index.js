@@ -31,4 +31,5 @@ export const followUser = (username) => API.patch(`/api/accounts/${username}/fol
 export const getLikedPost = (userID) => API.post(`/api/accounts/liked`, userID)
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
 //export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
+export const authenticate = () => API.get('/api/user/authenticate');
 export const signUp = (formData) => API.post('api/user/newUser', formData);
