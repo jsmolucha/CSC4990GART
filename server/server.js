@@ -65,7 +65,7 @@ app.use(function(req, res, next) {
 
 
 //Routes
-app.use('/api/user', testRoute);
+app.use('/api/user',authRoute);
 app.use("/api/post", postRoutes);
 app.use('/api/accounts', accRoutes)
 
