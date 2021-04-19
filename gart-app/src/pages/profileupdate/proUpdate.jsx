@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles/register.css"
+import "../styles/register.css"
 
-const registerpage  = () => {
+const Profileupdate  = () => {
   return (
     <div className="regCont">
             <div className="regcontainer">
@@ -26,4 +26,4 @@ const registerpage  = () => {
   );
 };
 
-export default registerpage;
+export default Profileupdate;
