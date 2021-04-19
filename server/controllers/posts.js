@@ -13,6 +13,7 @@ import mongoose from "mongoose";
 import aws from 'aws-sdk'
 import PostMessage from "../models/postMessage.js";
 import User from "../models/users.js"
+import Comment from "../models/comments.js"
 import asyncHandler from "express-async-handler";
 
 import formidable from "formidable";
@@ -139,9 +140,6 @@ export const deletePost = async (req, res) => {
 };
 
 
-
-
-
 export const likePost = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
@@ -176,6 +174,31 @@ export const likePost = asyncHandler(async (req, res) => {
   });
   // console.log(updatePost)
   res.status(200).json({updatedPost, updatedUser});
+})
+
+export const comment = asyncHandler(async (req, res) => {
+  const id = req.params
+  if (!req.userID) {
+
+    
+    return res.json({ message: "Unauthenticated" });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).send(`No post with id: ${id}`);
+  }
+
+  const post = await PostMessage.findById(id);
+  const comment = await Comment.findOne({"User" : req.userID})
+  const index = post.comments.findIndex((id) => id === String(req.userID));
+
+  if (index === -1) {
+    post.comments.push(comment.commentBody);
+    comment.likes.push(id)
+  } else {
+    post.likes = post.likes.filter((id) => id !== String(req.userID));
+    liker.likes = liker.likes.filter((postId) => postId !== String(id));
+  }
 })
 
 export default router;

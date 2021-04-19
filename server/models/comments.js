@@ -1,31 +1,22 @@
-var mongoose = require('mongoose');
+import mongoose from 'mongoose'
 var Schema = mongoose.Schema;
 var Comments = new Schema({
   commentID: {
     type: Schema.Types.ObjectId,
     required: true
   },
-  commentBy: {
-    type: String,
-    required: true
-  },
   commentBody: {
     type: String,
     required: true
   },
-  //This will reference the postID
-  onPost: {
-    type: Number,
-    required: true
-  },
   //This will reference the userID
   User: {
-    type: Schema.Types.ObjectId,
+    type: Number,
     required: true,
-    ref: 'User'
+    //ref: 'User'
   }
 });
 
-const comment = mongoose.model("Comment", Comments)
+const Comment = mongoose.model("Comment", Comments)
 
-export default comment;
+export default Comment;
