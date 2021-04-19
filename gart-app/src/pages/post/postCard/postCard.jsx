@@ -21,6 +21,7 @@ import "./fontFamily.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faHeart, faHippo, faInfoCircle, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import Heart from './Heart'
+import Comment from './comment'
 
 const PostCard = ({ post, setCurrentId }) => {
   const history = useHistory();
@@ -119,6 +120,7 @@ const PostCard = ({ post, setCurrentId }) => {
           </Button>
         )}
         <div className={classes.postButton}>
+        
 
           <IconButton edge="start" color="inherit" aria-label="menu"
             onClick={() => {
@@ -132,6 +134,7 @@ const PostCard = ({ post, setCurrentId }) => {
               {/* postId, userID , creator, likes */}
               {/* <Heart postId={post._id} userID={user?.result?.userID} creator={post.creator} likes={post.likes}  /> */}
               <Heart PID={post._id} likes={post.likes} userID={user?.result?.userID} />
+              <Comment PID = {post._id} userID={user?.result?.userID} />
               {/* <Button
                 size="small"
                 color="secondary"

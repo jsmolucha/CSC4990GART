@@ -144,7 +144,6 @@ export const likePost = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!req.userID) {
-
     // console.log("uhh")
     return res.json({ message: "Unauthenticated" });
   }
@@ -176,29 +175,43 @@ export const likePost = asyncHandler(async (req, res) => {
   res.status(200).json({updatedPost, updatedUser});
 })
 
-export const comment = asyncHandler(async (req, res) => {
-  const id = req.params
-  if (!req.userID) {
 
-    
+
+
+
+export const addComment = asyncHandler(async (req, res) => {
+  const {id} = req.params
+  let data = req.body
+  console.log(data)
+
+  if (!data.commentBy) {
+    //console.log("Not today")
     return res.json({ message: "Unauthenticated" });
+    
   }
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!mongoose.Types.ObjectId.isValid(data.onPost)) {
     return res.status(404).send(`No post with id: ${id}`);
   }
 
-  const post = await PostMessage.findById(id);
-  const comment = await Comment.findOne({"User" : req.userID})
-  const index = post.comments.findIndex((id) => id === String(req.userID));
 
-  if (index === -1) {
-    post.comments.push(comment.commentBody);
-    comment.likes.push(id)
-  } else {
-    post.likes = post.likes.filter((id) => id !== String(req.userID));
-    liker.likes = liker.likes.filter((postId) => postId !== String(id));
-  }
+  const comment = new Comment ({
+    ...data,
+
+  })
+
+  console.log(comment)
+  try {
+    await comment.save();
+    res.status(200).json({comment});
+} catch(err){
+    console.log(err);
+}
+
+  //console.log(post)
+ 
+  
+
 })
 
 export default router;

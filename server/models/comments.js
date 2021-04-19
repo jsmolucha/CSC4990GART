@@ -1,16 +1,16 @@
 import mongoose from 'mongoose'
 var Schema = mongoose.Schema;
 var Comments = new Schema({
-  commentID: {
-    type: Schema.Types.ObjectId,
+  comment: {
+    type: String,
     required: true
   },
-  commentBody: {
+  onPost: {
     type: String,
     required: true
   },
   //This will reference the userID
-  User: {
+  commentBy: {
     type: Number,
     required: true,
     //ref: 'User'

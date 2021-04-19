@@ -98,7 +98,6 @@ const Login = () => {
                         name="psw"
                         required
                     />
-
                     <button id="submitLogin" className="rounded-corners-gradient-borders"  type="submit">Login</button>
                 </form>
                 <Link to="/register" id="noReg">
