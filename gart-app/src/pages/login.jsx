@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux'
 import { Link, useHistory } from "react-router-dom";
 import { signin } from '../actions/auth';
 // import { AUTH } from '../constants/actionTypes';
+import comp2 from "./images/comp2.svg"
 
 //this may or may not be neccessary, tbd
 const asyncHandler = require("express-async-handler");
@@ -87,6 +88,7 @@ const Login = () => {
         onSubmit={handleSubmit}
         >
         <h1 id="loginHeader"> LOGIN</h1>
+        <p className="helper-text">to GART</p>
         <input
                         id="uNameField"
                         type="text"
@@ -101,17 +103,15 @@ const Login = () => {
                         name="psw"
                         required
                     />
-
-                    <button id="submitLogin" className="rounded-corners-gradient-borders"  type="submit">Login</button>
+                    <button id="submitLogin" className="rounded-corners-gradient-borders"  type="submit">LOGIN</button>
                 </form>
-                <Link to="/register" id="noReg">
-                    Not registered? Sign up here!{" "}
-                </Link>
+                <div className="link-register">
+                    <Link to="/register" id="noReg">New user? Register here!{" "}</Link>
+                </div>
+                
             </div>
             <div className="loginGreeting">
-                <h1 id="welcomeHeader">
-                    Welcome back,<span id="colorText"> creative!</span>{" "}
-                </h1>
+                <img src={comp2} alt="" className="image-2"/>
             </div>
         </div>
     );
