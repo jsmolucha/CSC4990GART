@@ -37,7 +37,8 @@ export const getPost = async (req, res) => {
   // console.log(id)
   try {
     const post = await PostMessage.findById(id);
-    // console.log(post)
+    const comments = await Comment.find({onPost: id})
+    //console.log('comment: ' + comments[0].comment)
     res.status(200).json(post);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -176,9 +177,6 @@ export const likePost = asyncHandler(async (req, res) => {
 })
 
 
-
-
-
 export const addComment = asyncHandler(async (req, res) => {
   const {id} = req.params
   let data = req.body
@@ -207,11 +205,7 @@ export const addComment = asyncHandler(async (req, res) => {
 } catch(err){
     console.log(err);
 }
-
-  //console.log(post)
  
-  
-
 })
 
 export default router;
