@@ -6,6 +6,12 @@ import authRoute from './routes/auth.js'
 import postRoutes from './routes/posts.js'
 import accRoutes from './routes/accounts.js'
 import updateRoutes from './routes/update.js'
+import testRoute from './routes/test.js'
+import passport from './passport/setup.js'
+import session from 'express-session'
+import MongoStore from 'connect-mongo'
+
+
 
 const app = express();
 const port = 5000;
@@ -31,6 +37,20 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true})); //changed bodyparser ->express -carlos
 app.use(cors())
 
+app.use(
+    session({
+      secret: "testing",
+      resave: false,
+      saveUninitialize: true,
+      store: MongoStore.create({mongoUrl:process.env.DB_CONNECT})
+    })
+)
+
+
+
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 app.use(function(req, res, next) {
 
@@ -46,7 +66,7 @@ app.use(function(req, res, next) {
 
 
 //Routes
-app.use('/api/user', authRoute);
+app.use('/api/user',authRoute);
 app.use("/api/post", postRoutes);
 app.use('/api/accounts', accRoutes);
 app.use('/api/update', updateRoutes);
@@ -54,6 +74,8 @@ app.use('/api/update', updateRoutes);
 app.get('/main', (req, res) => {
   res.send('mainpage');
 })
+
+
 
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

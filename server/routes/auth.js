@@ -17,13 +17,6 @@ import { registerValidation, loginValidation } from '../validation.js';
 import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';
 
-// const router = require('express').Router();
-// const userAcc = require('../models/users');
-// const bcrypt = require("bcrypt");
-// const { registerValidation, loginValidation } = require('../validation')
-// const jwt = require('jsonwebtoken');
-// const asyncHandler = require('express-async-handler')
-// const { APP_URL } = require('../utils/constants') //imports react url
 
 const router = express.Router();
 
@@ -51,6 +44,7 @@ router.post('/newUser', async (req, res) => {
         fullName: req.body.fname
     });
 
+    const token = jwt.sign({id: user.userID}, process.env.TOKEN_SECRET);
     //saving user to DB
     try {
         await user.save();
