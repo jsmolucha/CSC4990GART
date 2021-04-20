@@ -38,8 +38,8 @@ export const getPost = async (req, res) => {
   try {
     const post = await PostMessage.findById(id);
     const comments = await Comment.find({onPost: id})
-    //console.log('comment: ' + comments[0].comment)
-    res.status(200).json(post);
+    console.log('comment: ' + comments[0].comment)
+    res.status(200).json({posts: post, comments: comments});
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
