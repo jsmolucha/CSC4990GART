@@ -5,6 +5,7 @@ import cors from 'cors'
 import authRoute from './routes/auth.js'
 import postRoutes from './routes/posts.js'
 import accRoutes from './routes/accounts.js'
+import updateRoutes from './routes/update.js'
 
 const app = express();
 const port = 5000;
@@ -47,7 +48,8 @@ app.use(function(req, res, next) {
 //Routes
 app.use('/api/user', authRoute);
 app.use("/api/post", postRoutes);
-app.use('/api/accounts', accRoutes)
+app.use('/api/accounts', accRoutes);
+app.use('/api/update', updateRoutes);
 
 app.get('/main', (req, res) => {
   res.send('mainpage');

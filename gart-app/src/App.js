@@ -41,7 +41,7 @@ class App extends Component {
         <Route exact path="/nav" component={NavBar} />
         <Route exact path="/delete" component={Delete} />
         <Route exact path="/likes" component={LikedPost} />
-        <Route exact path="/profileUpdate" component={Profileupdate} />
+        <Route exact path="/@:username/profileUpdate" component={Profileupdate} />
         
         <Redirect to="/404" /> 
         </Switch>
