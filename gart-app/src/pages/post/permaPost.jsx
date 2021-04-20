@@ -20,6 +20,7 @@ class Permalink extends React.Component {
       error: null,
       isLoaded: false,
       post: {},
+      comments:{},
       owner: null,
       setCurrentId: null,
     };
@@ -39,10 +40,11 @@ class Permalink extends React.Component {
       })
       .then(
         (res) => {
-          // console.log(res.data,"response")
+           console.log(res.data,"response")
           this.setState({
             isLoaded: true,
-            post: res.data,
+            post: res.data.posts,
+            comments: res.data.comments,
             // owner: username,
             setCurrentId: user.result.userID,
           });

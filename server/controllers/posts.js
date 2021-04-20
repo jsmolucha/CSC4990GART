@@ -13,6 +13,7 @@ import mongoose from "mongoose";
 import aws from 'aws-sdk'
 import PostMessage from "../models/postMessage.js";
 import User from "../models/users.js"
+import Comment from "../models/comments.js"
 import asyncHandler from "express-async-handler";
 
 import formidable from "formidable";
@@ -36,8 +37,9 @@ export const getPost = async (req, res) => {
   // console.log(id)
   try {
     const post = await PostMessage.findById(id);
-    // console.log(post)
-    res.status(200).json(post);
+    const comments = await Comment.find({onPost: id})
+    console.log('comment: ' + comments[0].comment)
+    res.status(200).json({posts: post, comments: comments});
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -139,14 +141,10 @@ export const deletePost = async (req, res) => {
 };
 
 
-
-
-
 export const likePost = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!req.userID) {
-
     // console.log("uhh")
     return res.json({ message: "Unauthenticated" });
   }
@@ -176,6 +174,38 @@ export const likePost = asyncHandler(async (req, res) => {
   });
   // console.log(updatePost)
   res.status(200).json({updatedPost, updatedUser});
+})
+
+
+export const addComment = asyncHandler(async (req, res) => {
+  const {id} = req.params
+  let data = req.body
+  console.log(data)
+
+  if (!data.commentBy) {
+    //console.log("Not today")
+    return res.json({ message: "Unauthenticated" });
+    
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(data.onPost)) {
+    return res.status(404).send(`No post with id: ${id}`);
+  }
+
+
+  const comment = new Comment ({
+    ...data,
+
+  })
+
+  console.log(comment)
+  try {
+    await comment.save();
+    res.status(200).json({comment});
+} catch(err){
+    console.log(err);
+}
+ 
 })
 
 export default router;

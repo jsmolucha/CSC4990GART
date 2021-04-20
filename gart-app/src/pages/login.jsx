@@ -1,9 +1,7 @@
 
 import React, { useState } from "react";
 import "./styles/login.css";
-import asset1 from "./images/splash.svg"
 // import axios from "axios";
-
 // This hook returns a reference to the dispatch function from the Redux store. 
 // You may use it to dispatch actions as needed.
 import { useDispatch } from 'react-redux'
@@ -17,8 +15,6 @@ import comp2 from "./images/comp2.svg"
 
 //this may or may not be neccessary, tbd
 const asyncHandler = require("express-async-handler");
-
-const initialState = {  email: '', psw: ''};
 
 const Login = () => {
     const [user, setUser] = useState({});
@@ -34,6 +30,7 @@ const Login = () => {
     const handleSubmit = asyncHandler(async (e) => {
         e.preventDefault();
         dispatch( signin(user, history));  //signin( user data, router/history)
+        
 
         /** Old code, but useful to show logic on how log in works
          * New rendition splits the logic into multiple files

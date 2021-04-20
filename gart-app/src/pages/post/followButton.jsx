@@ -6,6 +6,7 @@ import {
 import { followUser } from '../../actions/auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
 const FollowButton = ({ username, followers, userID}) => {
     const dispatch = useDispatch();
     const [followStatus, setFollowStatus] = useState(true);

@@ -16,8 +16,6 @@ const FollowButton = ({ PID, likes, userID }) => {
 
 
 const Likes = () =>{
-
-
         // console.log("status: " ,Boolean(followStatus))
         if(likeStatus){
             return <FavoriteRoundedIcon fontSize="large" />
