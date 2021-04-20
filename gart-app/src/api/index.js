@@ -18,6 +18,7 @@ API.interceptors.request.use((req) => {
 
 
 export const fetchPosts = () => API.get('/api/post');
+export const fetchPost = (PID) => API.get(`/api/post/${PID}`)
 export const createPost = (newPost) => API.post('/api/post/', newPost,  {headers: {
   'Content-Type': 'multipart/form-data'
 }});
