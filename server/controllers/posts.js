@@ -38,7 +38,7 @@ export const getPost = async (req, res) => {
   try {
     const post = await PostMessage.findById(id);
     const comments = await Comment.find({onPost: id})
-    console.log('comment: ' + comments[0].comment)
+    //console.log('comment: ' + comments)
     res.status(200).json({posts: post, comments: comments});
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -143,7 +143,7 @@ export const deletePost = async (req, res) => {
 
 export const likePost = asyncHandler(async (req, res) => {
   const { id } = req.params;
-
+  //console.log(req.userID)
   if (!req.userID) {
     // console.log("uhh")
     return res.json({ message: "Unauthenticated" });
@@ -172,7 +172,7 @@ export const likePost = asyncHandler(async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(liker._id, liker, {
     new: true,
   });
-  // console.log(updatePost)
+  //console.log(updatedPost)
   res.status(200).json({updatedPost, updatedUser});
 })
 
@@ -198,7 +198,7 @@ export const addComment = asyncHandler(async (req, res) => {
 
   })
 
-  console.log(comment)
+  //console.log(comment)
   try {
     await comment.save();
     res.status(200).json({comment});
