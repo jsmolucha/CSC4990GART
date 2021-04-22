@@ -26,9 +26,9 @@
     height: 100vw;
     grid-template-areas: 
     "nav nav nav"
-    "left middle right";
+    "left middle middle";
     grid-template-rows: .05fr auto;
-    grid-template-columns:.75fr 3fr .75fr ;
+    grid-template-columns:.75fr 3fr ;
 }
 
 #leftmost, #middle, #rightmost, #navigation {
@@ -48,13 +48,6 @@
     z-index: 1;
 }
 
-#rightmost {
-    grid-area: right;
-    position: -webkit-sticky;
-    padding: 0 10px 0 10px;
-
-}
-
 #navigation {
     grid-area: nav;
     
@@ -72,7 +65,7 @@
 #welcomeContainer {
     background-color: #151A21;
     border-radius: 10px;
-    height: 33%;
+    height: 40%
 
 }
 

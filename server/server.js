@@ -48,6 +48,7 @@ app.use(function(req, res, next) {
 app.use('/api/user', authRoute);
 app.use("/api/post", postRoutes);
 app.use('/api/accounts', accRoutes)
+// app.use('/api/contests', contestPage)
 
 app.get('/main', (req, res) => {
   res.send('mainpage');

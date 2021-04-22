@@ -20,6 +20,7 @@ import Permalink from './pages/post/permaPost'
 import Edit from "./pages/edit/edit"
 import NavBar from './pages/Nav/navbar'
 import Delete from './pages/delete'
+import Contest from './pages/contests'
 
 import LikedPost from './pages/post/likedPost'
 class App extends Component {
@@ -40,7 +41,7 @@ class App extends Component {
         <Route exact path="/nav" component={NavBar} />
         <Route exact path="/delete" component={Delete} />
         <Route exact path="/likes" component={LikedPost} />
-        
+        <Route exact path="/contest" component={Contest} />
         <Redirect to="/404" /> 
         </Switch>
       </Router>
