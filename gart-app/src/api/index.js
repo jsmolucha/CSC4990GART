@@ -28,6 +28,8 @@ export const deletePost = (id) => API.delete(`/api/post/${id}`);
 
 export const followUser = (username) => API.patch(`/api/accounts/${username}/followUser`);
 
+export const searchPost = (query) => API.get(`/api/search/post/${query}`)
+export const searchUsername = (query) => API.get(`/api/search/users/${query}`)
 
 export const getLikedPost = (userID) => API.post(`/api/accounts/liked`, userID)
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
