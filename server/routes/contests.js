@@ -1,14 +1,15 @@
-/* import express from 'express'
+import express from 'express'
 import contest from '../models/contests.js'
 
 const router = express.Router() 
 
-router.post('/newContest', (req, res))
+router.post('/newContest', async (req, res) => {
+console.log(req.body)
 
+const data = req.body
 const cont = new contest({
-    contestID: Date.now(),
-    contestname: req.body.title,
-    category: req.body.category
+    createdAt: new Date().toISOString(),
+    ...data
 });
 
 try {
@@ -17,5 +18,6 @@ try {
 } catch (err) {
     console.log(err)
 }
+});
 
-export default router; */
+export default router;  

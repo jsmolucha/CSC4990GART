@@ -21,6 +21,7 @@ import Edit from "./pages/edit/edit"
 import NavBar from './pages/Nav/navbar'
 import Delete from './pages/delete'
 import Contest from './pages/contests'
+import ContestPage from "./pages/newcontest"
 
 import LikedPost from './pages/post/likedPost'
 class App extends Component {
@@ -42,6 +43,8 @@ class App extends Component {
         <Route exact path="/delete" component={Delete} />
         <Route exact path="/likes" component={LikedPost} />
         <Route exact path="/contest" component={Contest} />
+        <Route exact path="/contest/newcontest" component={ContestPage} />
+        {/* <Route exact path="/contest/:contestId" component={} /> */}
         <Redirect to="/404" /> 
         </Switch>
       </Router>

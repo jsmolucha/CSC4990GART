@@ -33,6 +33,6 @@ export const signIn = (formData) => API.post('api/user/login', formData); //axio
 //export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
 // export const signUp = (formData) => API.post('/user/signup', formData);
 
-export const createContest = (newContest) => API.post('/api/contests/', newContest, {headers: {
+export const createContest = (newContest) => API.post('/api/contests/newContest', newContest /* , {headers: {
   'Content-Type' : 'multipart/form-data'
-}});
+}} */);

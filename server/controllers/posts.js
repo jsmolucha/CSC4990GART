@@ -47,6 +47,7 @@ import { upload } from "../utils/upload.js";
 import { generateKeyPairSync } from "crypto";
 const singleUpload = upload.single("file");
 // const formInput = upload.single("data");
+
 export const createPost = asyncHandler(async (req, res) => {
   await singleUpload(req, res, async function (err) {
     if (err) {

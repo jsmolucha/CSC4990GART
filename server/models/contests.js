@@ -1,20 +1,19 @@
-/* import mongoose from 'mongoose'
+import mongoose from 'mongoose'
 
 const postContest = mongoose.Schema({
-    title: String,
+    title: String, 
     description: String,
     creator: {
         type: String,
         required: true,
     },
-    tags: [String],
-    likes: { type: [String], default: [] },
+    category: String,
     createdAt: {
         type: Date,
         default: new Date(),
     },
 })
 
-// const postContest = mongoose.model('postContest', postContest);
+const postcontest = mongoose.model('postContest', postContest);
 
-export default postContest; */
+export default postcontest; 
