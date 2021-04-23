@@ -22,6 +22,7 @@ const router = express.Router();
 // import { upload } from "../utils/upload.js";
 // const singleUpload = upload.single("image");
 
+//Get all posts
 export const getPosts = async (req, res) => {
   try {
     const postMessages = await PostMessage.find();
@@ -32,9 +33,10 @@ export const getPosts = async (req, res) => {
   }
 };
 
+//Get Posts by certain ID
+//Also Fetches the Comments on said post ID
 export const getPost = async (req, res) => {
   const { id } = req.params;
-  // console.log(id)
   try {
     const post = await PostMessage.findById(id);
     const comments = await Comment.find({onPost: id})
