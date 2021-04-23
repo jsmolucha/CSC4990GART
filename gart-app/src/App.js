@@ -20,8 +20,8 @@ import Permalink from './pages/post/permaPost'
 import Edit from "./pages/edit/edit"
 import NavBar from './pages/Nav/navbar'
 import Delete from './pages/delete'
-import Profileupdate from './pages/profileupdate/proUpdate'
-import Passwordupdate from './pages/profileupdate/passUpdate'
+import Contest from './pages/contest/contests'
+import ContestPage from "./pages/newcontest"
 
 import LikedPost from './pages/post/likedPost'
 import AccountDelete from "./pages/profileupdate/proDelete";
@@ -47,6 +47,9 @@ class App extends Component {
         <Route exact path="/@:username/passwordUpdate" component={Passwordupdate} />
         <Route exact path="/@:username/accountDelete" component={AccountDelete} />
         
+        <Route exact path="/contests" component={Contest} />
+        <Route exact path="/newcontest" component={ContestPage} />
+        {/* <Route exact path="/contest/:contestId" component={} /> */}
         <Redirect to="/404" /> 
         </Switch>
       </Router>

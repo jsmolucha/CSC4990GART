@@ -53,15 +53,6 @@ router.get('/username/:username', asyncHandler(async (req, res) => {
     console.log("creator: ", creator.userID)
 
     res.redirect(`${API_URL}/${creator.userID}`)
-    // let posts = await postMessage.find({ creator: creator.userID});
-    // console.log("posts", posts)
-
-    // if(posts){
-    //     console.log("sending data")
-    //     // return(posts);
-    //     res.send(posts)
-
-    // }
 
 }));
 
@@ -71,12 +62,7 @@ router.get('/creator/:id', asyncHandler(async (req, res) => {
 
     let user = await users.findOne({ userID: creator })
     console.log(user)
-    // user = user.username;
-
-
     if (user) {
-        // console.log("sending data", user.username)
-        // return(posts);
         res.send(user.username)
     }
 }))
@@ -84,18 +70,6 @@ router.get('/creator/:id', asyncHandler(async (req, res) => {
 router.post('/getUsername', asyncHandler(
     async (req, res) => {
         console.log(req.body)
-        // let id = req.body
-        // let user = await users.findOne({ userID: creator})
-        // console.log(user)
-        // // user = user.username;
-
-
-        // if(user){
-        //     // console.log("sending data", user.username)
-        //     // return(posts);
-        //     res.send(user.username)
-        // }
-
     }
 )
 

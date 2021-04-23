@@ -5,7 +5,7 @@
 
 .loginCont {
    
-    background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
+    background: linear-gradient(109.36deg, #d727dbb3 -4.44%, #0038ffb3 143.69%), #C4C4C4;
     height: 100vh;
     width: 100vw;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

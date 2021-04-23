@@ -17,19 +17,12 @@ import asyncHandler from "express-async-handler";
 const router = express.Router();
 
 export const followUser = asyncHandler(async (req, res) => {
-    const { username } = req.params;//Leader userId
-    // const id
+    const { username } = req.params; //Leader userId
   //req.userID ---> follower ID
     if (!req.userID) {
-      // console.log("uhh")
       return res.json({ message: "Unauthenticated" });
     }
   
-    // if (!mongoose.Types.ObjectId.isValid(id)) {
-    //   // console.log("like2")
-    //   return res.status(404).send(`No post with id: ${id}`);
-  
-    // }
 
     const leader = await User.findOne({"username" : username});
     const id = leader.userID
@@ -37,7 +30,6 @@ export const followUser = asyncHandler(async (req, res) => {
 
     const index = leader.followers.findIndex((uid) => uid === String(req.userID));
   
-    // console.log(liker)
     if (index === -1) {
       leader.followers.push(req.userID);
       follower.following.push(id)

@@ -91,28 +91,6 @@ const Mainpage  = () => {
       <div id="middle"> 
       <MaintPost></MaintPost>
       </div>
-      <div id="rightmost">
-        <div id='profileContainer'>
-          <div>
-          {user?.result ? (
-          <div>
-            <h1>You are logged in</h1>
-            <ul>
-              <li>{user?.result.username}</li>
-              <li>{user?.result._id}</li>
-            </ul>
-          </div>
-        ) : (
-          <div className='noLogin'>
-              <button id='loginButton'>
-                <Link to="/login" id='loginlink'> Sign In</Link>
-              </button>
-              <Link id='statusText' to='/register'>Create an account</Link>
-          </div>
-        )}
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

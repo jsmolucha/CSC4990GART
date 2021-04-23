@@ -11,7 +11,6 @@ import {
 
 
 
-
 export const createPost = (post, router) => async (dispatch) => {
   try {
     const { data } = await api.createPost(post);
@@ -90,3 +89,14 @@ export const deletePost = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const getPostLikes = (PID) => async(dispatch) =>{
+
+  try{
+    const {data} = await api.fetchPost(PID)
+    console.log("coming from ACTIONS",data)
+    return data.likes
+  }catch(error){
+    console.log(error)
+  }
+}
