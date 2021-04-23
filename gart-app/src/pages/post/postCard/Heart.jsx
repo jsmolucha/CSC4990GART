@@ -44,7 +44,7 @@ const FollowButton = ({ PID, likes, userID }) => {
                 status = true
                 // console.log("found")
             }
-        } else if (counter == 0) {
+        } else if (counter === 0) {
             status = false
         } else {
             status = likeStatus

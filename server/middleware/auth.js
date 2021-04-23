@@ -22,7 +22,7 @@ const auth = async (req, res, next) => {
 
     if (token && isCustomAuth) {      
       decodedData = jwt.verify(token, process.env.TOKEN_SECRET);
-
+      console.log(decodedData)
       req.userID = decodedData?.id;
 
     } else {

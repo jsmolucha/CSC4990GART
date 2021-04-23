@@ -83,9 +83,9 @@ const useStyle = makeStyles((theme) => ({
     logoText: {
         flexGrow: 1,
         // color: "#FFF",
-        color: "#a8ff78",
         fontSize: 40,
-        // margin: "auto 0 auto 0",
+        fontWeight: 700,
+        color: "#d727dbb3",
         marginRight: theme.spacing(2),
         // [theme.breakpoints.up('sm')]: {
         //     visibility: "none",
@@ -228,11 +228,6 @@ export default function NavBar() {
                         //     <Link id='statusText' to='/register'>Create an account</Link>
                         // </div>
                     )}
-
-
-
-
-
                 </Toolbar>
             </AppBar>
 

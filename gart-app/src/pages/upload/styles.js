@@ -7,12 +7,14 @@ export default makeStyles({
         alignItems: "center",
         padding: "20px",
         borderWidth: "2px",
-        borderRadius: "2px",
+        borderRadius: "20px",
         // border-color: 
         borderStyle: "dashed",
         backgroundColor: "#fafafa",
         color: "#bdbdbd",
         outline: "none",
+        cursor: "pointer",
+        textAlign: "center"
         // transition: "border", ".24s", "ease-in-out",
     },
     root: {
@@ -20,6 +22,7 @@ export default makeStyles({
         flexWrap: "wrap",
         minWidth: 275,
         maxWidth: 500,
+        borderRadius: "20px",
         // flexGrow: 1,
       },
       bullet: {
@@ -29,6 +32,7 @@ export default makeStyles({
       },
       title: {
         fontSize: 14,
+
       },
       pos: {
         marginBottom: 12,

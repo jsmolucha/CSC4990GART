@@ -22,6 +22,7 @@ export const fetchPost = (PID) => API.get(`/api/post/${PID}`)
 export const createPost = (newPost) => API.post('/api/post/', newPost,  {headers: {
   'Content-Type': 'multipart/form-data'
 }});
+
 export const likePost = (id) => API.patch(`/api/post/${id}/likePost`);
 export const updatePost = (id, updatedPost) => API.patch(`/api/post/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/api/post/${id}`);
@@ -30,8 +31,15 @@ export const followUser = (username) => API.patch(`/api/accounts/${username}/fol
 
 export const searchPost = (query) => API.get(`/api/search/post/${query}`)
 export const searchUsername = (query) => API.get(`/api/search/users/${query}`)
+export const addComment = (newComment) => API.post('/api/post/addComment', newComment)
 
 export const getLikedPost = (userID) => API.post(`/api/accounts/liked`, userID)
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
 //export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
 // export const signUp = (formData) => API.post('/user/signup', formData);
+
+export const createContest = (newContest) => API.post('/api/contests/newContest', newContest /* , {headers: {
+  'Content-Type' : 'multipart/form-data'
+}} */);
+export const authenticate = () => API.get('/api/user/authenticate');
+export const signUp = (formData) => API.post('api/user/newUser', formData);

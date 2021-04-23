@@ -6,6 +6,7 @@ import {
   UPDATE,
   DELETE,
   LIKE,
+  COMMENT
 } from "../constants/actionTypes";
 
 
@@ -63,6 +64,18 @@ export const likePost = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const addComment = (formData) => async (dispatch) => {
+  const user = JSON.parse(localStorage.getItem('profile'));
+  //console.log(formData)
+  try {
+    //  console.log(user.token)
+    const { data } = await api.addComment(formData, user?.token);
+    dispatch({ type: COMMENT, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const deletePost = (id) => async (dispatch) => {
   try {

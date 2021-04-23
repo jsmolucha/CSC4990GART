@@ -13,7 +13,7 @@
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
-    background-color: #3EB489;
+    background-color: rgba(215, 39, 219, 0.7);
   }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -26,12 +26,12 @@
     height: 100vw;
     grid-template-areas: 
     "nav nav nav"
-    "left middle right";
+    "left middle middle";
     grid-template-rows: .05fr auto;
-    grid-template-columns:.75fr 3fr .75fr ;
+    grid-template-columns:.75fr 3fr ;
 }
 
-#leftmost, #middle, #rightmost, #navigation {
+#leftmost, #middle, #navigation {
     background-color: #0B0E11;
     box-shadow: -6px 0px 6px rgba(0, 0, 0, 0.25),  6px 0px 6px rgba(0, 0, 0, 0.25) ;
 
@@ -46,13 +46,6 @@
 #middle {
     grid-area: middle;
     z-index: 1;
-}
-
-#rightmost {
-    grid-area: right;
-    position: -webkit-sticky;
-    padding: 0 10px 0 10px;
-
 }
 
 #navigation {
@@ -72,7 +65,10 @@
 #welcomeContainer {
     background-color: #151A21;
     border-radius: 10px;
-    height: 33%;
+    height: auto;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 
 }
 
@@ -91,14 +87,14 @@
     margin-bottom: 20px;
     padding: 0px;
     border-radius: 10px;
-    background-color: #3EB489;
+    background-color: rgba(215, 39, 219, 0.7);
     outline: none;
     border: none;
     transition: .3s ease-out;
 }
 
 #upload:hover {
-    background-color: #339672;
+    background-color: rgba(215, 39, 219, 0.7);
     transform: scale(1.2)
 
 }
@@ -168,7 +164,7 @@
 }
  
 #logoText {
-    color: #3EB489;
+    color: rgba(215, 39, 219, 0.7);
     font-size: 40px;
     margin: auto 0 auto 0;
 }
@@ -189,8 +185,9 @@
 
 }
 
-#explore:hover, #favorites:hover, #support:hover{
-    background-color: #339672;
+#explore:hover, #favorites:hover, #support:hover, #logout:hover{
+    background-color: rgba(215, 39, 219, 0.7);
+    cursor: pointer;
 }
 
 #favorites {

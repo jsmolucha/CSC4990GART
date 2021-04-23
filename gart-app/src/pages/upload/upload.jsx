@@ -36,6 +36,7 @@ export default function Upload({ currentId, setCurrentId }) {
     creator: "",
     username: "",
   });
+  
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
@@ -43,6 +44,7 @@ export default function Upload({ currentId, setCurrentId }) {
   const dispatch = useDispatch();
   // const location = useLocation();
   const history = useHistory();
+
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   //for dropzone and oth
@@ -231,7 +233,7 @@ export default function Upload({ currentId, setCurrentId }) {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    style={{ width: "100%" }}
+                    style={{ width: "100%", borderRadius: "20px" }}
                     label="Title"
                     variant="outlined"
                     name="title"
@@ -274,7 +276,7 @@ export default function Upload({ currentId, setCurrentId }) {
             </CardContent>
             <CardActions>
               <Button
-                style={{ margin: 5 }}
+                style={{ margin: 5, borderRadius: "10px" }}
                 variant="contained"
                 color="secondary"
                 type="submit"
@@ -283,7 +285,7 @@ export default function Upload({ currentId, setCurrentId }) {
               </Button>
               <Button
                 onClick={clear}
-                style={{ margin: 5 }}
+                style={{ margin: 5, borderRadius: "10px"  }}
                 variant="contained"
                 color="secondary"
               >

@@ -6,11 +6,9 @@ import Users from '../models/users.js'
 const router = express.Router();
 //this controller will send back all the post that the user likes based on the likes field on the user database
 export const userLikes = (async (req, res) => {
-    // console.log(">>>", req.body)
     const { userID } = req.body
-    // console.log("the userId is ", userID)
+
     try {
-        // const postMessages = await Users.find({"likes":});
         const user = await Users.findOne({ "userID": userID })
 
         
@@ -21,8 +19,7 @@ export const userLikes = (async (req, res) => {
             });
         })).then(foundPost => {
             foundPost = foundPost.filter(pid => pid !== null);
-            // console.log(foundPost);
-
+            
             res.status(200).json(foundPost);
         }).catch(err => {
             // handle error here
