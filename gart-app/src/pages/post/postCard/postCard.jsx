@@ -150,7 +150,7 @@ const PostCard = ({ post, setCurrentId }) => {
 
               
               <Heart PID={post._id} likes={post.likes} userID={user?.result?.userID} />
-              <Comment PID = {post._id} userID={user?.result?.userID} />
+              <Comment PID = {post._id} userID={user?.result?.userID} username={user?.result?.username} />
               {/* <Button
                 size="small"
                 color="secondary"

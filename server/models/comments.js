@@ -14,6 +14,9 @@ var Comments = new Schema({
     type: Number,
     required: true,
     //ref: 'User'
+  },
+  username: {
+    type: String,
   }
 });
 

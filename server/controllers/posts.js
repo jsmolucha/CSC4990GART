@@ -195,7 +195,6 @@ export const addComment = asyncHandler(async (req, res) => {
 
   const comment = new Comment ({
     ...data,
-
   })
 
   //console.log(comment)

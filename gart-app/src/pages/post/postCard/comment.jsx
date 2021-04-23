@@ -13,13 +13,14 @@ import {addComment} from "../../../actions/post"
 
 
 
-const CommentButton = ({ PID, userID }) => {
+const CommentButton = ({ PID, userID, username }) => {
     const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false)
     const [load, setLoad] = useState(false)
     const [comment, setComment] = useState({
         onPost: PID,
         commentBy: userID,
+        username: username,
         comment: ""
     });
 

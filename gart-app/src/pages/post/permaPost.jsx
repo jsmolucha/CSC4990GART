@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import PostCard from "./postCard/postCard";
+import CommentCard from "./postCard/commentDisplay";
 import Gallery from "react-grid-gallery";
 import Masonry from "react-masonry-css";
 import styles from "./styles.css";
@@ -26,6 +27,8 @@ class Permalink extends React.Component {
     };
   }
 
+  
+
   componentDidMount() {
     const { postId } = this.props.match.params;
     // console.log(username);
@@ -47,6 +50,7 @@ class Permalink extends React.Component {
             comments: res.data.comments,
             // owner: username,
             setCurrentId: user.result.userID,
+            //setCommentID: 
           });
         },
         (error) => {
@@ -61,6 +65,12 @@ class Permalink extends React.Component {
 
   render() {
     const { error, isLoaded, post } = this.state;
+    const breakpointColumnsObj = {
+      default: 3,
+      1100: 3,
+      700: 2,
+      500: 1,
+  };
    
     // return(<div onLoad={componenetDidMount()}>
     //   Loading
@@ -89,13 +99,19 @@ class Permalink extends React.Component {
               <PostCard
                 post={post}
                 setCurrentId={this.state.setCurrentId}
+                //comments = {this.state.comments}
               />
+               {this.state.comments.map((c) => {
+                        return (
+                          <Box m={1}>
+                            <div key={c._id} style={{ backgroundColor: "transparent" }}>
+                                <CommentCard comment={c} />
+                            </div>
+                            </Box>
+                        );
+                    })}
+              
               </Box>
-              {/* <img key={p._id} src={p.filePath} alt={`${p.title} by ${p.creator}`} />;
-        <h3>{`${p.title} by ${p.creator}`}</h3> */}
-
-              {/* {console.log(this.state.images)} */}
-            {/* </Container> */}
           </Box>
         </div>
       );
