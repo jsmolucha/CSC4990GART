@@ -1,13 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { signup } from '../actions/auth';
 import "./styles/register.css"
 import comp3 from "./images/comp3.svg"
 
-const registerpage  = () => {
+
+
+const asyncHandler = require("express-async-handler");
+
+
+
+const Registerpage  = () => {  
+    const [user, setUser] = useState({});
+//hir
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(user);
+};
+
+const handleSubmit = asyncHandler(async (e) => {
+    e.preventDefault();
+    dispatch( signup(user, history));
+})
+   
   return (
     <div className="regCont">
             <div className="regcontainer">
-                <form className="regForm" method="post" action = "api/user/newUser">
+                <form className="regForm"  onChange={handleChange} onSubmit={handleSubmit}>
                     <h1 id="signupHeader"> SIGNUP</h1>
                     <p className="helper-text-signup">for GART</p>
 
@@ -31,4 +54,4 @@ const registerpage  = () => {
   );
 };
 
-export default registerpage;
+export default Registerpage;

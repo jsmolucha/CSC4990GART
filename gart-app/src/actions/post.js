@@ -6,8 +6,8 @@ import {
   UPDATE,
   DELETE,
   LIKE,
+  COMMENT
 } from "../constants/actionTypes";
-
 
 
 
@@ -65,6 +65,18 @@ export const likePost = (id) => async (dispatch) => {
   }
 };
 
+export const addComment = (formData) => async (dispatch) => {
+  const user = JSON.parse(localStorage.getItem('profile'));
+  //console.log(formData)
+  try {
+    //  console.log(user.token)
+    const { data } = await api.addComment(formData, user?.token);
+    dispatch({ type: COMMENT, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const deletePost = (id) => async (dispatch) => {
   try {
     await await api.deletePost(id);
@@ -77,3 +89,14 @@ export const deletePost = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const getPostLikes = (PID) => async(dispatch) =>{
+
+  try{
+    const {data} = await api.fetchPost(PID)
+    console.log("coming from ACTIONS",data)
+    return data.likes
+  }catch(error){
+    console.log(error)
+  }
+}

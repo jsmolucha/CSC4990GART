@@ -18,6 +18,7 @@ API.interceptors.request.use((req) => {
 
 
 export const fetchPosts = () => API.get('/api/post');
+export const fetchPost = (PID) => API.get(`/api/post/${PID}`)
 export const createPost = (newPost) => API.post('/api/post/', newPost,  {headers: {
   'Content-Type': 'multipart/form-data'
 }});
@@ -27,6 +28,7 @@ export const updatePost = (id, updatedPost) => API.patch(`/api/post/${id}`, upda
 export const deletePost = (id) => API.delete(`/api/post/${id}`);
 
 export const followUser = (username) => API.patch(`/api/accounts/${username}/followUser`);
+export const addComment = (newComment) => API.post('/api/post/addComment', newComment)
 
 export const getLikedPost = (userID) => API.post(`/api/accounts/liked`, userID)
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
@@ -36,3 +38,5 @@ export const signIn = (formData) => API.post('api/user/login', formData); //axio
 export const createContest = (newContest) => API.post('/api/contests/newContest', newContest /* , {headers: {
   'Content-Type' : 'multipart/form-data'
 }} */);
+export const authenticate = () => API.get('/api/user/authenticate');
+export const signUp = (formData) => API.post('api/user/newUser', formData);

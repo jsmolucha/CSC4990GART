@@ -21,6 +21,7 @@ import "./fontFamily.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faHeart, faHippo, faInfoCircle, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import Heart from './Heart'
+import Comment from './comment'
 
 const PostCard = ({ post, setCurrentId }) => {
   const history = useHistory();
@@ -28,6 +29,20 @@ const PostCard = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
 
+  const [likeUser, setLikeUser] = useState(post.likes)
+
+  useEffect(() => {
+    // console.log(likeUser, post.title)
+    for(const uid of likeUser){
+      if(parseInt(uid) !== parseInt(user?.result?.userID)){
+          post.likes.shift()
+      }else{
+        // console.log(">>>",uid)
+        setLikeUser([uid])
+        break;
+      }
+  }
+  },[])
   // const [isClick, setClick] = useState(false);
 
   const Likes = () => {
@@ -119,6 +134,7 @@ const PostCard = ({ post, setCurrentId }) => {
           </Button>
         )}
         <div className={classes.postButton}>
+        
 
           <IconButton edge="start" color="inherit" aria-label="menu"
             onClick={() => {
@@ -131,7 +147,10 @@ const PostCard = ({ post, setCurrentId }) => {
             <div className={classes.likeoverlay}>
               {/* postId, userID , creator, likes */}
               {/* <Heart postId={post._id} userID={user?.result?.userID} creator={post.creator} likes={post.likes}  /> */}
+
+              
               <Heart PID={post._id} likes={post.likes} userID={user?.result?.userID} />
+              <Comment PID = {post._id} userID={user?.result?.userID} username={user?.result?.username} />
               {/* <Button
                 size="small"
                 color="secondary"
