@@ -17,6 +17,7 @@ API.interceptors.request.use((req) => {
 });
 
 
+//Each one of these is creating the request and is being called in the actions
 export const fetchPosts = () => API.get('/api/post');
 export const fetchPost = (PID) => API.get(`/api/post/${PID}`)
 export const createPost = (newPost) => API.post('/api/post/', newPost,  {headers: {
@@ -33,10 +34,7 @@ export const addComment = (newComment) => API.post('/api/post/addComment', newCo
 export const getLikedPost = (userID) => API.post(`/api/accounts/liked`, userID)
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
 //export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
-// export const signUp = (formData) => API.post('/user/signup', formData);
 
-export const createContest = (newContest) => API.post('/api/contests/newContest', newContest /* , {headers: {
-  'Content-Type' : 'multipart/form-data'
-}} */);
+export const createContest = (newContest) => API.post('/api/contests/newContest', newContest);
 export const authenticate = () => API.get('/api/user/authenticate');
 export const signUp = (formData) => API.post('api/user/newUser', formData);
