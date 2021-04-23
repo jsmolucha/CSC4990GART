@@ -20,4 +20,9 @@ try {
 }
 });
 
+router.get('/getContest', async (req, res) => {
+
+});
+
+
 export default router;  

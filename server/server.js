@@ -9,6 +9,7 @@ import testRoute from './routes/test.js'
 import passport from './passport/setup.js'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
+import contestPage from "./routes/contests.js"
 
 
 

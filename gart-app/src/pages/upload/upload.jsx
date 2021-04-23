@@ -36,6 +36,7 @@ export default function Upload({ currentId, setCurrentId }) {
     creator: "",
     username: "",
   });
+  
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
@@ -43,6 +44,7 @@ export default function Upload({ currentId, setCurrentId }) {
   const dispatch = useDispatch();
   // const location = useLocation();
   const history = useHistory();
+
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   //for dropzone and oth
