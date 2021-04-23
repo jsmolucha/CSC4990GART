@@ -1,6 +1,7 @@
 import * as api from '../api/index.js';
 import {Redirect, CREATE} from "../constants/actionTypes";
 
+
 export const createContest = (post, router) => async (dispatch) => {
     try{
         const {data} = await api.createContest(post);

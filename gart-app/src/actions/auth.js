@@ -9,17 +9,9 @@ import * as api from '../api/index.js';
 import { Redirect, Route } from 'react-router';
 
 
-// import { AUTH } from "../constants/actionTypes";
-// import * as api from "../api/index.js";
-// import {
-//   FETCH_ALL,
-//   CREATE,
-//   UPDATE,
-//   DELETE,
-//   LIKE,
-// } from "../constants/actionTypes";
 
 
+//Login Code
 export const signin = (formData, router) => async (dispatch) => {
   try {
     const { data } = await api.signIn(formData);
@@ -44,13 +36,15 @@ export const signin = (formData, router) => async (dispatch) => {
     }
 };
 
+
+//Signup code
 export const signup = (formData, router) => async (dispatch) => {
     try {
       const { data } = await api.signUp(formData);
       console.log(data)
       dispatch({ type: AUTH, data });
       alert("Success")
-      router.push('/main'); //redirect to main page
+      router.push('/login'); //redirect to main page
     } catch (error) {
           if (error.response) {
               // Request made and server responded
@@ -73,6 +67,8 @@ export const authenticate = () => {
     console.log(res)
 }
 
+
+//Protects certain routes that unauthenticated users should not be able to view
 export const PrivateRoute = ({component: Component, ...rest}) => (
     <Route
     {...rest}
@@ -96,24 +92,8 @@ export const followUser = (username) => async (dispatch) => {
     const user = JSON.parse(localStorage.getItem('profile'));
   
     try {
-      //  console.log(user.token)
       const { data } = await api.followUser(username, user?.token);
-    //   const { data } = await api.likePost(id, user?.token);
-  
-    //   dispatch({ type: LIKE, payload: data });
     } catch (error) {
       console.log(error);
     }
   };
-// This is signup code from the video source 
-// export const signup = (formData, router) => async (dispatch) => {
-//   try {
-//     const { data } = await api.signUp(formData);
-
-//     dispatch({ type: AUTH, data });
-
-//     router.push('/');
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };

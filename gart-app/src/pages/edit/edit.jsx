@@ -36,9 +36,9 @@ class Edit extends React.Component {
           console.log(res.data,"response")
           this.setState({
             isLoaded: true,
-            images: res.data,
-            owner: res.data?.creator,
-            setCurrentId: user.result.userID,
+            images: res.data.posts,
+            owner: res.data?.posts.creator,
+            setCurrentId: user?.result?.userID,
           });
         },
         (error) => {
