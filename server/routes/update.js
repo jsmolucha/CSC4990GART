@@ -2,6 +2,7 @@ import express from 'express';
 import users from '../models/users.js'
 import postMessage from '../models/postMessage.js'
 import asyncHandler from 'express-async-handler';
+import { updateValidation, passwordValidation, DeleteValidation} from '../validation.js';
 import bcrypt from 'bcrypt'
 
 const router = express.Router();
@@ -23,6 +24,9 @@ router.post('/populateInfo', async (req, res) => {
 router.post('/updateAccount', async (req, res) => {
     console.log("this route is working?")
     console.log(req.body)
+
+    const { error } = updateValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].message)
 
     try{
         const userData = await users.findById(req.body._id).update({"username" : req.body.username, "email" : req.body.email, "fullName" : req.body.fullName})
@@ -53,6 +57,10 @@ router.post('/updatePassword', async (req, res) => {
 
     try{
         let hashedPass = ""
+
+        const { error } = passwordValidation(req.body);
+        if (error) return res.status(400).send(error.details[0].message)
+
         //hashes the users password
         if (req.body.password != null) {
             hashedPass = await bcrypt.hash(req.body.password, 10);
@@ -84,6 +92,10 @@ router.post('/deleteAccount', async (req, res) => {
     console.log(req.body)
 
     try{
+
+        const { error } = DeleteValidation(req.body);
+        if (error) return res.status(400).send(error.details[0].message)
+
         const postData = await postMessage.deleteMany({"creator": req.body.userID})
         const userData = await users.findById(req.body._id).remove()
 
