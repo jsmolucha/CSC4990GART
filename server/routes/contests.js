@@ -21,8 +21,14 @@ try {
 });
 
 router.get('/getContest', async (req, res) => {
-
-});
+    try {
+        const contests = await contest.find();
+    
+        res.status(200).json(contests);
+      } catch (error) {
+        res.status(404).json({ message: error.message });
+      }
+    });
 
 
 export default router;  

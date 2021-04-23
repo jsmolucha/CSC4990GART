@@ -42,7 +42,7 @@ class App extends Component {
         <Route exact path="/nav" component={NavBar} />
         <Route exact path="/delete" component={Delete} />
         <Route exact path="/likes" component={LikedPost} />
-        <Route exact path="/contest" component={Contest} />
+        <Route exact path="/contests" component={Contest} />
         <Route exact path="/contest/newcontest" component={ContestPage} />
         {/* <Route exact path="/contest/:contestId" component={} /> */}
         <Redirect to="/404" /> 

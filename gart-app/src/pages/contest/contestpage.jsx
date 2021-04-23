@@ -27,6 +27,7 @@ const ContestCard = ({contest}) => {
           }             
                 <p> Description: {contest.description} </p>
                 <h3>{moment(contest.createdAt).fromNow()}</h3>
+                <Button>Join</Button> <Button>Show Posts</Button>
             </CardContent>
         </Card>
     )

@@ -19,10 +19,10 @@ class Contest extends React.Component {
     }
   
     componentDidMount() {
-      const { contestId } = this.props.match.params;
+      
       let user = JSON.parse(localStorage.getItem("profile"));
       axios
-        .get(`http://localhost:5000/api/contest/`, {
+        .get(`http://localhost:5000/api/contests/getContest`, {
           params: {
             // ID : user.result.userID
           },
@@ -47,7 +47,7 @@ class Contest extends React.Component {
     }
   
     render() {
-      const { error, isLoaded, post } = this.state;
+      const { error, isLoaded, Contest } = this.state;
    
       if (error) {
         return <div>Error: {error.message}</div>;
@@ -67,7 +67,7 @@ class Contest extends React.Component {
                           return (
                             <Box m={1}>
                               <div key={c._id} style={{ backgroundColor: "transparent" }}>
-                                  <ContestCard Contest={c} />
+                                  <ContestCard contest={c} />
                               </div>
                               </Box>
                           );
