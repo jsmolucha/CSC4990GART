@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Link } from "react-router-dom";
 import "../styles/register.css"
 
-const Profileupdate  = () => {
+const Passwordupdate  = () => {
     const [data, setData] = useState([]);  
     const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -28,15 +28,12 @@ const Profileupdate  = () => {
   return (
     <div className="regCont">
             <div className="regcontainer">
-                <form className="regForm" method="post" action = "http://localhost:5000/api/update/updateAccount" onChange={handleInputChange}>
+                <form className="regForm" method="post" action = "http://localhost:5000/api/update/updatePassword" onChange={handleInputChange}>
                     <h1 id="signupHeader"> Update Account</h1>
-                    <input id="fullName" type="text" placeholder="Full Name" value={data.fullName} name="fullName" required />
-                    <input id="uName" type="text" placeholder="Username" value={data.username}  name="username" required />
-                    <input id="eMail" type="text" placeholder="Email" value={data.email} name="email" required/>
+                    <input id="eMail" type="text" placeholder="Enter New Password Here" value={data.email} name="password" required/>
                     <input id="_id" type="hidden" value={data._id} name="_id" required/> 
 
-                    <button id="submitReg" type="submit">Update Info</button>
-                    <button id="submitReg" type="button">Change Password</button>
+                    <button id="submitReg" type="submit">Change Password</button>
                 </form>
 
             </div>
@@ -48,4 +45,4 @@ const Profileupdate  = () => {
   );
 };
 
-export default Profileupdate;
+export default Passwordupdate;

@@ -21,8 +21,10 @@ import Edit from "./pages/edit/edit"
 import NavBar from './pages/Nav/navbar'
 import Delete from './pages/delete'
 import Profileupdate from './pages/profileupdate/proUpdate'
+import Passwordupdate from './pages/profileupdate/passUpdate'
 
 import LikedPost from './pages/post/likedPost'
+import AccountDelete from "./pages/profileupdate/proDelete";
 class App extends Component {
   render() {
     return (
@@ -42,6 +44,8 @@ class App extends Component {
         <Route exact path="/delete" component={Delete} />
         <Route exact path="/likes" component={LikedPost} />
         <Route exact path="/@:username/profileUpdate" component={Profileupdate} />
+        <Route exact path="/@:username/passwordUpdate" component={Passwordupdate} />
+        <Route exact path="/@:username/accountDelete" component={AccountDelete} />
         
         <Redirect to="/404" /> 
         </Switch>
