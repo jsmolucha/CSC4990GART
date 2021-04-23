@@ -24,7 +24,10 @@ import Contest from './pages/contest/contests'
 import ContestPage from "./pages/newcontest"
 
 import LikedPost from './pages/post/likedPost'
-import AccountDelete from "./pages/profileupdate/proDelete";
+import AccountDelete from "./pages/profileupdate/proDelete"
+import Profileupdate from "./pages/profileupdate/proUpdate"
+import Passwordupdate from "./pages/profileupdate/passUpdate"
+
 class App extends Component {
   render() {
     return (
