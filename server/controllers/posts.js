@@ -77,10 +77,6 @@ export const createPost = asyncHandler(async (req, res) => {
   });
 });
 
-
-
-
-
 const credentials = new aws.SharedIniFileCredentials({ profile: 'default' });
 aws.config.credentials = credentials;
 aws.config.update({
