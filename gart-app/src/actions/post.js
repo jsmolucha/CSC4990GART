@@ -17,13 +17,9 @@ export const createPost = (post, router) => async (dispatch) => {
 
     console.log(data)
     console.log("Success");
-    //   alert("Im called")
     dispatch({ type: CREATE, payload: data });
     alert("Success")
-    //   console.log(data)
-    //   dispatch({ type: AUTH, data });
-    //   alert("Success")
-      router.push(`/post/${data._id}`); //redirect to main page
+    router.push(`/post/${data._id}`); //redirect to main page
   } catch (error) {
     if (error.response) {
       // Request made and server responded
@@ -41,6 +37,7 @@ export const createPost = (post, router) => async (dispatch) => {
   }
 };
 
+//Makes the request to the backend for updating a post
 export const updatePost = (id, post, router) => async (dispatch) => {
   try {
     const { data } = await api.updatePost(id, post);
@@ -52,11 +49,11 @@ export const updatePost = (id, post, router) => async (dispatch) => {
   }
 };
 
+//Makes the request to the backend for liking a post
 export const likePost = (id) => async (dispatch) => {
   const user = JSON.parse(localStorage.getItem('profile'));
 
   try {
-    //  console.log(user.token)
     const { data } = await api.likePost(id, user?.token);
 
     dispatch({ type: LIKE, payload: data });
@@ -65,11 +62,12 @@ export const likePost = (id) => async (dispatch) => {
   }
 };
 
+//Makes the request to the backend for commenting on a post
 export const addComment = (formData) => async (dispatch) => {
   const user = JSON.parse(localStorage.getItem('profile'));
-  //console.log(formData)
+
   try {
-    //  console.log(user.token)
+
     const { data } = await api.addComment(formData, user?.token);
     dispatch({ type: COMMENT, payload: data });
   } catch (error) {
@@ -77,6 +75,8 @@ export const addComment = (formData) => async (dispatch) => {
   }
 }
 
+
+//Makes the request to the backend for deleting a post
 export const deletePost = (id) => async (dispatch) => {
   try {
     await await api.deletePost(id);
@@ -90,6 +90,7 @@ export const deletePost = (id) => async (dispatch) => {
   }
 };
 
+//Makes the request to the backend for getting liked posts
 export const getPostLikes = (PID) => async(dispatch) =>{
 
   try{

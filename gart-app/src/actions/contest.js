@@ -2,6 +2,7 @@ import * as api from '../api/index.js';
 import {Redirect, CREATE} from "../constants/actionTypes";
 
 
+//Makes the request to create a contest on the backend
 export const createContest = (post, router) => async (dispatch) => {
     try{
         const {data} = await api.createContest(post);

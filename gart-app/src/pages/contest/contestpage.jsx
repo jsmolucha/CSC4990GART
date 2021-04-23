@@ -11,7 +11,7 @@ import moment from "moment";
 import { useHistory, useLocation } from "react-router-dom";
 
 
-
+//Creates the contest card container that displays/formats the created contest
 const ContestCard = ({contest}) => {
     const history = useHistory();
 
