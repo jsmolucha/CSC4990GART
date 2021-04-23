@@ -1,6 +1,8 @@
 import express from 'express';
 import users from '../models/users.js'
+import postMessage from '../models/postMessage.js'
 import asyncHandler from 'express-async-handler';
+import bcrypt from 'bcrypt'
 
 const router = express.Router();
 
@@ -31,13 +33,13 @@ router.post('/updateAccount', async (req, res) => {
     }
 });
 
-router.get('/changePassLoad', async (req, res) => {
+router.post('/populatePass', async (req, res) => {
     console.log(req.body)
     console.log("dunno")
     const{userID} = req.body
     console.log(userID)
     try{
-        const userData = await users.findOne({"userID": userID}).select({ "_id" : 1})
+        const userData = await users.findOne({"userID": userID}).select({"_id" : 1,"username" : 1,})
         console.log(userData)
         res.json(userData)
     }catch(error){
@@ -50,13 +52,48 @@ router.post('/updatePassword', async (req, res) => {
     console.log(req.body)
 
     try{
-        const userData = await users.findById(req.body._id).update({"username" : req.body.username, "email" : req.body.email, "fullName" : req.body.fullName})
+        let hashedPass = ""
+        //hashes the users password
+        if (req.body.password != null) {
+            hashedPass = await bcrypt.hash(req.body.password, 10);
+        }
+        const userData = await users.findById(req.body._id).update({"password" : hashedPass})
 
         res.redirect(`http://localhost:3000/@${req.body.username}`)
     }catch(error){
         console.log(error)
     }
 });
+
+router.post('/populateDelete', async (req, res) => {
+    console.log(req.body)
+    console.log("dunno")
+    const{userID} = req.body
+    console.log(userID)
+    try{
+        const userData = await users.findOne({"userID": userID}).select({"_id" : 1,"userID": 1,"username" : 1})
+        console.log(userData)
+        res.json(userData)
+    }catch(error){
+        console.log(error)
+    }
+});
+
+router.post('/deleteAccount', async (req, res) => {
+    console.log("this route is working?")
+    console.log(req.body)
+
+    try{
+        const postData = await postMessage.deleteMany({"creator": req.body.userID})
+        const userData = await users.findById(req.body._id).remove()
+
+        res.redirect(`http://localhost:3000`)
+    }catch(error){
+        console.log(error)
+    }
+});
+
+
 
 export default router;
 

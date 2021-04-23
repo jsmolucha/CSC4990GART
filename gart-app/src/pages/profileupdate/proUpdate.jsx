@@ -36,7 +36,9 @@ const Profileupdate  = () => {
                     <input id="_id" type="hidden" value={data._id} name="_id" required/> 
 
                     <button id="submitReg" type="submit">Update Info</button>
-                    <button id="submitReg" type="button">Change Password</button>
+                    <Link to="/@:username/passwordUpdate" id="haveAcct">Password Change Here.</Link>
+                    <div></div>
+                    <Link to="/@:username/accountDelete" id="haveAcct">Don't like us any more. Delete Account Here.</Link>
                 </form>
 
             </div>

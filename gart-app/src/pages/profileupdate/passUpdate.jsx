@@ -12,7 +12,7 @@ const Passwordupdate  = () => {
         console.log(user?.result?.userID)
         await
         Axios  
-            .post("http://localhost:5000/api/update/populateInfo", {
+            .post("http://localhost:5000/api/update/populatePass", {
                 "userID" : user?.result?.userID
               })  
             .then(result => {setData(result.data)
@@ -30,8 +30,9 @@ const Passwordupdate  = () => {
             <div className="regcontainer">
                 <form className="regForm" method="post" action = "http://localhost:5000/api/update/updatePassword" onChange={handleInputChange}>
                     <h1 id="signupHeader"> Update Account</h1>
-                    <input id="eMail" type="text" placeholder="Enter New Password Here" value={data.email} name="password" required/>
+                    <input id="eMail" type="password" placeholder="Enter New Password Here"  name="password" required/>
                     <input id="_id" type="hidden" value={data._id} name="_id" required/> 
+                    <input id="username" type="hidden" value={data.username} name="username" required/> 
 
                     <button id="submitReg" type="submit">Change Password</button>
                 </form>

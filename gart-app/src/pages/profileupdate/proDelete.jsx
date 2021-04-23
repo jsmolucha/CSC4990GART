@@ -12,7 +12,7 @@ const AccountDelete  = () => {
         console.log(user?.result?.userID)
         await
         Axios  
-            .post("http://localhost:5000/api/update/populateInfo", {
+            .post("http://localhost:5000/api/update/populateDelete", {
                 "userID" : user?.result?.userID
               })  
             .then(result => {setData(result.data)
@@ -31,6 +31,8 @@ const AccountDelete  = () => {
                 <form className="regForm" method="post" action = "http://localhost:5000/api/update/deleteAccount" onChange={handleInputChange}>
                     <h1 id="signupHeader"> Delete Account</h1>
                     <input id="_id" type="hidden" value={data._id} name="_id" required/> 
+                    <input id="userID" type="hidden" value={data.userID} name="userID" required/> 
+                    <input id="username" type="hidden" value={data.username} name="username" required/> 
 
                     <button id="submitReg" type="submit">Delete Account</button>
                 </form>
