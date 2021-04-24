@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600&display=swap');
+root{
+  height: auto;
+}
 .my-masonry-grid {
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */
@@ -17,8 +20,10 @@
     margin-bottom: 30px;
   }
   .profilePage {
+    height: auto;
     font-family: 'Inter';
-    color: rgb(146, 255, 222);
+    /* color: rgb(146, 255, 222); */
+    color: rgb(147,112,219);
     background-color: #151A21;
   }
   .welcomeContainer {

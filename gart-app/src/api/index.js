@@ -41,5 +41,7 @@ export const signIn = (formData) => API.post('api/user/login', formData); //axio
 export const createContest = (newContest) => API.post('/api/contests/newContest', newContest /* , {headers: {
   'Content-Type' : 'multipart/form-data'
 }} */);
+
+export const getSingleContest = (contestId) => API.get(`/api/contests/getSingleContest/${contestId}`)
 export const authenticate = () => API.get('/api/user/authenticate');
 export const signUp = (formData) => API.post('api/user/newUser', formData);

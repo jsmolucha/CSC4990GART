@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600&display=swap');
+.registerPage {
+    height: auto;
+    font-family: 'Inter';
+    color: rgb(146, 255, 222);
+    background-color: #151A21;
+  }

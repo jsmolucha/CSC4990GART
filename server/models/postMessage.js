@@ -22,6 +22,7 @@ const postSchema = mongoose.Schema({
         type: Date,
         default: new Date(),
     },
+    registrationID: String,
 })
 
 const PostMessage = mongoose.model('PostMessage', postSchema);

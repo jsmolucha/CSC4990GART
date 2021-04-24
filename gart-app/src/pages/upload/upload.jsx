@@ -24,7 +24,7 @@ import {
 import PublishIcon from "@material-ui/icons/Publish";
 
 
-export default function Upload({ currentId, setCurrentId }) {
+export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
   const { acceptedFiles } = useDropzone();
 
   const [dropper, setDropper] = useState({});
@@ -35,6 +35,7 @@ export default function Upload({ currentId, setCurrentId }) {
     filePath: "",
     creator: "",
     username: "",
+    registrationID: "",
   });
   
   const post = useSelector((state) =>
@@ -92,6 +93,7 @@ export default function Upload({ currentId, setCurrentId }) {
       formData.append("creator", user.result.userID);
       formData.append("tags", postData.tags);
       formData.append("username", postData.username);
+      formData.append("registrationID", postData.registrationID);
       await dispatch(createPost(formData, history));
       clear();
     }
@@ -144,7 +146,7 @@ export default function Upload({ currentId, setCurrentId }) {
         onSubmit={handleOnSubmit}
         onChange={handleInputChange}
         onLoad={(e) =>
-          setPostData({ ...postData, username: user?.result.username})}
+          setPostData({ ...postData, username: user?.result.username, registrationID: contestId})}
       >
         <Container maxWidth="sm">
           <Card className={classes.root}>
@@ -155,6 +157,16 @@ export default function Upload({ currentId, setCurrentId }) {
                 gutterBottom
               >
                 Published as @{user?.result.username}
+
+
+              </Typography>
+            <Typography
+                className={classes.title}
+                color="textSecondary"
+                gutterBottom
+              >
+
+            Submission for Contest #{contestId}
               </Typography>
               <Grid container alignItems="flex-start" spacing={3} mt={2}>
                 <Grid item sm={12}>

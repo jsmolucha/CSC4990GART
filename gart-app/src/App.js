@@ -23,6 +23,9 @@ import Delete from './pages/delete'
 import Search from './pages/search/searchPage'
 import Contest from './pages/contest/contests'
 import ContestPage from "./pages/newcontest"
+import PermaContest from "./pages/contest/contestEntry/permaContest"
+import Submission from "./pages/contest/contestEntry/submissions"
+
 
 import LikedPost from './pages/post/likedPost'
 class App extends Component {
@@ -46,8 +49,11 @@ class App extends Component {
         <Route exact path="/search/:query" component={Search} />
 
         
-        <Route exact path="/contests" component={Contest} />
+        <Route exact path="/contests" component={Contest} /> 
         <Route exact path="/newcontest" component={ContestPage} />
+        <Route exact path="/constest-detail/:contestId" component={PermaContest} />
+        <Route exact path="/constest-submissions/:contestId" component={Submission} />
+
         {/* <Route exact path="/contest/:contestId" component={} /> */}
         <Redirect to="/404" /> 
         </Switch>
