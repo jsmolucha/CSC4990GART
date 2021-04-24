@@ -85,7 +85,7 @@ class Profile extends React.Component {
             isLoaded: true,
             images: res.data.reverse(),
             owner: username,
-            setCurrentId: user.result.userID,
+            setCurrentId: user?.result?.userID,
             currentUsername: user?.result?.username,
             followCount: this.state.followers.length
             // followers: user?.result?.followers

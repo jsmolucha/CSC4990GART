@@ -17,13 +17,13 @@ import "./card.scss"
 import FollowButton from "../../post/followButton";
 const UserCard = ({ username, currentUser }) => {
     const history = useHistory()
-
+    
     return (
         <>
             {console.log(">>>", username)}
             <div className="card">
                 <div className="card-avatar">
-                    {(username?.username != currentUser) ? (<div className="item">
+                    {(username?.username != currentUser  ) ? (<div className="item">
                         <FollowButton username={username?.username} followers={username?.followers} />
 
                     </div>) : (<FontAwesomeIcon icon={faIcons} size="5x" />)}
