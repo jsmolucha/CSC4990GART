@@ -160,14 +160,15 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
 
 
               </Typography>
-            <Typography
+
+            {(contestId != 0) && (<Typography
                 className={classes.title}
                 color="textSecondary"
                 gutterBottom
               >
 
             Submission for Contest #{contestId}
-              </Typography>
+              </Typography>)}
               <Grid container alignItems="flex-start" spacing={3} mt={2}>
                 <Grid item sm={12}>
                   <div className={classes.dropperArea}>
