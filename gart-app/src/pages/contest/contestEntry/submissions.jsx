@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Upload from "../../upload/upload"
 import { Box, Grid } from "@material-ui/core";
+// import ContestCard from "../card/contestCard";
 import ContestCard from "../contestpage";
 import * as api from '../../../api/index.js'
 import { useParams } from "react-router-dom";

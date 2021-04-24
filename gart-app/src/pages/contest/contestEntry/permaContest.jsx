@@ -10,7 +10,8 @@ import { Box, Container } from "@material-ui/core/";
 import { sizing } from '@material-ui/system';
 import NavBar from "../../Nav/navbar";
 import PostCard from "../../post/postCard/postCard";
-import ContestCard from "../contestpage";
+import ContestCard from "../card/contestCard";
+// import ContestCard from "../contestpage";
 
 // import NavBar from "../Nav/navbar"
 

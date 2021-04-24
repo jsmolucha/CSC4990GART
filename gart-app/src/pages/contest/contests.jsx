@@ -1,12 +1,12 @@
 import React from "react";
 import '../styles/contest.css'
 import axios from 'axios';
-import ContestCard from "./contestpage"
+// import ContestCard from "./contestpage"
 import { Box, Container, Button } from "@material-ui/core/";
 import NavBar from '../Nav/navbar'
 import { Redirect } from 'react-router-dom'
 
-
+import ContestCard from "./card/contestCard"
 
 
 class Contest extends React.Component {

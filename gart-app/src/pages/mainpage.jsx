@@ -74,7 +74,8 @@ const Mainpage  = () => {
             <p id="supportText"> We currently support PNG, JPEG, SVG, and some 3D formats.</p>
           </div>
           <div>
-            <button id='explore'>Explore</button>
+            <button id='explore'>
+            <Link to="/contests" id='loginlink'> Contests</Link></button>
           </div>
           <div>
             <button id='favorites'>
