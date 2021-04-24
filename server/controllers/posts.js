@@ -192,4 +192,28 @@ export const addComment = asyncHandler(async (req, res) => {
  
 })
 
+//research how to delete from bucket
+export const deleteComment = async (req, res) => {
+  const { id } = req.params;
+
+  const comment = await Comment.findById(id);
+  // let keys = getKeysViaFilePath(post.filePath)
+
+  // var params = { Bucket: 'gartimagebucket2021', Key: keys};
+
+
+
+  // s3.deleteObject(params, function (err, data) {
+  //   if (err) console.log(err, err.stack);  // error
+  //   else console.log("Image successfully delete from AWS BUCKET");                 // deleted
+  // });
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No post with id: ${id}`);
+
+  await Comment.findByIdAndRemove(id);
+
+  res.json({ message: "Comment deleted successfully." });
+};
+
 export default router;

@@ -50,7 +50,7 @@ class Contest extends React.Component {
              console.log(res.data,"response")
             this.setState({
               isLoaded: true,
-              Contest: res.data,
+              Contest: res.data.reverse(),
               setCurrentId: user.result.userID
             });
           },

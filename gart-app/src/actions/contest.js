@@ -1,5 +1,15 @@
 import * as api from '../api/index.js';
-import {Redirect, CREATE} from "../constants/actionTypes";
+import {Redirect} from "../constants/actionTypes";
+
+import { AUTH } from "../constants/actionTypes";
+import {
+  FETCH_ALL,
+  CREATE,
+  UPDATE,
+  DELETE,
+  LIKE,
+  COMMENT
+} from "../constants/actionTypes";
 
 
 //Makes the request to create a contest on the backend
@@ -26,3 +36,15 @@ export const createContest = (post, router) => async (dispatch) => {
         }
     }
 };
+
+export const setWinner = (id) => async (dispatch) => {
+    const user = JSON.parse(localStorage.getItem('profile'));
+  
+    try {
+      const { data } = await api.setWinner(id, user?.token);
+  
+      dispatch({ type: LIKE, payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };

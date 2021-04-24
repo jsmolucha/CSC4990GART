@@ -75,6 +75,19 @@ export const addComment = (formData) => async (dispatch) => {
   }
 }
 
+export const deleteComment = (id) => async (dispatch) => {
+  try {
+    await await api.deleteComment(id);
+
+    dispatch({ type: DELETE, payload: id });
+    console.log("success")
+    alert("Post successfully deleted")
+    // router.push(`/main`)
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 //Makes the request to the backend for deleting a post
 export const deletePost = (id) => async (dispatch) => {

@@ -111,7 +111,7 @@ class PermaContest extends React.Component {
                                     return (
                                         <Box m={1}>
                                             <div key={p._id} style={{ backgroundColor: "transparent" }}>
-                                                <PostCard post={p} setCurrentId={this.state.setCurrentId} />
+                                                <PostCard post={p} setCurrentId={this.state.setCurrentId} contestObject={this.state.contest} />
                                             </div>
                                         </Box>
                                     );

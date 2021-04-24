@@ -289,7 +289,7 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
             </CardContent>
             <CardActions>
               <Button
-                style={{ margin: 5, borderRadius: "10px" }}
+                style={{ margin: 5}}
                 variant="contained"
                 color="secondary"
                 type="submit"
@@ -298,12 +298,19 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
               </Button>
               <Button
                 onClick={clear}
-                style={{ margin: 5, borderRadius: "10px"  }}
+                style={{ margin: 5  }}
                 variant="contained"
                 color="secondary"
               >
                 Clear
               </Button>
+              <Button
+                style={{ margin: 5 }}
+                variant="contained"
+                color="secondary"
+                // color="primary"
+                onClick={() => history.goBack()}
+              >Cancel</Button>
             </CardActions>
           </Card>
         </Container>

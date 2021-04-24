@@ -34,13 +34,13 @@ export const searchPost = (query) => API.get(`/api/search/post/${query}`)
 export const searchUsername = (query) => API.get(`/api/search/users/${query}`)
 export const getUserInfo = (query) => API.get(`/api/search/getUserInfo/${query}`)
 export const addComment = (newComment) => API.post('/api/post/addComment', newComment)
-
+export const deleteComment = (id) => API.delete(`/api/post/deleteComment/${id}`);
 export const getLikedPost = (userID) => API.post(`/api/accounts/liked`, userID)
 export const signIn = (formData) => API.post('api/user/login', formData); //axios post
 //export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
 
 export const createContest = (newContest) => API.post('/api/contests/newContest', newContest);
-
+export const setWinner = (id) => API.patch(`/api/contests/setWinner/${id}`);
 
 export const getSingleContest = (contestId) => API.get(`/api/contests/getSingleContest/${contestId}`)
 export const authenticate = () => API.get('/api/user/authenticate');

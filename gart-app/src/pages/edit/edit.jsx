@@ -78,10 +78,10 @@ class Edit extends React.Component {
       );
     } else {
       return (
-        <div>
+        <Box display="flex" justifyContent="center" m="auto" style={{ height: "100vh", maxHeight: "100%", overflow: "auto" }} p={1} bgcolor="#151A21">
             {console.log(this.state.setCurrentId)}
             <EditPost image={this.state.images} currentId={this.state.setCurrentId}></EditPost>
-        </div>
+        </Box>
       );
     }
   }

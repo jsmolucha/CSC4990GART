@@ -22,8 +22,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faHeart, faHippo, faInfoCircle, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import Heart from './Heart'
 import Comment from './comment'
-
-const PostCard = ({ post, setCurrentId }) => {
+import Medal from "../../contest/card/Medal"
+const PostCard = ({ post, setCurrentId, contestObject = {} }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -148,7 +148,8 @@ const PostCard = ({ post, setCurrentId }) => {
               {/* postId, userID , creator, likes */}
               {/* <Heart postId={post._id} userID={user?.result?.userID} creator={post.creator} likes={post.likes}  /> */}
 
-              
+              {(!(contestObject && Object.keys(contestObject).length === 0 && contestObject.constructor === Object)) && 
+              (<Medal contestObject={contestObject} userID={user?.result?.userID} />)}
               <Heart PID={post._id} likes={post.likes} userID={user?.result?.userID} />
               <Comment PID = {post._id} userID={user?.result?.userID} username={user?.result?.username} />
               {/* <Button

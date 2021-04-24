@@ -12,6 +12,10 @@ const postContest = mongoose.Schema({
         type: Date,
         default: new Date(),
     },
+    winners: { 
+        type: [String], 
+        default: [] 
+    },
 })
 
 const postcontest = mongoose.model('postContest', postContest);
