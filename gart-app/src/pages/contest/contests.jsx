@@ -1,8 +1,11 @@
 import React from "react";
-import './styles/contest.css'
+import '../styles/contest.css'
 import axios from 'axios';
-import ContestCard from "./contest/contestpage"
-import { Box, Container } from "@material-ui/core/";
+import ContestCard from "./contestpage"
+import { Box, Container, Button } from "@material-ui/core/";
+import NavBar from '../Nav/navbar'
+import { Redirect } from 'react-router-dom'
+
 
 
 
@@ -15,14 +18,29 @@ class Contest extends React.Component {
         Contest: [],
         owner: null,
         setCurrentId: null,
+        redirect: false
       };
     }
+
+     setRedirect = () => {
+      this.setState({
+        redirect: true
+      })
+    }
+
+    renderRedirect = () => {
+      if (this.state.redirect) {
+        return <Redirect to='/newContest' />
+      }
+    } 
+
+
   
     componentDidMount() {
-      const { contestId } = this.props.match.params;
+      
       let user = JSON.parse(localStorage.getItem("profile"));
       axios
-        .get(`http://localhost:5000/api/contest/`, {
+        .get(`http://localhost:5000/api/contests/getContest`, {
           params: {
             // ID : user.result.userID
           },
@@ -47,7 +65,7 @@ class Contest extends React.Component {
     }
   
     render() {
-      const { error, isLoaded, post } = this.state;
+      const { error, isLoaded, Contest } = this.state;
    
       if (error) {
         return <div>Error: {error.message}</div>;
@@ -60,6 +78,16 @@ class Contest extends React.Component {
       } else {
         return (
           <div className="profilePage">
+             <NavBar props={this.state.setCurrentId}></NavBar>
+            <Box height="100%" >
+            <Box display="flex" justifyContent="center" m={2} p={1} >
+              <h1 className="welcomeMessage">Welcome to the Contests Page</h1>
+            </Box> 
+            <Box display="flex" justifyContent="center" m={2} p={1} >
+            {this.renderRedirect()}
+            <Button onClick={this.setRedirect}> Create Contest</Button>
+            </Box>   
+            </Box>          
             <Box display="flex" height={"100%"}>
                 <Box m={5} mx="auto" >
 
@@ -67,7 +95,7 @@ class Contest extends React.Component {
                           return (
                             <Box m={1}>
                               <div key={c._id} style={{ backgroundColor: "transparent" }}>
-                                  <ContestCard Contest={c} />
+                                  <ContestCard contest={c} />
                               </div>
                               </Box>
                           );
