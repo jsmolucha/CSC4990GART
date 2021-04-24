@@ -6,8 +6,8 @@ import { Box, Grid } from "@material-ui/core";
 import ContestCard from "../contestpage";
 import * as api from '../../../api/index.js'
 import { useParams } from "react-router-dom";
-import styles from "../../post/styles.css"
-import uploadStyles from "./uploadStyle.css"
+
+
 
 const Submission = () => {
 
@@ -26,11 +26,10 @@ const Submission = () => {
                 }
             )
         }
-        }
-    )
+    }
+)
     return (
 <div className="registerPage">
-
         <Box display="flex" justifyContent="center" m="auto" style={{ height: "auto", maxHeight: "100%", overflow: "auto" }} p={1}>
             <Grid container spacing={4}>
                 <Grid item xs={6}>
