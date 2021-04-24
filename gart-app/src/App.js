@@ -44,7 +44,7 @@ class App extends Component {
         <Route exact path="/likes" component={LikedPost} />
         <Route exact path="/contest" component={Contest} />
         <Route exact path="/contest/newcontest" component={ContestPage} />
-        {/* <Route exact path="/contest/:contestId" component={} /> */}
+        {/* {<Route exact path="/contest/:contestId" component={} /> } */}
         <Redirect to="/404" /> 
         </Switch>
       </Router>
