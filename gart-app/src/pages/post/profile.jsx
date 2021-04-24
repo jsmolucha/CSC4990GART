@@ -5,6 +5,7 @@ import Masonry from "react-masonry-css";
 import { Box, Container } from "@material-ui/core/";
 import NavBar from '../Nav/navbar'
 import FollowButton from './followButton'
+import { useParams } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 // import {
 //   Button
@@ -89,12 +90,7 @@ class Profile extends React.Component {
       700: 2,
       500: 1,
     };
-    // return(<div onLoad={componenetDidMount()}>
-    //   Loading
-    // </div>)
 
-    // </div>
-    // componenetDidMount()
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {

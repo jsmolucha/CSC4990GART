@@ -29,6 +29,9 @@ export const updatePost = (id, updatedPost) => API.patch(`/api/post/${id}`, upda
 export const deletePost = (id) => API.delete(`/api/post/${id}`);
 
 export const followUser = (username) => API.patch(`/api/accounts/${username}/followUser`);
+
+export const searchPost = (query) => API.get(`/api/search/post/${query}`)
+export const searchUsername = (query) => API.get(`/api/search/users/${query}`)
 export const addComment = (newComment) => API.post('/api/post/addComment', newComment)
 
 export const getLikedPost = (userID) => API.post(`/api/accounts/liked`, userID)
@@ -36,5 +39,8 @@ export const signIn = (formData) => API.post('api/user/login', formData); //axio
 //export const accountInfo = (formData) => API.get('api/accounts/userPosts', formData);
 
 export const createContest = (newContest) => API.post('/api/contests/newContest', newContest);
+
+
+export const getSingleContest = (contestId) => API.get(`/api/contests/getSingleContest/${contestId}`)
 export const authenticate = () => API.get('/api/user/authenticate');
 export const signUp = (formData) => API.post('api/user/newUser', formData);

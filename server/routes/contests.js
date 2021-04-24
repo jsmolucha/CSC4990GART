@@ -1,5 +1,6 @@
 import express from 'express'
 import contest from '../models/contests.js'
+import PostMessage from "../models/postMessage.js"
 
 const router = express.Router() 
 
@@ -30,5 +31,36 @@ router.get('/getContest', async (req, res) => {
       }
     });
 
+//return Contest and registered posts
+router.get('/:contestId', async (req, res) =>{
+    const {contestId} = req.params;
+    console.log(contestId);
+
+    try{
+        const currentContest = await contest.findById(contestId)
+        const registeredPost = await PostMessage.find({registrationID : contestId})
+        res.status(200).json({contest: currentContest, posts: registeredPost})
+    }catch(error){
+        console.log(error)
+    }
+
+})
+
+router.get('/getSingleContest/:contestId', async (req, res) =>{
+console.log(">>>>>>>>>>>", req.params)
+    const {contestId} = req.params;
+    console.log(contestId);
+
+
+    try{
+        const currentContest = await contest.findById(contestId)
+        // const registeredPost = await PostMessage.find({registrationID : contestId})
+        res.status(200).json(currentContest)
+        // res.send("hello")
+    }catch(error){
+        console.log(error)
+    }
+
+})
 
 export default router;  

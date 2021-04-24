@@ -6,6 +6,7 @@ import authRoute from './routes/auth.js'
 import postRoutes from './routes/posts.js'
 import accRoutes from './routes/accounts.js'
 import updateRoutes from './routes/update.js'
+import searchRoutes from './routes/search.js'
 import testRoute from './routes/test.js'
 import passport from './passport/setup.js'
 import session from 'express-session'
@@ -67,6 +68,7 @@ app.use('/api/user',authRoute);
 app.use("/api/post", postRoutes);
 app.use('/api/update', updateRoutes);
 app.use('/api/accounts', accRoutes)
+app.use('/api/search', searchRoutes)
 app.use('/api/contests', contestPage)
 
 

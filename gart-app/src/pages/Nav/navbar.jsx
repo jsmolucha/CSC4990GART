@@ -29,6 +29,7 @@ import { faSmile, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 //this
 const useStyle = makeStyles((theme) => ({
+
     root: {
         flexGrow: 1,
     },
@@ -146,6 +147,8 @@ export default function NavBar() {
     const location = useLocation();
     const history = useHistory();
 
+    const [query, setQuery] = useState("");
+
     const logout = () => {
         dispatch({ type: actionType.LOGOUT });
         history.push('/');
@@ -161,6 +164,12 @@ export default function NavBar() {
             history.push(`/@${user.result.username}`);
         }
     }
+
+    const handleOnSubmit = async (event) => {
+        event.preventDefault();
+        history.push(`/search/${query}`)
+    }
+
 
     const classes = useStyle();
 
@@ -180,7 +189,12 @@ export default function NavBar() {
                     <Hidden xsDown>
                         <h3 className={classes.logoText}>GART</h3>
                     </Hidden>
-                    <input className={classes.searchBar} type="text" placeholder="Search" />
+                    <form onSubmit={handleOnSubmit} >
+                        
+                    <input className={classes.searchBar} type="text" placeholder="Search"  value={query} onChange={(e) =>
+                      setQuery(e.target.value)
+                    }/>
+                    </form>
 
 
                     {user?.result ? (
