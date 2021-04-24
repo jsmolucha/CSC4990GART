@@ -25,7 +25,7 @@ import Contest from './pages/contest/contests'
 import ContestPage from "./pages/newcontest"
 import PermaContest from "./pages/contest/contestEntry/permaContest"
 import Submission from "./pages/contest/contestEntry/submissions"
-
+import WithModel from "./pages/babylon/demo"
 
 import LikedPost from './pages/post/likedPost'
 import AccountDelete from "./pages/profileupdate/proDelete"
@@ -54,10 +54,10 @@ class App extends Component {
         <Route exact path="/@:username/passwordUpdate" component={Passwordupdate} />
         <Route exact path="/@:username/accountDelete" component={AccountDelete} />
         
-        <Route exact path="/contests" component={Contest} />
+        {/* <Route exact path="/contests" component={Contest} /> */}
         <Route exact path="/search/:query" component={Search} />
 
-        
+        <Route exact path="/demo" component={WithModel} />
         <Route exact path="/contests" component={Contest} /> 
         <Route exact path="/newcontest" component={ContestPage} />
         <Route exact path="/constest-detail/:contestId" component={PermaContest} />
