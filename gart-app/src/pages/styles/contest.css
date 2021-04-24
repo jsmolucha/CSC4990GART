@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600&display=swap');
+
+.root {
+    background: linear-gradient(109.36deg, #d727dbb3 -4.44%, #0038ffb3 143.69%), #C4C4C4;
+    height: 100vh;
+    width: 100vw;
+}
+.form-title {
+    font-size: 3.750vw;
+    color: white;
+    font-family:'Inter';
+    font-weight: 900;
+    text-align: center;
+    margin-top: 8%;
+}
+
+.form-helper-text {
+    font-family: 'Inter';
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2vw;
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline;  
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    width: 30%;
+}
+
+.title, .desc, .category-input {
+    outline: none;
+    border: none;
+    background:#FFF;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-weight: 300;
+    font-size: 0.938vw;
+    width: 23vw;
+    height: 3.5vw;
+    color: rgba(0, 0, 0, 1.0);    
+    text-indent: 10px;
+}
+.title {
+    margin: 5% auto 0 auto;
+    display: block;
+}
+
+.desc { 
+    margin: 5% auto 0 auto;
+    display: block;
+    height: 9vw;
+    word-wrap: break-word;   
+}
+
+.desc::placeholder, .category-input::placeholder, .desc::placeholder {
+    font-size: 0.938vw;
+    color: rgba(0, 0, 0, 0.8);    
+    text-align: left;
+    text-indent: 0.521vw;
+    font-family: 'Inter';
+}
+
+.category-input { 
+    margin: 5% auto 0 auto;
+    display: block;
+}
+
+.submit-contest {
+    width: 8.229vw;
+    height: 3.5vw;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-size: 1.042vw;
+    margin: 10% auto 5% auto;
+    display: block;
+    background: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.875vw;
+    color: white;
+    transition: .3s;
+}
+
+.submit-contest {
+    cursor: pointer;
+}

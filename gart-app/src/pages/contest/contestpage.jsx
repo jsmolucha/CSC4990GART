@@ -32,7 +32,6 @@ const ContestCard = ({contest}) => {
             </CardContent>
         </Card>
     )
-
 }
 
 export default ContestCard;
