@@ -23,6 +23,37 @@ export const loginValidation = (data) =>{
     return schema.validate(data);
 }
 
+export const updateValidation = (data) =>{
+    const schema = Joi.object({
+        _id: Joi.string().min(5).required(),
+        email: Joi.string().min(6).required().email(),
+        username: Joi.string().min(6).required(),
+        fullName: Joi.string().min(6).required()
+    });
+
+    return schema.validate(data);
+}
+
+export const passwordValidation = (data) =>{
+    const schema = Joi.object({
+        _id: Joi.string().min(5).required(),
+        username: Joi.string().min(6).required(),
+        password: Joi.string().min(6).required()
+    });
+
+    return schema.validate(data);
+}
+
+export const DeleteValidation = (data) =>{
+    const schema = Joi.object({
+        _id: Joi.string().min(5).required(),
+        userID: Joi.string().min(6).required(),
+        username: Joi.string().min(6).required()
+    });
+
+    return schema.validate(data);
+}
+
 // module.exports.registerValidation = registerValidation;
 // module.exports.loginValidation = loginValidation;
     

@@ -11,7 +11,7 @@ import moment from "moment";
 import { useHistory, useLocation } from "react-router-dom";
 
 
-
+//Creates the contest card container that displays/formats the created contest
 const ContestCard = ({contest}) => {
     const history = useHistory();
 
@@ -27,7 +27,8 @@ const ContestCard = ({contest}) => {
           }             
                 <p> Description: {contest.description} </p>
                 <h3>{moment(contest.createdAt).fromNow()}</h3>
-                <Button>Join</Button> <Button>Show Posts</Button>
+                <Button onClick={ () =>{history.push(`/constest-submissions/${contest._id}`)}}> Join</Button>
+                <Button onClick={ () =>{history.push(`/constest-detail/${contest._id}`)}}> View Post</Button>
             </CardContent>
         </Card>
     )

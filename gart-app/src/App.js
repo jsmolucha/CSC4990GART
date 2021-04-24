@@ -20,10 +20,18 @@ import Permalink from './pages/post/permaPost'
 import Edit from "./pages/edit/edit"
 import NavBar from './pages/Nav/navbar'
 import Delete from './pages/delete'
+import Search from './pages/search/searchPage'
 import Contest from './pages/contest/contests'
 import ContestPage from "./pages/newcontest"
+import PermaContest from "./pages/contest/contestEntry/permaContest"
+import Submission from "./pages/contest/contestEntry/submissions"
+
 
 import LikedPost from './pages/post/likedPost'
+import AccountDelete from "./pages/profileupdate/proDelete"
+import Profileupdate from "./pages/profileupdate/proUpdate"
+import Passwordupdate from "./pages/profileupdate/passUpdate"
+
 class App extends Component {
   render() {
     return (
@@ -42,8 +50,19 @@ class App extends Component {
         <Route exact path="/nav" component={NavBar} />
         <Route exact path="/delete" component={Delete} />
         <Route exact path="/likes" component={LikedPost} />
+        <Route exact path="/@:username/profileUpdate" component={Profileupdate} />
+        <Route exact path="/@:username/passwordUpdate" component={Passwordupdate} />
+        <Route exact path="/@:username/accountDelete" component={AccountDelete} />
+        
         <Route exact path="/contests" component={Contest} />
+        <Route exact path="/search/:query" component={Search} />
+
+        
+        <Route exact path="/contests" component={Contest} /> 
         <Route exact path="/newcontest" component={ContestPage} />
+        <Route exact path="/constest-detail/:contestId" component={PermaContest} />
+        <Route exact path="/constest-submissions/:contestId" component={Submission} />
+
         {/* <Route exact path="/contest/:contestId" component={} /> */}
         <Redirect to="/404" /> 
         </Switch>

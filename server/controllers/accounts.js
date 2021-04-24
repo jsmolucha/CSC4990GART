@@ -11,6 +11,7 @@ export const userLikes = (async (req, res) => {
     try {
         const user = await Users.findOne({ "userID": userID })
 
+        
         Promise.all(user.likes.map(pid => {
             return PostMessage.findById(pid).exec().catch(err => {
                 // convert error to null result in resolved array
