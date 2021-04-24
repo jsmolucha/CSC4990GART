@@ -141,13 +141,13 @@ const { API_URL } = require('../../constants/constants')
 
 const API = axios.create({ baseURL: `${API_URL}` });
 
-export default function NavBar() {
+export default function NavBar({currentQuery = ""}) {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
 
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(currentQuery);
 
     const logout = () => {
         dispatch({ type: actionType.LOGOUT });

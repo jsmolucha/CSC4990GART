@@ -2,24 +2,25 @@ import React from "react";
 import axios from "axios";
 // import PostCard from "./postCard/postCard";
 import Masonry from "react-masonry-css";
-import { Box, Button, Container } from "@material-ui/core/";
+import { Box, Button, Card, CardContent, Container } from "@material-ui/core/";
 import searchPost from "../../actions/search.js"
 import { useParams } from "react-router-dom";
 import PostCard from "../post/postCard/postCard"
+import UserCard from "./card/userCard"
 import { Redirect } from 'react-router-dom'
 
 import * as api from "../../api/index.js";
 import NavBar from "../Nav/navbar.jsx";
-
-class Search extends React.Component {
+class SearchByUsername extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             error: null,
             isLoaded: false,
-            images: [],
+            users: [],
             // owner: null,
             setCurrentId: null,
+            currentUser: null,
             followers: [],
             query: this.props.match.params.query,
             postSearch: true,
@@ -37,21 +38,24 @@ class Search extends React.Component {
       }
       renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to={`/searchUsers/${this.state.query}`} />
+          return <Redirect to={`/search/${this.state.query}`} />
         }
       }
+
     componentDidMount() {
         console.log(this.props)
         const user = JSON.parse(localStorage.getItem("profile"));
         // const { query } = this.props.match.params
 
         // console.log()
-        api.searchPost(this.state.query).then(
+        api.searchUsername(this.state.query).then(
             (res) => {
+                console.log(res.data)
                 this.setState({
                     isLoaded: true,
-                    images: res.data.reverse(),
+                    users: res.data.reverse(),
                     setCurrentId: user.result.userID,
+                    currentUser: user?.result?.username,
                     newSearch: false,
                     // query: query,
                 })
@@ -68,15 +72,16 @@ class Search extends React.Component {
 
     }
 
-   
-    
+
+
+
 
     render() {
         const { error, isLoaded, images } = this.state;
         const breakpointColumnsObj = {
-            default: 3,
-            1100: 3,
-            700: 2,
+            default: 1,
+            1100: 2,
+            700: 1,
             500: 1,
         };
 
@@ -88,7 +93,7 @@ class Search extends React.Component {
                     Loading... ok
                 </div>
             );
-        } else  {
+        } else {
 
             return (
                 <div className="profilePage">
@@ -99,7 +104,7 @@ class Search extends React.Component {
                         </Box>
                         <Box display="flex" justifyContent="center" m={2} p={1} >
                         {this.renderRedirect()}
-                            <Button color="primary" onClick={this.setRedirect}>Search for Users</Button>
+                            <Button color="primary" onClick={this.setRedirect}>Search by Post</Button>
                         </Box>
                     </Box>
                     <Box >
@@ -109,10 +114,10 @@ class Search extends React.Component {
                                 className="my-masonry-grid"
                                 columnClassName="my-masonry-grid_column"
                             >
-                                { this.state.images.map((p) => {
+                                {this.state.users.map((u) => {
                                     return (
-                                        <div key={p._id} style={{ backgroundColor: "transparent" }}>
-                                            <PostCard post={p} setCurrentId={this.state.setCurrentId} />
+                                        <div key={u._id} style={{ backgroundColor: "transparent" }}>
+                                            <UserCard username={u} currentUser={this.state.currentUser}/>
                                         </div>
                                     );
                                 })}
@@ -125,4 +130,4 @@ class Search extends React.Component {
     }
 }
 
-export default Search
+export default SearchByUsername

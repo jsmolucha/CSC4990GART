@@ -56,8 +56,8 @@ class MainPost extends React.Component {
         const { error, isLoaded, images } = this.state;
         const breakpointColumnsObj = {
             default: 3,
-            1100: 3,
-            700: 2,
+            1100: 2,
+            700: 1,
             500: 1,
         };
         // return(<div onLoad={componenetDidMount()}>

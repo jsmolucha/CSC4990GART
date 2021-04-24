@@ -1,0 +1,114 @@
+a:link {
+   color: white;
+   text-decoration: none;
+ }
+ 
+ a:visited {
+   color: white;
+   text-decoration: none;
+ }
+ 
+ a:hover {
+   color: rgb(198, 128, 255);
+   text-decoration: none;
+ }
+ 
+ a:active {
+   color: white;
+   text-decoration: none;
+ }
+ $colorTop: #0B0E11;
+// $colorBottom: #d727dbb3;
+$colorBottom: #222CCC;
+ 
+ .card { 
+   box-sizing: border-box;
+   --card-size: 275px;
+    width: calc(var(--card-size) * 1.586);
+    height: var(--card-size);
+    
+    border-radius: 0.75rem;
+    box-shadow:  0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+    
+    background: linear-gradient($colorTop,$colorBottom); 
+   //  background: #0B0E11;
+    
+    display: grid;
+    grid-template-columns: 40% auto;
+    color: white;
+    
+    align-items: center;
+    
+    will-change: transform;
+    transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+    
+    &:hover {
+       transform: scale(1.1);
+       box-shadow:  0 32px 80px 14px rgba(0,0,0,0.36), 0 0 0 1px rgba(0, 0, 0, 0.3);
+    }
+ }
+ 
+ .card-details {
+    padding: 1rem;
+ }
+ 
+ .name {
+    font-size: 1.25rem;
+    font-weight: bold;
+ }
+ 
+ .occupation {
+    font-weight: 600;
+    color: var(--primary);
+ }
+ 
+ .card-avatar {
+    display: grid;
+    place-items: center;
+ }
+ 
+ svg {
+    fill: white;
+    width: 65%;
+ }
+ 
+ .card-about {
+    margin-top: 1rem;
+    display: grid;
+    grid-auto-flow: column;
+ }
+ 
+ .item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    
+    .value {
+       font-size: 1rem;
+    }
+    
+    .label {
+       margin-top: 0.15rem;
+       font-size: 0.75rem;
+       font-weight: 600;
+       color: var(--primary);
+    }
+ }
+ 
+ .skills {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.75rem;
+    
+    .label {
+       font-size: 1rem;
+       font-weight: 600;
+       color: var(--primary);
+    }
+    
+    .value {
+       margin-top: 0.15rem;
+       font-size: 0.75rem;
+       line-height: 1.25rem;
+    }
+ }

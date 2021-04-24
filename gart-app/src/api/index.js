@@ -32,6 +32,7 @@ export const followUser = (username) => API.patch(`/api/accounts/${username}/fol
 
 export const searchPost = (query) => API.get(`/api/search/post/${query}`)
 export const searchUsername = (query) => API.get(`/api/search/users/${query}`)
+export const getUserInfo = (query) => API.get(`/api/search/getUserInfo/${query}`)
 export const addComment = (newComment) => API.post('/api/post/addComment', newComment)
 
 export const getLikedPost = (userID) => API.post(`/api/accounts/liked`, userID)

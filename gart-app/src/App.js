@@ -26,7 +26,7 @@ import ContestPage from "./pages/newcontest"
 import PermaContest from "./pages/contest/contestEntry/permaContest"
 import Submission from "./pages/contest/contestEntry/submissions"
 import WithModel from "./pages/babylon/demo"
-
+import SearchByUsername from './pages/search/searchUsers'
 import LikedPost from './pages/post/likedPost'
 import AccountDelete from "./pages/profileupdate/proDelete"
 import Profileupdate from "./pages/profileupdate/proUpdate"
@@ -56,6 +56,7 @@ class App extends Component {
         
         {/* <Route exact path="/contests" component={Contest} /> */}
         <Route exact path="/search/:query" component={Search} />
+        <Route exact path="/searchUsers/:query" component={SearchByUsername} />
 
         <Route exact path="/demo" component={WithModel} />
         <Route exact path="/contests" component={Contest} /> 

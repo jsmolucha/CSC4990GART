@@ -6,6 +6,8 @@ import { Box, Container } from "@material-ui/core/";
 import NavBar from '../Nav/navbar'
 import FollowButton from './followButton'
 import { useParams } from "react-router-dom";
+import UserCard from "../search/card/userCard";
+import * as api from "../../api/index.js"
 // import { useDispatch } from "react-redux";
 // import {
 //   Button
@@ -26,7 +28,8 @@ class Profile extends React.Component {
       setCurrentId: null,
       followers: [],
       currentUsername: null,
-      followCount: null,
+      followCount: null, 
+      userInfo: {}
     };
   }
 
@@ -34,22 +37,41 @@ class Profile extends React.Component {
     const { username } = this.props.match.params;
     let user = JSON.parse(localStorage.getItem("profile"));
     document.title = username
-    axios.get(`http://localhost:5000/api/accounts/follow/${username}`)
-      .then(
-        (res) => {
-          console.log(res.data, "response")
+    api.getUserInfo(username).then(
+      (res) => {
+          console.log(res.data)
           this.setState({
-            followers: res.data
-          });
-        },
-        (error) => {
+              // isLoaded: true,
+              userInfo: res.data,
+              // setCurrentId: user.result.userID,
+              // currentUsername: user?.result?.username,
+              // query: query,
+          })
+      },
+      (error) => {
           console.log("error");
           this.setState({
-            isLoaded: true,
-            error,
+              isLoaded: true,
+              error,
           });
-        }
-      );
+      }
+  );
+    // axios.get(`http://localhost:5000/api/accounts/follow/${username}`)
+    //   .then(
+    //     (res) => {
+    //       console.log(res.data, "response")
+    //       this.setState({
+    //         followers: res.data
+    //       });
+    //     },
+    //     (error) => {
+    //       console.log("error");
+    //       this.setState({
+    //         isLoaded: true,
+    //         error,
+    //       });
+    //     }
+    //   );
     axios
       .get(`http://localhost:5000/api/accounts/username/${username}`, {
         params: {
@@ -107,23 +129,20 @@ class Profile extends React.Component {
           <NavBar props={this.state.setCurrentId}></NavBar>
           <Box height="100%" >
             <Box display="flex" justifyContent="center" m={2} p={1} >
-              <h1 className="welcomeMessage">@{this.state.owner}</h1>
+              <UserCard username={this.state.userInfo} currentUser={this.state.currentUsername} />
+              {/* <h1 className="welcomeMessage">@{this.state.owner}</h1> */}
 
             </Box>  
-            {(this.state.owner != this.state.currentUsername) && (
+            {/* {(this.state.owner != this.state.currentUsername) && (
               <Box display="flex" justifyContent="center"  >
                 <FollowButton username={this.state.owner} followers={this.state.followers}
                   userID={this.state.setCurrentId}  />
               </Box>)}
             <Box display="flex" justifyContent="center" m={1} p={1} >
-              {/* <Container justifyContent="center" m={2}> */}
-              {/* <h1 className="welcomeMessage">@{this.state.owner}</h1> */}
               <h4>this user has {this.state.followCount} {
                 (this.state.followCount=== 1) ? ("follower") : ("followers")
               }</h4>
-              {/* <h4>If we wanted to add user bio we can place it here</h4> */}
-              {/* </Container> */}
-            </Box>
+            </Box> */}
             <Container>
               {/* <Post post={post} setCurrentId={setCurrentId} /> */}
               <Masonry

@@ -34,17 +34,27 @@ router.get("/users/:query", async (req, res) => {
     // res.send(`Your query is ${query}`)
 
     try { 
-        const answer = await Users.find({"username": {$regex : `.*${query}.*`}}).select({"username" : 1, "_id": 0})
-        if(answer){
-            answer.map( users =>{
-                users = users.username
-            })
-            console.log("We found : ", answer)
-            res.status(200).json(answer)
-        } else{
-            res.status(200).json([])
-            // res
-        }
+        const answer = await Users.find({"username": {$regex : `.*${query}.*`}}).select({"username" : 1, "followers" :1, "following" : 1, "fullName" : 1, "_id": 1})
+
+        res.status(200).json(answer)
+        
+    }
+    catch (error) {
+        console.log(error)
+    }
+})
+
+router.get("/getUserInfo/:query", async (req, res) => {
+    const { query } = req.params;
+
+    // console.log("your query is : ", query)
+    // res.send(`Your query is ${query}`)
+
+    try { 
+        const answer = await Users.findOne({"username": query}).select({"username" : 1, "followers" :1, "following" : 1, "fullName" : 1, "_id": 1})
+
+        res.status(200).json(answer)
+        
     }
     catch (error) {
         console.log(error)

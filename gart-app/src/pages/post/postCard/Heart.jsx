@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import IconButton from '@material-ui/core/IconButton';
 // import { getPostLikes } from '../../../actions/post.js'
 
-const FollowButton = ({ PID, likes, userID }) => {
+const Heart = ({ PID, likes, userID }) => {
     const dispatch = useDispatch();
     const [likeStatus, setLikeStatus] = useState(true);
     const [load, setLoad] = useState(false)
@@ -33,25 +33,31 @@ const FollowButton = ({ PID, likes, userID }) => {
 
     }
 
-    useEffect(() => {
-        let status = false
-
-        if (likes > 0 && counter === 0) {
-            if (
-                Boolean(likes.find(
-                    (uid) => parseInt(uid) === parseInt(userID)
-                ))) {
-                status = true
-                // console.log("found")
-            }
-        } else if (counter === 0) {
-            status = false
-        } else {
-            status = likeStatus
+    useEffect(async() => {
+        if (counter === 0) {
+            await setLikeStatus(Boolean(await likes.find(
+                (uid) => parseInt(uid) === parseInt(userID)
+            )))
+            setLoad(true)
         }
-        setLikeStatus(status);
-        setLoad(true)
-    }, [updateLikes]);
+        // let status = false
+
+        // if (likes > 0 && counter === 0) {
+        //     if (
+        //         Boolean(likes.find(
+        //             (uid) => parseInt(uid) === parseInt(userID)
+        //         ))) {
+        //         status = true
+        //         // console.log("found")
+        //     }
+        // } else if (counter === 0) {
+        //     status = false
+        // } else {
+        //     status = likeStatus
+        // }
+        // setLikeStatus(status);
+        // setLoad(true)
+    }, []);
 
 
     useEffect(() => {
@@ -88,4 +94,4 @@ const FollowButton = ({ PID, likes, userID }) => {
     )
 }
 
-export default FollowButton
+export default Heart

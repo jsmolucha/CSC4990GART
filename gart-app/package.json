@@ -20,6 +20,7 @@
     "moment": "^2.29.1",
     "mongodb": "^3.6.6",
     "mongoose": "^5.12.3",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-babylonjs": "^3.0.14",
     "react-dom": "^17.0.1",
@@ -37,6 +38,7 @@
     "react-scripts": "4.0.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.32.11",
     "shuffle-array": "^1.0.1",
     "web-vitals": "^1.0.1"
   },

@@ -21,6 +21,7 @@ root{
   }
   .profilePage {
     height: auto;
+    min-height: 100vh;
     font-family: 'Inter';
     /* color: rgb(146, 255, 222); */
     color: rgb(147,112,219);
