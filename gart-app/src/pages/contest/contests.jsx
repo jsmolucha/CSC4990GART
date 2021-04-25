@@ -44,7 +44,6 @@ class Contest extends React.Component {
       })
       .then(
         (res) => {
-          console.log(res.data, "response")
           this.setState({
             isLoaded: true,
             Contest: res.data.reverse(),
@@ -52,7 +51,6 @@ class Contest extends React.Component {
           });
         },
         (error) => {
-          console.log("error");
           this.setState({
             isLoaded: true,
             error,
@@ -82,7 +80,7 @@ class Contest extends React.Component {
             </Box>
             <Box display="flex" justifyContent="center" m={2} p={1} >
               {this.renderRedirect()}
-              <Button onClick={this.setRedirect}> Create Contest</Button>
+              <Button variant="contained" color="secondary"onClick={this.setRedirect}> Create Contest</Button>
             </Box>
           </Box>
           <Box display="flex" height={"100%"}>
