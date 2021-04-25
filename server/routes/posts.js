@@ -9,7 +9,6 @@ import { getPosts, getPost, createPost, updatePost, likePost, deletePost, addCom
 
 const router = express.Router();
 import auth from "../middleware/auth.js";
-import authenticate from "./token_verification.js"
 
 router.get('/', getPosts);
 router.get('/:id', getPost);
