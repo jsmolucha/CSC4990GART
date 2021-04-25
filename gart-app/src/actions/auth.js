@@ -17,7 +17,7 @@ export const signin = (formData, router) => async (dispatch) => {
     const { data } = await api.signIn(formData);
     console.log(data)
     dispatch({ type: AUTH, data });
-    alert("Success")
+    //alert("Success")
     router.push('/main'); //redirect to main page
   } catch (error) {
         if (error.response) {
@@ -43,7 +43,7 @@ export const signup = (formData, router) => async (dispatch) => {
       const { data } = await api.signUp(formData);
       console.log(data)
       dispatch({ type: AUTH, data });
-      alert("Success")
+      //alert("Success")
       router.push('/login'); //redirect to main page
     } catch (error) {
           if (error.response) {

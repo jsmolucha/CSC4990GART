@@ -19,7 +19,7 @@ export const createContest = (post, router) => async (dispatch) => {
         console.log(data)
         console.log("success")
         dispatch({type: CREATE, payload: data});
-        alert("success")
+        //alert("success")
         router.push(`/contest/${data._id}`);
 
 } catch (error) {

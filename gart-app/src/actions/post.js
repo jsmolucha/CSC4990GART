@@ -18,7 +18,7 @@ export const createPost = (post, router) => async (dispatch) => {
     console.log(data)
     console.log("Success");
     dispatch({ type: CREATE, payload: data });
-    alert("Success")
+    //alert("Success")
     router.push(`/post/${data._id}`); //redirect to main page
   } catch (error) {
     if (error.response) {
@@ -81,7 +81,7 @@ export const deleteComment = (id) => async (dispatch) => {
 
     dispatch({ type: DELETE, payload: id });
     console.log("success")
-    alert("Post successfully deleted")
+    //alert("Post successfully deleted")
     // router.push(`/main`)
   } catch (error) {
     console.log(error);
@@ -96,7 +96,7 @@ export const deletePost = (id) => async (dispatch) => {
 
     dispatch({ type: DELETE, payload: id });
     console.log("success")
-    alert("Post successfully deleted")
+    //alert("Post successfully deleted")
     // router.push(`/main`)
   } catch (error) {
     console.log(error);
