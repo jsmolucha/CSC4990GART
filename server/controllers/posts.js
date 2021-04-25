@@ -15,15 +15,14 @@ import PostMessage from "../models/postMessage.js";
 import User from "../models/users.js"
 import Comment from "../models/comments.js"
 import asyncHandler from "express-async-handler";
-
 import formidable from "formidable";
+
 const router = express.Router();
 
 //Get all posts
 export const getPosts = async (req, res) => {
   try {
     const postMessages = await PostMessage.find();
-
     res.status(200).json(postMessages);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -44,9 +43,7 @@ export const getPost = async (req, res) => {
 };
 
 import { upload } from "../utils/upload.js";
-import { generateKeyPairSync } from "crypto";
 const singleUpload = upload.single("file");
-// const formInput = upload.single("data");
 
 export const createPost = asyncHandler(async (req, res) => {
   await singleUpload(req, res, async function (err) {
@@ -73,9 +70,6 @@ export const createPost = asyncHandler(async (req, res) => {
     }
   });
 });
-
-
-
 
 
 const credentials = new aws.SharedIniFileCredentials({ profile: 'default' });
@@ -197,17 +191,7 @@ export const deleteComment = async (req, res) => {
   const { id } = req.params;
 
   const comment = await Comment.findById(id);
-  // let keys = getKeysViaFilePath(post.filePath)
-
-  // var params = { Bucket: 'gartimagebucket2021', Key: keys};
-
-
-
-  // s3.deleteObject(params, function (err, data) {
-  //   if (err) console.log(err, err.stack);  // error
-  //   else console.log("Image successfully delete from AWS BUCKET");                 // deleted
-  // });
-
+ 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No post with id: ${id}`);
 

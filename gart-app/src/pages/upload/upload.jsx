@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Dropzone, { useDropzone } from "react-dropzone";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ModalImage from "react-modal-image";
-// import decode from "jwt-decode";
-// import * as actionType from "../../constants/actionTypes";
 import { createPost } from "../../actions/post";
 import useStyles from "./styles";
 import {
@@ -12,7 +10,6 @@ import {
   Container,
   Grid,
   TextField,
-  // withStyles,
   Paper,
   Card,
   CardActions,
@@ -20,14 +17,11 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-// import { makeStyles } from "@material-ui/core/styles";
 import PublishIcon from "@material-ui/icons/Publish";
 
 
 export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
-  const { acceptedFiles } = useDropzone();
 
-  const [dropper, setDropper] = useState({});
   const [postData, setPostData] = useState({
     title: "",
     description: "",
@@ -43,21 +37,15 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
   );
   //User and submit info
   const dispatch = useDispatch();
-  // const location = useLocation();
   const history = useHistory();
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-
-  //for dropzone and oth
   const [file, setFile] = useState(null); // state for storing actual image
   const [previewSrc, setPreviewSrc] = useState(""); // state for storing previewImage
   const [state, setState] = useState({
     title: "",
     description: "",
   });
-  const [errorMsg, setErrorMsg] = useState("");
   const [isPreviewAvailable, setIsPreviewAvailable] = useState(false); // state to show preview only for images
-  const dropRef = useRef(); // React ref for managing the hover state of droppable area// state for storing actual image
   const classes = useStyles();
 
   useEffect(() => {
@@ -72,7 +60,6 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
   };
 
   const clear = () => {
-    // setCurrentId(0);
     setPostData({ title: "", description: "", tags: "" ,filePath: "" });
     setFile({});
     setPreviewSrc("");
@@ -80,9 +67,6 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-
-    //alert("submit");
-    console.log(postData);
 
     const data = { ...postData, creator: user.result.userID };
     if (file) {
@@ -97,23 +81,15 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
       await dispatch(createPost(formData, history));
       clear();
     }
-
-    // } else {
-    //   // dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
-    //   // clear();
-    // }
   };
 
   const onDrop = (files) => {
     const [uploadedFile] = files;
     setFile(uploadedFile);
 
-    console.log(uploadedFile);
-
     const fileReader = new FileReader();
     fileReader.onload = () => {
       setPreviewSrc(fileReader.result);
-      // setPostData({ ...postData, filePath: fileReader })}
     };
     fileReader.readAsDataURL(uploadedFile);
     setIsPreviewAvailable(uploadedFile.name.match(/\.(jpeg|jpg|png)$/));
@@ -121,9 +97,7 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
 
   const updateBorder = (dragState) => {
     if (dragState === "over") {
-      // dropRef.current.style.border = "2px solid #000";
     } else if (dragState === "leave") {
-      // dropRef.current.style.border = "2px dashed #e9ebeb";
     }
   };
 
@@ -197,7 +171,6 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
                                 component="h2"
                                 style={
                                   {
-                                    // left: '50%',
                                     // top: '60%',
                                     // transform: "translate(1%, 100%)",
                                   }
@@ -226,12 +199,7 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
                           large={previewSrc}
                           alt="Preview"
                         />
-                        {/* <img
-                          style={{ width: "100%" }}
-                          className="preview-image"
-                          src={previewSrc}
-                          alt="Preview"
-                        /> */}
+                        
                       </div>
                     ) : (
                       <div className="preview-message">
@@ -278,9 +246,7 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
                     label="Tags"
                     variant="outlined"
                     name="tags"
-                    // multiline
                     value={postData.tags}
-                    // rows={3}
                     onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}
                   />
                   
@@ -308,7 +274,6 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
                 style={{ margin: 5 }}
                 variant="contained"
                 color="secondary"
-                // color="primary"
                 onClick={() => history.goBack()}
               >Cancel</Button>
             </CardActions>
@@ -316,8 +281,6 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
         </Container>
       </form>
     </Box>
-    // </React.Fragment>
   );
 }
 
-// export default Upload;
