@@ -2,17 +2,9 @@
 //can be recycled to display followers
 //Username + random icon or previous post + links to their account and maybe a follow button
 import React, { useEffect, useState } from "react";
-import {
-    Card,
-    CardActions,
-    CardContent,
-    Button,
-    Typography,
-} from "@material-ui/core/";
 import { useHistory } from "react-router";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIcons } from "@fortawesome/free-solid-svg-icons";
-// import sass from "node-sass"
 import "./card.scss"
 import FollowButton from "../../post/followButton";
 const UserCard = ({ username, currentUser }) => {
@@ -20,7 +12,6 @@ const UserCard = ({ username, currentUser }) => {
 
     return (
         <>
-            {console.log(">>>", username)}
             <div className="card">
                 <div className="card-avatar">
                     {(username?.username != currentUser) ? (<div className="item">
@@ -33,11 +24,9 @@ const UserCard = ({ username, currentUser }) => {
                 <div className="card-details">
                     <div className="name">{(username?.fullName) ? (username?.fullName) : (username?.username)}</div>
                     <div className="occupation">
-                        {/* <Button onClick={() => history.push(`/@${username.username}`)}>  */}
                         <a href={`/@${username.username}`}>
                             @{username?.username}
                         </a>
-                        {/* </Button> */}
                     </div>
 
                     <div className="card-about">

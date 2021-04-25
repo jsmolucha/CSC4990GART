@@ -1,10 +1,6 @@
 import React from "react";
-import axios from "axios";
-// import PostCard from "./postCard/postCard";
 import Masonry from "react-masonry-css";
 import { Box, Button, Container } from "@material-ui/core/";
-import searchPost from "../../actions/search.js"
-import { useParams } from "react-router-dom";
 import PostCard from "../post/postCard/postCard"
 import { Redirect } from 'react-router-dom'
 
@@ -18,7 +14,6 @@ class Search extends React.Component {
             error: null,
             isLoaded: false,
             images: [],
-            // owner: null,
             setCurrentId: null,
             followers: [],
             query: this.props.match.params.query,
@@ -26,7 +21,6 @@ class Search extends React.Component {
             userSearch: false,
             newSearch: true,
             redirect: false
-            // currentUsername: null,
         };
     }
 
@@ -41,11 +35,7 @@ class Search extends React.Component {
         }
       }
     componentDidMount() {
-        console.log(this.props)
         const user = JSON.parse(localStorage.getItem("profile"));
-        // const { query } = this.props.match.params
-
-        // console.log()
         api.searchPost(this.state.query).then(
             (res) => {
                 this.setState({
@@ -53,7 +43,6 @@ class Search extends React.Component {
                     images: res.data.reverse(),
                     setCurrentId: user.result.userID,
                     newSearch: false,
-                    // query: query,
                 })
             },
             (error) => {
