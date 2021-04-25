@@ -1,19 +1,11 @@
 //this file will render a conterst card based on the URL params
 import React from "react";
 import axios from "axios";
-// import PostCard from "./postCard/postCard";
-// import CommentCard from "./postCard/commentDisplay";
-import Gallery from "react-grid-gallery";
 import Masonry from "react-masonry-css";
-import styles from "../../post/styles.css";
 import { Box, Container } from "@material-ui/core/";
-import { sizing } from '@material-ui/system';
 import NavBar from "../../Nav/navbar";
 import PostCard from "../../post/postCard/postCard";
 import ContestCard from "../card/contestCard";
-// import ContestCard from "../contestpage";
-
-// import NavBar from "../Nav/navbar"
 
 
 class PermaContest extends React.Component {
@@ -24,7 +16,6 @@ class PermaContest extends React.Component {
             isLoaded: false,
             contest: {},
             registeredPost: [],
-            //   owner: null,
             setCurrentId: null,
         };
     }
@@ -37,7 +28,6 @@ class PermaContest extends React.Component {
         axios
             .get(`http://localhost:5000/api/contests/${contestId}`, {
                 params: {
-                    // ID : user.result.userID
                 },
             })
             .then(
@@ -59,7 +49,6 @@ class PermaContest extends React.Component {
                 }
             );
     }
-    //http://localhost:3000/constest-detail/608308600d1fe53c58f08afd
     render() {
         const { error, isLoaded, post } = this.state;
         const breakpointColumnsObj = {
@@ -84,7 +73,6 @@ class PermaContest extends React.Component {
                     <NavBar />
                     <Box height="auto" >
 
-                        {/* <Box m={5} mx="auto" > */}
                         <Box display="flex" justifyContent="center" m={2} p={1} >
 
                             <ContestCard contest={this.state.contest} />
@@ -101,7 +89,6 @@ class PermaContest extends React.Component {
                                     <h2 className="welcomeMessage">Be the First to Register!</h2>
                                 </Box>
                             )}
-                            {/* <Post post={post} setCurrentId={setCurrentId} /> */}
                             <Masonry
                                 breakpointCols={breakpointColumnsObj}
                                 className="my-masonry-grid"

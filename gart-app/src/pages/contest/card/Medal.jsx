@@ -1,16 +1,12 @@
 //This component is incharge or rendering the heart icon for every post 
 import React, { useEffect, useState } from "react";
 import { setWinner } from "../../../actions/contest.js";
-import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
-import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 import { useDispatch } from "react-redux";
 import {
-    Button, createMuiTheme, IconButton, MuiThemeProvider
+     createMuiTheme, IconButton, MuiThemeProvider
 } from "@material-ui/core/";
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import StarBorder from "@material-ui/icons/StarBorder";
-// import { getPostLikes } from '../../../actions/post.js'
 const medalTheme = createMuiTheme({
     palette: {
         primary: {
@@ -27,7 +23,6 @@ const Medal = ({ contestObject, userID }) => {
     const [load, setLoad] = useState(false)
     const [clicked, setClicked] = useState(false)
     const [counter, setCounter] = useState(0)
-    const [likeArray, setLikeArray] = useState([])
 
 
     const Likes = () => {
@@ -68,7 +63,6 @@ const Medal = ({ contestObject, userID }) => {
             <IconButton
                 size="small"
                 color="primary"
-                // disabled={user?.result.userID === parseInt(post.creator)}
                 onClick={() => {
                     dispatch(setWinner(contestObject._id))
                     console.log("Set winner was clicked", contestObject)

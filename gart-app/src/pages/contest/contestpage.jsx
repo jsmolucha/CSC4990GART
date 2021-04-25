@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {
     Card,
-    CardActions,
     CardContent,
     Button,
-    Typography,
   } from "@material-ui/core/";
 
 import moment from "moment";
