@@ -40,7 +40,7 @@ const useStyle = makeStyles((theme) => ({
         // marginTop: "10px",
         borderRadius: "10px",
         border: "none",
-        // width: "80%",
+        //width: "80%",
         height: "40px",
         backgroundColor: "#242c37",
         fontSize: "20px",
