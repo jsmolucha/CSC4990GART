@@ -5,7 +5,6 @@ import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded"
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 import { useDispatch } from "react-redux";
 import IconButton from '@material-ui/core/IconButton';
-// import { getPostLikes } from '../../../actions/post.js'
 
 const Heart = ({ PID, likes, userID }) => {
     const dispatch = useDispatch();
@@ -13,7 +12,6 @@ const Heart = ({ PID, likes, userID }) => {
     const [load, setLoad] = useState(false)
     const [clicked, setClicked] = useState(false)
     const [counter, setCounter] = useState(0)
-    const [likeArray, setLikeArray] = useState([])
 
 
     const Likes = () => {
@@ -25,11 +23,6 @@ const Heart = ({ PID, likes, userID }) => {
     }
 
     function updateLikes() {
-        //OG intention was to fetch an updated version but decidided to ommit for now
-        // alert("hello")
-        // dispatch(getPostLikes(PID)).then(data => {
-        //     setLikeArray(data)
-        // })
 
     }
 
@@ -40,23 +33,7 @@ const Heart = ({ PID, likes, userID }) => {
             )))
             setLoad(true)
         }
-        // let status = false
-
-        // if (likes > 0 && counter === 0) {
-        //     if (
-        //         Boolean(likes.find(
-        //             (uid) => parseInt(uid) === parseInt(userID)
-        //         ))) {
-        //         status = true
-        //         // console.log("found")
-        //     }
-        // } else if (counter === 0) {
-        //     status = false
-        // } else {
-        //     status = likeStatus
-        // }
-        // setLikeStatus(status);
-        // setLoad(true)
+        
     }, []);
 
 
@@ -76,7 +53,6 @@ const Heart = ({ PID, likes, userID }) => {
         <IconButton
             size="small"
             color="secondary"
-            // disabled={user?.result.userID === parseInt(post.creator)}
             onClick={() => {
                 dispatch(likePost(PID))
                 setClicked(true)

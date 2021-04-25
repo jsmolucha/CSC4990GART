@@ -2,11 +2,8 @@ import React from "react";
 import axios from "axios";
 import PostCard from "./postCard/postCard";
 import CommentCard from "./postCard/commentDisplay";
-import Gallery from "react-grid-gallery";
 import Masonry from "react-masonry-css";
-import styles from "./styles.css";
-import { Box, Container } from "@material-ui/core/";
-import { sizing } from '@material-ui/system';
+import { Box } from "@material-ui/core/";
 
 import NavBar from "../Nav/navbar"
 
@@ -37,7 +34,6 @@ class Permalink extends React.Component {
       })
       .then(
         (res) => {
-          console.log(res.data, "response")
           this.setState({
             isLoaded: true,
             post: res.data.posts,
@@ -76,7 +72,6 @@ class Permalink extends React.Component {
         <div className="profilePage">
           <NavBar />
           <Box display="flex" justifyContent="center" m="auto" style={{ height: "auto", minHeight: "100%", overflow: "auto" }} p={1} bgcolor="#151A21">
-            {/* <Box m={5} mx="auto" > */}
             <Box m={5}>
 
               <PostCard
@@ -84,7 +79,6 @@ class Permalink extends React.Component {
                 setCurrentId={this.state.setCurrentId}
               />
             </Box> 
-            {/* <Box> */}
 
               <Masonry
                 breakpointCols={breakpointColumnsObj}
@@ -101,9 +95,7 @@ class Permalink extends React.Component {
                   );
                 })}
               </Masonry>
-            {/* </Box> */}
           </Box>
-          {/* </Box> */}
         </div>
       );
     }

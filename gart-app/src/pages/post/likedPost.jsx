@@ -1,15 +1,10 @@
 //this component renders the postcards of a users likes 
 import React from "react";
-import axios from "axios";
 import PostCard from "./postCard/postCard";
 import Masonry from "react-masonry-css";
 import { Box, Container } from "@material-ui/core/";
 import NavBar from '../Nav/navbar'
-// const { API_URL } = require('../constants/constants')
-// import 
 import * as api from "../../api/index.js"
-
-// const API = axios.create({ baseURL: `${API_URL}` });
 
 class LikedPost extends React.Component {
     constructor(props) {
@@ -24,11 +19,8 @@ class LikedPost extends React.Component {
     }
 
     componentDidMount() {
-        // const { username } = this.props.match.params;
-        // console.log(username);
         let user = JSON.parse(localStorage.getItem("profile"));
         console.log("user:", user?.result?.userID)
-        // console.log(this)
 
         api.getLikedPost({ "userID": user?.result?.userID }).then(
             (res) => {
@@ -36,7 +28,6 @@ class LikedPost extends React.Component {
                 this.setState({
                     isLoaded: true,
                     images: res.data.reverse(),
-                    // owner: username,
                     setCurrentId: user?.result?.userID,
                 });
             },
@@ -58,19 +49,13 @@ class LikedPost extends React.Component {
             700: 2,
             500: 1,
         };
-        // return(<div onLoad={componenetDidMount()}>
-        //   Loading
-        // </div>)
 
-        // </div>
-        // componenetDidMount()
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return (
                 <div>
                     Loading... ok
-                    {/* <div> {console.log(this.state)}</div> */}
                 </div>
             );
         } else {

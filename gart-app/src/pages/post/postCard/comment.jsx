@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import {addComment} from "../../../actions/post"
 
@@ -26,7 +25,6 @@ const CommentButton = ({ PID, userID, username }) => {
 
     const handleChange = (e) => {
         setComment({ ...comment, [e.target.name]: e.target.value });
-        //console.log(comment);
     };
 
     const handleClickOpen = () => {
@@ -40,7 +38,6 @@ const CommentButton = ({ PID, userID, username }) => {
         e.preventDefault()
         const data = { ...comment }
         //alert('Submitted')
-        console.log(data.comment)
         dispatch(addComment(data))
     }
 

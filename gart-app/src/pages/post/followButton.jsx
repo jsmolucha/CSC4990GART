@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import {
-    Button, createMuiTheme, IconButton, MuiThemeProvider
+     createMuiTheme, IconButton, MuiThemeProvider
 } from "@material-ui/core/";
 import { followUser } from '../../actions/auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-// import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 const whiteTheme = createMuiTheme({
     palette: {
         primary: {
@@ -25,7 +24,6 @@ const FollowButton = ({ username, followers, userID }) => {
     const [load, setLoad] = useState(false)
     const [clicked, setClicked] = useState(false)
     const [counter, setCounter] = useState(0)
-    const [likeArray, setLikeArray] = useState([])
 
     const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -40,10 +38,9 @@ const FollowButton = ({ username, followers, userID }) => {
         return <FontAwesomeIcon icon={faEyeSlash} size="4x" />
     }
 
-   
+
     useEffect(async () => {
-        console.log("FS",followStatus)
-        // let status = fal
+        console.log("FS", followStatus)
         if (counter === 0) {
             await setFollowStatus(Boolean(await followers.find(
                 (uid) => parseInt(uid) === parseInt(user?.result?.userID)
@@ -51,24 +48,6 @@ const FollowButton = ({ username, followers, userID }) => {
             setLoad(true)
         }
 
-        // if (followers > 0 && counter === 0) {
-        //     if (Boolean( await followers.find(
-        //         (uid) => parseInt(uid) === parseInt(user?.result?.userID)
-        //     ))) {
-
-        //         setFollowStatus(true);
-        //         console.log("found")
-        //     } else if (counter === 0) {
-        //         status = false
-        //     } else {
-        //         status = followStatus
-        //     }
-        // }
-
-        //  console.log("usereffect", status)
-        //  console.log(followers)
-        
-        // Follow()
     }, []);
 
 
@@ -87,9 +66,7 @@ const FollowButton = ({ username, followers, userID }) => {
         <MuiThemeProvider theme={whiteTheme}>
 
             <IconButton
-                // size="large"
                 color="primary"
-                // disabled={user?.result.userID === parseInt(post.creator)}
                 onClick={() => {
                     dispatch(followUser(username))
                     setClicked(true)
