@@ -39,7 +39,7 @@ const CommentButton = ({ PID, userID, username }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const data = { ...comment }
-        alert('Submitted')
+        //alert('Submitted')
         console.log(data.comment)
         dispatch(addComment(data))
     }
