@@ -1,7 +1,5 @@
-import { AUTH } from "../constants/actionTypes";
 import * as api from "../api/index.js";
 import {
-  FETCH_ALL,
   CREATE,
   UPDATE,
   DELETE,
@@ -15,10 +13,7 @@ export const createPost = (post, router) => async (dispatch) => {
   try {
     const { data } = await api.createPost(post);
 
-    console.log(data)
-    console.log("Success");
     dispatch({ type: CREATE, payload: data });
-    //alert("Success")
     router.push(`/post/${data._id}`); //redirect to main page
   } catch (error) {
     if (error.response) {
@@ -80,9 +75,6 @@ export const deleteComment = (id) => async (dispatch) => {
     await await api.deleteComment(id);
 
     dispatch({ type: DELETE, payload: id });
-    console.log("success")
-    //alert("Post successfully deleted")
-    // router.push(`/main`)
   } catch (error) {
     console.log(error);
   }
@@ -95,9 +87,6 @@ export const deletePost = (id) => async (dispatch) => {
     await await api.deletePost(id);
 
     dispatch({ type: DELETE, payload: id });
-    console.log("success")
-    //alert("Post successfully deleted")
-    // router.push(`/main`)
   } catch (error) {
     console.log(error);
   }
@@ -108,7 +97,6 @@ export const getPostLikes = (PID) => async(dispatch) =>{
 
   try{
     const {data} = await api.fetchPost(PID)
-    console.log("coming from ACTIONS",data)
     return data.likes
   }catch(error){
     console.log(error)

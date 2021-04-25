@@ -1,23 +1,14 @@
 import * as api from '../api/index.js';
-import {Redirect} from "../constants/actionTypes";
-
-import { AUTH } from "../constants/actionTypes";
 import {
-  FETCH_ALL,
   CREATE,
-  UPDATE,
-  DELETE,
   LIKE,
-  COMMENT
 } from "../constants/actionTypes";
-
 
 //Makes the request to create a contest on the backend
 export const createContest = (post, router) => async (dispatch) => {
     try{
         const {data} = await api.createContest(post);
         dispatch({type: CREATE, payload: data});
-        //alert("success")
         router.push("/contests");
 
 } catch (error) {
