@@ -7,22 +7,15 @@
 //delete user --->deletes user from collection permanantly; standard practice for all websites
 
 import express from "express";
-import mongoose from "mongoose";
-// import aws from 'aws-sdk'
-// import PostMessage from "../models/postMessage.js";
 import User from "../models/users.js"
 import asyncHandler from "express-async-handler";
-
-// import formidable from "formidable";
 const router = express.Router();
 
 export const followUser = asyncHandler(async (req, res) => {
     const { username } = req.params; //Leader userId
-  //req.userID ---> follower ID
     if (!req.userID) {
       return res.json({ message: "Unauthenticated" });
     }
-  
 
     const leader = await User.findOne({"username" : username});
     const id = leader.userID
@@ -43,7 +36,6 @@ export const followUser = asyncHandler(async (req, res) => {
     const updatedFollower = await User.findByIdAndUpdate(follower._id, follower, {
       new: true,
     });
-    // console.log(updatePost)
     res.status(200).json({updatedLeader, updatedFollower});
   })
   
