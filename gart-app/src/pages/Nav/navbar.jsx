@@ -10,7 +10,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSmile, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSmile, faSignOutAlt, faHome } from "@fortawesome/free-solid-svg-icons";
 
 const useStyle = makeStyles((theme) => ({
 
@@ -125,7 +125,7 @@ const { API_URL } = require('../../constants/constants')
 
 const API = axios.create({ baseURL: `${API_URL}` });
 
-export default function NavBar({currentQuery = ""}) {
+export default function NavBar({ currentQuery = "" }) {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch();
     const location = useLocation();
@@ -139,9 +139,9 @@ export default function NavBar({currentQuery = ""}) {
         setUser(null);
     };
 
- 
-    const profile = async () =>{
-        if(user?.result?.username){
+
+    const profile = async () => {
+        if (user?.result?.username) {
             history.push(`/@${user.result.username}`);
         }
     }
@@ -158,49 +158,54 @@ export default function NavBar({currentQuery = ""}) {
         <>
             <AppBar position="static" className={classes.appbar}>
                 <Toolbar>
+                <Hidden xsUp>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
-                    onClick={
-                        () =>{
-                            history.push("/main")
-                        }
-                    }>
+                        onClick={
+                            () => {
+                                history.push("/main")
+                            }
+                        }>
+                            <FontAwesomeIcon icon={faHome}/>
                     </IconButton>
+                        </Hidden>
                     <Hidden xsDown>
-                        <h3 className={classes.logoText}>GART</h3>
+                        <h3 className={classes.logoText}>
+                    <Link to="/main" className={classes.logoText}>
+                            GART
+                        </Link>
+                            </h3>
                     </Hidden>
                     <form onSubmit={handleOnSubmit} >
-                        
-                    <input className={classes.searchBar} type="text" placeholder="Search"  value={query} onChange={(e) =>
-                      setQuery(e.target.value)
-                    }/>
+
+                        <input className={classes.searchBar} type="text" placeholder="Search" value={query} onChange={(e) =>
+                            setQuery(e.target.value)
+                        } />
                     </form>
 
 
                     {user?.result ? (
                         <>
-                            <Hidden xsDown>
-                                <button className={classes.accountBtn} onClick={profile} >Account</button>
-                                <button className={classes.logOut} onClick={logout}>Logout</button>
-                            </Hidden>
+                            {/* <Hidden xsDown> */}
+                            <button className={classes.accountBtn} onClick={profile} >Account</button>
+                            <button className={classes.logOut} onClick={logout}>Logout</button>
+                            {/* </Hidden>
                             <Hidden smUp>
                                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
                                     onClick={profile} >
                                          <FontAwesomeIcon icon={faSmile}/>
-                                    {/* <PersonIcon></PersonIcon> */}
                                 </IconButton>
                                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
                                     onClick={logout}
                                 >
                                      <FontAwesomeIcon icon={faSignOutAlt}/>
-                                    {/* <ExitToAppIcon></ExitToAppIcon> */}
                                 </IconButton>
-                            </Hidden>
+                            </Hidden> */}
                         </>
                     ) : (
                         <button className={classes.logOut}>
-                             <Link to="/login" id='loginlink'> Sign In</Link>
+                            <Link to="/login" id='loginlink'> Sign In</Link>
                         </button>
-                        
+
                     )}
                 </Toolbar>
             </AppBar>

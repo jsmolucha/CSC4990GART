@@ -31,12 +31,12 @@ const UserCard = ({ username, currentUser }) => {
 
                     <div className="card-about">
                         <div className="item">
-                            <span className="value">{(username?.followers.length > 0) ? (username?.followers.length) : (0)}</span>
-                            <span className="label">{(username?.followers.length == 1) ? (<>follower</>) : (<>followers</>)}</span>
+                            <span className="value">{(username?.followers?.length > 0) ? (username?.followers?.length) : (0)}</span>
+                            <span className="label">{(username?.followers?.length == 1) ? (<>follower</>) : (<>followers</>)}</span>
                         </div>
 
                         <div className="item">
-                            <span className="value">{(username?.following.length > 0) ? (username?.followers.length) : (0)}</span>
+                            <span className="value">{(username?.following?.length > 0) ? (username?.followers?.length) : (0)}</span>
                             <span className="label">following</span>
                         </div>
 
