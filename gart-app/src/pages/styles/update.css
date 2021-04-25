@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
+.regCont {
+    background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-template-areas:
+    ". . ."
+    ". form ."
+    ". form ."
+    ". form ."
+    ". . . . "
+    ;
+}
+    
+#signupHeader {
+    font-size: 72px;
+    color: white;
+    font-family:'Inter';
+    font-weight: 900;
+    text-align: center;
+    margin-top: 8%;
+}
+
+.regcontainer {
+    grid-area: form;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    min-width: 600px;
+  
+}
+
+.helper-text-signup {
+    font-family: 'Inter';
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2vw;
+    margin: 0 0 5%;
+    text-align: center;
+}
+
+#eMailUpdate, #pWordUpdate, #fullNameUpdate{
+    outline: none;
+    border: none;
+    background:#FFF;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-weight: 300;
+    font-size: 18px;
+    width:300px;
+    height: 50px;
+    color: rgba(0, 0, 0, 0.8);    
+    text-indent: 10px;
+    display: block;
+    margin: 0 auto 5% auto;
+
+}
+
+#uName::placeholder, #pWord::placeholder, #eMail::placeholder, #fullName::placeholder {
+    font-size: 0.781vw;
+    color: rgba(0, 0, 0, 0.8);    
+    text-align: left;
+    text-indent: 10px;
+    font-family: 'Inter';
+
+}
+
+#submitReg {
+    width: 200px;
+    height: 60px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    display: block;
+    margin: 0 auto 3% auto;
+    transition: .3s;
+
+}
+
+#submitReg:hover {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+#haveAcct {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+    transition-duration: 0.4s;
+    font-family: 'Inter';
+    font-weight: 200;
+    font-size: 18px;
+    margin-left: auto 0 0 auto;  
+}
+
+.link-login {
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+#haveAcct:hover {
+    color: #C4C4C4;
+}

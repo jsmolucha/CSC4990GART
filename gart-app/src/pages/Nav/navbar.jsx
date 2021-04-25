@@ -64,7 +64,6 @@ const useStyle = makeStyles((theme) => ({
         transition: ".3s ease-out",
         outline: "none",
         textIndent: "14px",
-
         width: '100%',
         // [theme.breakpoints.up('sm')]: {
         //     marginLeft: theme.spacing(2),
@@ -111,7 +110,7 @@ const useStyle = makeStyles((theme) => ({
         background: "none",
         outline: "none",
         border: "none",
-        color: "#3EB489",
+        color: "#d727dbb3",
         fontSize: 25,
         fontWeight: 600,
         fontFamily: 'Inter',
@@ -119,6 +118,7 @@ const useStyle = makeStyles((theme) => ({
         transition: ".3s ease-out",
         padding: 5,
         borderRadius: 10,
+        cursor: "pointer",
     },
     signIn: {
         display: "block",
@@ -184,6 +184,7 @@ export default function NavBar({currentQuery = ""}) {
                             history.push("/main")
                         }
                     }>
+                        <img className={classes.logo} src={logo} alt="" />
                     </IconButton>
                     <Hidden xsDown>
                         <h3 className={classes.logoText}>GART</h3>

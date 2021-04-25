@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
-.regCont {
+.regContainer {
     background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
     height: 100vh;
     width: 100vw;
@@ -26,14 +26,14 @@
     margin-top: 8%;
 }
 
-.regGreeting {
+.registerGreeting {
     grid-area: greet;
     background-color: #FFF;
     border-radius: 0px 20px 20px 0px;
 
 }
 
-.regcontainer {
+.registercontainer {
     grid-area: form;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
@@ -75,7 +75,7 @@
 }
 
 #uName::placeholder, #pWord::placeholder, #eMail::placeholder, #fullName::placeholder {
-    font-size: 0.781vw;
+    font-size: 20px;
     color: rgba(0, 0, 0, 0.8);    
     text-align: left;
     text-indent: 10px;
@@ -126,8 +126,8 @@
     color: #C4C4C4;
 }
 
-@media only screen and (max-width: 1000px) {
-    .regCont {
+@media only screen and (max-width: 1200px) {
+    .loginCont {
         background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
         height: 100vh;
         width: 100vw;
@@ -140,15 +140,42 @@
         ". . . "
     }
 
-    .regGreeting {
+    .registerGreeting {
         display: none;
     }
 
-    .regcontainer {
+    .registercontainer {
         grid-area: form;
         background: rgba(255, 255, 255, 0.3);
         backdrop-filter: blur(8px);
-        border-radius: 20px 20px 20px 20px;
-      
+        border-radius: 20px;
+        min-width: 500px;
+        height: 600px;
+    }
+
+    #uName, #eMail, #pWord, #fullName  {
+        width: 300px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    #uName::placeholder, #pWord::placeholder, #eMail::placeholder, #fullName::placeholder {
+        font-size: 20px;
+        color: rgba(0, 0, 0, 0.8);    
+        text-align: left;
+        text-indent: 10px;
+        font-family: 'Inter';
+    
+    }
+
+    
+    #signupHeader {
+        font-size: 65px;
+    }
+
+    #submitReg {
+        width: 150px;
+        height: 50px;
+        font-size: 25px;
     }
 }

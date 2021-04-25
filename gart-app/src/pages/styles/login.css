@@ -63,7 +63,6 @@
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
     border-radius: 20px 0 0 20px;
-  
 }
 
 #uNameField, #pWordField {
@@ -114,7 +113,6 @@
     font-size: 1.875vw;
     color: white;
     transition: .3s;
-    
 }
 
 #submitLogin:hover {
@@ -162,6 +160,36 @@
         background: rgba(255, 255, 255, 0.3);
         backdrop-filter: blur(8px);
         border-radius: 20px 20px 20px 20px;
-      
+        min-width: 500px;
     }
+
+    #uNameField, #pWordField  {
+        width: 300px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    #uNameField::placeholder, #pWordField::placeholder {
+        font-size: 15px;
+    }
+
+    #loginHeader {
+        font-size: 65px;
+    }
+
+    #submitLogin {
+        width: 150px;
+        height: 50px;
+        font-size: 25px;
+    }
+
+    .helper-text {
+        font-size: 20px;
+    }
+    
+    #noReg {
+        font-size: 20px;
+        margin-bottom: 2%;
+    }
+
 }
