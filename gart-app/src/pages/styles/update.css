@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
-.regCont {
+.updateContainer {
     background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
     height: 100vh;
     width: 100vw;
@@ -10,14 +10,14 @@
     display: grid;
     grid-template-areas:
     ". . ."
-    ". form ."
-    ". form ."
-    ". form ."
-    ". . . . "
+    ". update ."
+    ". update ."
+    ". update ."
+    ". . ."
     ;
 }
     
-#signupHeader {
+#updateHeader {
     font-size: 72px;
     color: white;
     font-family:'Inter';
@@ -27,7 +27,7 @@
 }
 
 .regcontainer {
-    grid-area: form;
+    grid-area: update;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
     border-radius: 20px;
@@ -44,7 +44,7 @@
     text-align: center;
 }
 
-#eMailUpdate, #pWordUpdate, #fullNameUpdate{
+#uNameUpdate, #eMailUpdate, #pWordUpdate, #fullNameUpdate {
     outline: none;
     border: none;
     background:#FFF;

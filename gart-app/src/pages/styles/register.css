@@ -48,7 +48,7 @@
     height: auto;
 }
 
-.helper-text-signup {
+.helper-text-register {
     font-family: 'Inter';
     font-weight: 200;
     color: rgba(255, 255, 255, 0.3);
@@ -57,7 +57,7 @@
     text-align: center;
 }
 
-#uName, #eMail, #pWord, #fullName{
+#uNameRegister, #eMailRegister, #pWordRegister, #fullNameRegister{
     outline: none;
     border: none;
     background:#FFF;
@@ -153,13 +153,13 @@
         height: 600px;
     }
 
-    #uName, #eMail, #pWord, #fullName  {
+    #uNameRegister, #eMailRegister, #pWordRegister, #fullNameRegister  {
         width: 300px;
         height: 50px;
         font-size: 18px;
     }
 
-    #uName::placeholder, #pWord::placeholder, #eMail::placeholder, #fullName::placeholder {
+    #uNameRegister::placeholder, #pWordRegister::placeholder, #eMailRegister::placeholder, #fullNameRegister::placeholder {
         font-size: 20px;
         color: rgba(0, 0, 0, 0.8);    
         text-align: left;
@@ -177,5 +177,9 @@
         width: 150px;
         height: 50px;
         font-size: 25px;
+    }
+
+    .helper-text-register {
+        font-size: 25px
     }
 }

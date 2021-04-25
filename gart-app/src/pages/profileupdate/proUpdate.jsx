@@ -26,15 +26,14 @@ const Profileupdate  = () => {
         });
       };
   return (
-    <div className="regCont">
+    <div className="updateContainer">
             <div className="regcontainer">
                 <form className="regForm" method="post" action = "http://localhost:5000/api/update/updateAccount" onChange={handleInputChange}>
-                    <h1 id="signupHeader"> Update Account</h1>
+                    <h1 id="updateHeader"> Update Account</h1>
                     <input id="fullNameUpdate" type="text" placeholder="Full Name" value={data.fullName} name="fullName" required />
                     <input id="uNameUpdate" type="text" placeholder="Username" value={data.username}  name="username" required />
                     <input id="eMailUpdate" type="text" placeholder="Email" value={data.email} name="email" required/>
                     <input id="_id" type="hidden" value={data._id} name="_id" required/> 
-
                     <button id="submitReg" type="submit">Update Info</button>
                     <Link to="/@:username/passwordUpdate" id="haveAcct">Forgot your password?</Link>
                     <div></div>

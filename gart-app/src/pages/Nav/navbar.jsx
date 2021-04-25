@@ -164,7 +164,6 @@ export default function NavBar({currentQuery = ""}) {
                             history.push("/main")
                         }
                     }>
-                        <img className={classes.logo} src={logo} alt="" />
                     </IconButton>
                     <Hidden xsDown>
                         <h3 className={classes.logoText}>GART</h3>
