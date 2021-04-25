@@ -1,16 +1,11 @@
 import React from "react";
-import axios from "axios";
-// import PostCard from "./postCard/postCard";
 import Masonry from "react-masonry-css";
-import { Box, Button, Card, CardContent, Container } from "@material-ui/core/";
-import searchPost from "../../actions/search.js"
-import { useParams } from "react-router-dom";
-import PostCard from "../post/postCard/postCard"
+import { Box, Button, Container } from "@material-ui/core/";
 import UserCard from "./card/userCard"
 import { Redirect } from 'react-router-dom'
-
 import * as api from "../../api/index.js";
 import NavBar from "../Nav/navbar.jsx";
+
 class SearchByUsername extends React.Component {
     constructor(props) {
         super(props);
@@ -18,7 +13,6 @@ class SearchByUsername extends React.Component {
             error: null,
             isLoaded: false,
             users: [],
-            // owner: null,
             setCurrentId: null,
             currentUser: null,
             followers: [],
@@ -27,7 +21,6 @@ class SearchByUsername extends React.Component {
             userSearch: false,
             newSearch: true,
             redirect: false
-            // currentUsername: null,
         };
     }
 
@@ -43,14 +36,9 @@ class SearchByUsername extends React.Component {
       }
 
     componentDidMount() {
-        console.log(this.props)
         const user = JSON.parse(localStorage.getItem("profile"));
-        // const { query } = this.props.match.params
-
-        // console.log()
         api.searchUsername(this.state.query).then(
             (res) => {
-                console.log(res.data)
                 this.setState({
                     isLoaded: true,
                     users: res.data.reverse(),
@@ -123,7 +111,8 @@ class SearchByUsername extends React.Component {
                                 })}
                             </Masonry>
                         </Container>
-                    </Box > </div>
+                    </Box > 
+                    </div>
             )
         }
 

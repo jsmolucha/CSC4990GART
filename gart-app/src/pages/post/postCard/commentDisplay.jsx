@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Card,
   CardActions,
@@ -40,10 +40,7 @@ const CommentCard = ({ comment, userID }) => {
       <div className={classes.postButton}>
 
         {(comment.commentBy === userID) &&(<IconButton
-          // style={{ margin: 5 }}
-          // variant="contained"
           color="secondary"
-          // color="primary"
           onClick={() => {
             dispatch(deleteComment(comment._id))
             history.go(0)
@@ -51,7 +48,6 @@ const CommentCard = ({ comment, userID }) => {
         }
         >
           <DeleteIcon fontSize="small" />
-          {/* <EditIcon fontSize="small" /> */}
         </IconButton>)}
           </div>
       </CardActions>

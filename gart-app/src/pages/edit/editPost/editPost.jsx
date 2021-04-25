@@ -1,18 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
-import Dropzone, { useDropzone } from "react-dropzone";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ModalImage from "react-modal-image";
-// import decode from "jwt-decode";
-// import * as actionType from "../../constants/actionTypes";
-import { createPost, deletePost, updatePost } from "../../../actions/post";
+import { deletePost, updatePost } from "../../../actions/post";
 import useStyles from "./styles";
 import {
   Box,
   Container,
   Grid,
   TextField,
-  withStyles,
   Paper,
   Card,
   CardActions,
@@ -20,13 +16,8 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-// import { makeStyles } from "@material-ui/core/styles";
-import PublishIcon from "@material-ui/icons/Publish";
 
 export default function EditPost({ currentId, setCurrentId, image }) {
-  // const { acceptedFiles } = useDropzone();
-
-  // const [dropper, setDropper] = useState({});
   const [postData, setPostData] = useState({
     ...image
   });
@@ -63,47 +54,28 @@ export default function EditPost({ currentId, setCurrentId, image }) {
   };
 
   const clear = () => {
-    // setCurrentId(0);
     setPostData({ ...image });
-    // setFile({});
-    // setPreviewSrc("");
   };
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    alert("submit");
-    console.log(postData);
+    // alert("submit");
 
     const data = { ...postData, creator: user.result.userID, username: user.result.username };
-    console.log(data)
-    // if (file) {
-    //   const formData = new FormData();
-    //   formData.append("file", file, data);
-    //   formData.append("title", postData.title);
-    //   formData.append("description", postData.description);
-    //   formData.append("creator", user.result.userID);
-    //   formData.append("tags", postData.tags);
-    //   await dispatch(createPost(formData, history));
-    //   clear();
-    // }
 
-    // // } else {
     dispatch(updatePost(image._id, { ...data }, history));
-    //   // clear();
-    // }
+
   };
 
   const onDrop = (files) => {
     const [uploadedFile] = files;
     setFile(uploadedFile);
 
-    console.log(uploadedFile);
 
     const fileReader = new FileReader();
     fileReader.onload = () => {
       setPreviewSrc(fileReader.result);
-      // setPostData({ ...postData, filePath: fileReader })}
     };
     fileReader.readAsDataURL(uploadedFile);
     setIsPreviewAvailable(uploadedFile.name.match(/\.(jpeg|jpg|png)$/));
@@ -192,9 +164,7 @@ export default function EditPost({ currentId, setCurrentId, image }) {
                     label="Tags"
                     variant="outlined"
                     name="tags"
-                    // multiline
                     value={postData.tags}
-                    // rows={3}
                     onChange={(e) =>
                       setPostData({
                         ...postData,
@@ -227,13 +197,14 @@ export default function EditPost({ currentId, setCurrentId, image }) {
                 variant="contained"
                 color="secondary"
                 // color="primary"
-                onClick={() => {dispatch(deletePost(postData._id))
-                history.push('/delete')}
-                
+                onClick={() => {
+                  dispatch(deletePost(postData._id))
+                  history.push('/delete')
+                }
+
                 }
               >
                 Delete
-                {/* <EditIcon fontSize="small" /> */}
               </Button>
               <Button
                 style={{ margin: 5 }}
@@ -243,15 +214,11 @@ export default function EditPost({ currentId, setCurrentId, image }) {
                 onClick={() => history.goBack()}
               >
                 Cancel
-                {/* <EditIcon fontSize="small" /> */}
               </Button>
             </CardActions>
           </Card>
         </Container>
       </form>
     </Box>
-    // </React.Fragment>
   );
 }
-
-// export default Upload;

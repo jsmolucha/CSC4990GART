@@ -4,18 +4,9 @@ import PostCard from "./postCard/postCard";
 import Masonry from "react-masonry-css";
 import { Box, Container } from "@material-ui/core/";
 import NavBar from '../Nav/navbar'
-import FollowButton from './followButton'
-import { useParams } from "react-router-dom";
 import UserCard from "../search/card/userCard";
 import * as api from "../../api/index.js"
-// import { useDispatch } from "react-redux";
-// import {
-//   Button
-// } from "@material-ui/core/";
-// import { followUser } from '../../actions/auth'
-// const { API_URL } = require('../constants/constants')
 
-// const API = axios.create({ baseURL: `${API_URL}` });
 
 class Profile extends React.Component {
   constructor(props) {
@@ -39,13 +30,8 @@ class Profile extends React.Component {
     document.title = username
     api.getUserInfo(username).then(
       (res) => {
-          console.log(res.data)
           this.setState({
-              // isLoaded: true,
               userInfo: res.data,
-              // setCurrentId: user.result.userID,
-              // currentUsername: user?.result?.username,
-              // query: query,
           })
       },
       (error) => {
@@ -56,22 +42,7 @@ class Profile extends React.Component {
           });
       }
   );
-    // axios.get(`http://localhost:5000/api/accounts/follow/${username}`)
-    //   .then(
-    //     (res) => {
-    //       console.log(res.data, "response")
-    //       this.setState({
-    //         followers: res.data
-    //       });
-    //     },
-    //     (error) => {
-    //       console.log("error");
-    //       this.setState({
-    //         isLoaded: true,
-    //         error,
-    //       });
-    //     }
-    //   );
+    
     axios
       .get(`http://localhost:5000/api/accounts/username/${username}`, {
         params: {
@@ -80,7 +51,6 @@ class Profile extends React.Component {
       })
       .then(
         (res) => {
-          // console.log(res.data,"response")
           this.setState({
             isLoaded: true,
             images: res.data.reverse(),
@@ -88,7 +58,6 @@ class Profile extends React.Component {
             setCurrentId: user?.result?.userID,
             currentUsername: user?.result?.username,
             followCount: this.state.followers.length
-            // followers: user?.result?.followers
           });
         },
         (error) => {
@@ -124,27 +93,15 @@ class Profile extends React.Component {
     } else {
       return (
         <div className="profilePage">
-          {/* <title>{ this.state.owner }</title> */}
 
           <NavBar props={this.state.setCurrentId}></NavBar>
           <Box height="100%" >
             <Box display="flex" justifyContent="center" m={2} p={1} >
               <UserCard username={this.state.userInfo} currentUser={this.state.currentUsername} />
-              {/* <h1 className="welcomeMessage">@{this.state.owner}</h1> */}
 
             </Box>  
-            {/* {(this.state.owner != this.state.currentUsername) && (
-              <Box display="flex" justifyContent="center"  >
-                <FollowButton username={this.state.owner} followers={this.state.followers}
-                  userID={this.state.setCurrentId}  />
-              </Box>)}
-            <Box display="flex" justifyContent="center" m={1} p={1} >
-              <h4>this user has {this.state.followCount} {
-                (this.state.followCount=== 1) ? ("follower") : ("followers")
-              }</h4>
-            </Box> */}
+            
             <Container>
-              {/* <Post post={post} setCurrentId={setCurrentId} /> */}
               <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="my-masonry-grid"
@@ -154,13 +111,10 @@ class Profile extends React.Component {
                   return (
                     <div key={p._id} style={{ backgroundColor: "transparent" }}>
                       <PostCard post={p} setCurrentId={this.state.setCurrentId} />
-                      {/* <img key={p._id} src={p.filePath} alt={`${p.title} by ${p.creator}`} />;
-        <h3>{`${p.title} by ${p.creator}`}</h3> */}
                     </div>
                   );
                 })}
               </Masonry>
-              {/* {console.log(this.state.images)} */}
             </Container>
           </Box>
         </div>
