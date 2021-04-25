@@ -17,7 +17,7 @@ router.post('/newContest', async (req, res) => {
 
     try {
         await cont.save();
-        res.send("contest created");
+        res.sendStatus.send("contest created");
     } catch (err) {
         console.log(err)
     }

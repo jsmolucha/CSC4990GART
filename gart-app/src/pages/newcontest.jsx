@@ -23,12 +23,12 @@ const history = useHistory();
       ...contest,
       [event.target.name]: event.target.value,
     });
-    console.log(contest)
   };
 
   const handleSubmit = (async (e) => {
     e.preventDefault();
     dispatch( createContest(contest, history));
+    history.push("/contests");
   });
 
 return(

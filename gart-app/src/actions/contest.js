@@ -16,11 +16,9 @@ import {
 export const createContest = (post, router) => async (dispatch) => {
     try{
         const {data} = await api.createContest(post);
-        console.log(data)
-        console.log("success")
         dispatch({type: CREATE, payload: data});
         //alert("success")
-        router.push(`/contest/${data._id}`);
+        router.push("/contests");
 
 } catch (error) {
     if(error.response) {
