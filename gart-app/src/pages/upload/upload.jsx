@@ -81,7 +81,7 @@ export default function Upload({ currentId, setCurrentId, contestId = 0 }) {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    alert("submit");
+    //alert("submit");
     console.log(postData);
 
     const data = { ...postData, creator: user.result.userID };
