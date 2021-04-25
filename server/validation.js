@@ -5,7 +5,7 @@ import Joi from '@hapi/joi'
 
 export const registerValidation = (data) =>{
     const schema = Joi.object({
-        uname: Joi.string().min(5).required(),
+        uname: Joi.string().min(2).required(),
         email: Joi.string().min(6).required().email(),
         psw: Joi.string().min(6).required(),
         fname: Joi.string().min(6).required()
