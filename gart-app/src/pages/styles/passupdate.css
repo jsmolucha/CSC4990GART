@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
+.passUpdate {
+    background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-template-areas:
+    ". . . "
+    ". form  ."
+    ". form ."
+    ". form  ."
+    ". . . "
+    ;
+}
+    
+#updateHeader {
+    font-size: 72px;
+    color: white;
+    font-family:'Inter';
+    font-weight: 900;
+    text-align: center;
+    margin-top: 8%;
+}
+
+.passContainer {
+    grid-area: form;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+  
+}
+
+#_id, #passUpdateField, #usernameUpdate {
+    outline: none;
+    border: none;
+    background:#FFF;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-weight: 300;
+    font-size: 18px;
+    width: 300px;
+    height: 50px;
+    color: rgba(0, 0, 0, 0.8);    
+    text-indent: 10px;
+    display: block;
+    margin: 0 auto 5% auto;
+
+    
+}
+
+#_id::placeholder, #passUpdateField::placeholder, #usernameUpdate::placeholder {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.8);    
+    text-align: left;
+    text-indent: 10px;
+    font-family: 'Inter';
+
+}
+
+#submitNewPassword {
+    width: 200px;
+    height: 60px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    display: block;
+    margin: 0 auto 3% auto;
+    transition: .3s;
+
+}
+
+#submitNewPassword:hover {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .passUpdate {
+        background: linear-gradient(109.36deg, rgba(215, 39, 219, 0.7) -4.44%, rgba(0, 56, 255, 0.7) 143.69%), #C4C4C4;
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template-rows: 1fr 1fr 1fr ;
+        grid-template-areas:
+        " . . . "
+        ". form .  "
+        ". . . "
+    }
+
+    .passContainer {
+        grid-area: form;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        min-width: 500px;
+        height: 600px;
+    }
+
+    #_id, #passUpdateField, #usernameUpdate  {
+        width: 300px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    #_id::placeholder, #passUpdateField::placeholder, #usernameUpdate::placeholder {
+        font-size: 20px;
+        color: rgba(0, 0, 0, 0.8);    
+        text-align: left;
+        text-indent: 10px;
+        font-family: 'Inter';
+    
+    }
+
+    #updateHeader {
+        font-size: 65px;
+    }
+
+    #submitNewPassword {
+        width: 150px;
+        height: 50px;
+        font-size: 25px;
+    }
+
+}
