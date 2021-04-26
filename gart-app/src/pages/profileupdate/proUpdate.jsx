@@ -35,9 +35,9 @@ const Profileupdate  = () => {
                     <input id="eMailUpdate" type="text" placeholder="Email" value={data.email} name="email" required/>
                     <input id="_id" type="hidden" value={data._id} name="_id" required/> 
                     <button id="submitReg" type="submit">Update Info</button>
-                    <Link to="/@:username/passwordUpdate" id="haveAcct">Forgot your password?</Link>
+                    <Link to= {`/@${data.username}/passwordUpdate`} id="haveAcct">Forgot your password?</Link>
                     <div></div>
-                    <Link to="/@:username/accountDelete" id="haveAcct">You can remove you account here!</Link>
+                    <Link to={`/@${data.username}/accountDelete`} id="haveAcct">You can remove you account here!</Link>
                 </form>
             </div>
         </div>
