@@ -23,7 +23,7 @@ router.get("/users/:query", async (req, res) => {
     const { query } = req.params;
 
     try { 
-        const answer = await Users.find({"username": {$regex : `.*${query}.*`}}).select({"username" : 1, "followers" :1, "following" : 1, "fullName" : 1, "_id": 1})
+        const answer = await Users.find({"username": {$regex : `.*(?i)${query}.*`}}).select({"username" : 1, "followers" :1, "following" : 1, "fullName" : 1, "_id": 1})
 
         res.status(200).json(answer)
         
@@ -51,7 +51,12 @@ router.get("/post/:query", async (req, res) => {
     const { query } = req.params;
 
     try { 
-        const answer = await PostMessage.find( {$or : [{"tags": {$regex : `.*${query}.*`}},{"title": {$regex : `.*${query}.*`}},{"description": {$regex : `.*${query}.*`}} ] }  )
+        const answer = await PostMessage.find( {$or : [{"tags": {$regex : `.*(?i)${query}.*`}},
+        {"title": {$regex : `.*(?i)${query}.*`}},
+        {"description": {$regex : `.*(?i)${query}.*`}},
+        {"username": {$regex : `.*(?i)${query}.*`}}
+    
+    ] }  )
         if(answer){
             res.status(200).json(answer)
         } else{
