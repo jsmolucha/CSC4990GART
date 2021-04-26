@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'  
 import Axios from 'axios';  
 import { Link } from "react-router-dom";
-import "../styles/register.css"
+import "../styles/accDelete.css"
 
 const AccountDelete  = () => {
     const [data, setData] = useState([]);  
@@ -26,22 +26,16 @@ const AccountDelete  = () => {
         });
       };
   return (
-    <div className="regCont">
-            <div className="regcontainer">
+    <div className="accDelete">
+            <div className="deleteContainer">
                 <form className="regForm" method="post" action = "http://localhost:5000/api/update/deleteAccount" onChange={handleInputChange}>
-                    <h1 id="signupHeader"> Delete Account</h1>
-                    <input id="_id" type="hidden" value={data._id} name="_id" required/> 
-                    <input id="userID" type="hidden" value={data.userID} name="userID" required/> 
-                    <input id="username" type="hidden" value={data.username} name="username" required/> 
-
-                    <button id="submitReg" type="submit">Delete Account</button>
+                    <h1 id="deleteHeader"> Delete Account</h1>
+                    <input type="hidden" value={data._id} name="_id" required/> 
+                    <input type="hidden" value={data.userID} name="userID" required/> 
+                    <input type="hidden" value={data.username} name="username" required/> 
+                    <button id="confirmDelete" type="submit">Delete Account</button>
                 </form>
-
             </div>
-            <div className="regGreeting">
-                <h1 id="welcomeHeader">Start sharing your art<span id="colorText"> today!</span> </h1>
-            </div>
-
         </div>
   );
 };
