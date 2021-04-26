@@ -43,16 +43,16 @@ class App extends Component {
         <Route exact path="/404" component={error} />
         <Route exact path="/register" component={Registerpage} />
         <Route exact path="/upload" component={upload} />
-        <Route exact path="/account" component={MyComponent} />
-        <Route exact path="/@:username" component={Profile} />
+        <PrivateRoute exact path="/account" component={MyComponent} />
+        <PrivateRoute exact path="/@:username" component={Profile} />
         <Route exact path="/post/:postId" component={Permalink} />
         <Route exact path="/edit/:postId" component={Edit} />
         <Route exact path="/nav" component={NavBar} />
         <Route exact path="/delete" component={Delete} />
         <Route exact path="/likes" component={LikedPost} />
-        <Route exact path="/@:username/profileUpdate" component={Profileupdate} />
-        <Route exact path="/@:username/passwordUpdate" component={Passwordupdate} />
-        <Route exact path="/@:username/accountDelete" component={AccountDelete} />
+        <PrivateRoute exact path="/@:username/profileUpdate" component={Profileupdate} />
+        <PrivateRoute exact path="/@:username/passwordUpdate" component={Passwordupdate} />
+        <PrivateRoute exact path="/@:username/accountDelete" component={AccountDelete} />
         
         {/* <Route exact path="/contests" component={Contest} /> */}
         <Route exact path="/search/:query" component={Search} />
